@@ -1,10 +1,8 @@
 " Vim colorscheme file
-" Maintainer:   Adrian Nagle <vim@naglenet.org>
+" Original Author:   Adrian Nagle <vim@naglenet.org>
+" Maintainer:  Aris Karagiannidis
 " Last Change:  2001-09-25 07:48:15 Mountain Daylight Time
-" URL:          http://www.naglenet.org/vim/syntax/adrian.vim
-" MAIN URL:     http://www.naglenet.org/vim
-
-" Modified by:Aris Karagiannidis on Fri 2 May 2014
+" Version: 0.1
 
 " This is my custom syntax file to override the defaults provided with Vim.
 " This file should be located in $HOME/vimfiles/colors.
@@ -58,6 +56,11 @@ highlight Special    term=bold      ctermfg=Magenta                    guifg=Ora
 highlight Ignore                    ctermfg=black                      guifg=bg
 highlight Error                     ctermfg=White      ctermbg=Red     guifg=White    guibg=Red
 highlight Todo                      ctermfg=Blue       ctermbg=Yellow  guifg=Blue     guibg=Yellow
+
+"Change the highlight of code completion popup menu
+highlight Pmenu guibg=yellow guifg=black gui=bold ctermbg=yellow  ctermfg=black term=bold
+highlight PmenuSel guibg=blue guifg=red  gui=bold ctermbg=blue ctermfg=red term=bold
+
 
 " Change the highlight of search matches (for use with :set hls).
 highlight Search                    ctermfg=Black      ctermbg=Yellow  guifg=Black    guibg=Yellow  
