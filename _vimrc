@@ -1,6 +1,12 @@
 set tabstop=2
+filetype plugin on
 
-" Set to auto read when a file is changed from the outside
+"Set a more friendly code completion
+set wildmode=longest:full
+
+set spell
+
+" Set to auto read when a file is changed from an outside source
 set autoread
 
 "Try to set the colorscheme
@@ -48,3 +54,13 @@ map <C-S-Tab> :tabp<CR>
 
 "Map autocompletion to control space(This is done in insert mode hence the imap)
 imap <C-Space> <C-n>
+
+
+"Alt and arrows, can now navigate in split windows
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
+
+"cd C:\Users\Aris\

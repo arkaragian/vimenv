@@ -27,7 +27,6 @@
 "
 
 
-
 hi clear
 set background=dark
 if exists("syntax_on")
@@ -37,15 +36,18 @@ let g:colors_name = "adrian"
 
 " Normal is for the normal (unhighlighted) text and background.
 " NonText is below the last line (~ lines).
-highlight Normal                  guibg=Black      guifg=Green 
+highlight Normal                  guibg=Black      guifg=Green ctermfg=Green 
 highlight Cursor                  guibg=Grey70     guifg=White
 
 "Background color after the file ends
 highlight NonText                 guibg=Black
-highlight StatusLine     gui=bold guibg=DarkGrey   guifg=Orange
-highlight StatusLineNC            guibg=DarkGrey   guifg=Orange
 
-highlight Comment    term=bold      ctermfg=LightGrey                  guifg=#d1ddff
+"Statuslines when the window is split horizontally
+highlight StatusLine     gui=bold guibg=blue guifg=Orange
+"This one is the other way arround for some reason
+highlight StatusLineNC            guibg=black guifg=grey
+
+highlight Comment    term=bold      ctermfg=DarkGreen                  guifg=DarkGreen
 highlight Constant   term=underline ctermfg=White                      guifg=#ffa0a0
 "highlight Number   term=underline ctermfg=Yellow                     guifg=Yellow
 highlight Identifier term=underline ctermfg=Cyan                       guifg=#40ffff
@@ -62,6 +64,8 @@ highlight Pmenu guibg=yellow guifg=black gui=bold ctermbg=yellow  ctermfg=black 
 highlight PmenuSel guibg=blue guifg=red  gui=bold ctermbg=blue ctermfg=red term=bold
 
 
+highlight Folded guifg=black guibg=yellow
+
 " Change the highlight of search matches (for use with :set hls).
 highlight Search                    ctermfg=Black      ctermbg=Yellow  guifg=Black    guibg=Yellow  
 
@@ -69,7 +73,7 @@ highlight Search                    ctermfg=Black      ctermbg=Yellow  guifg=Bla
 highlight Visual      cterm=NONE    ctermfg=Black      ctermbg=LightGrey  gui=NONE    guifg=Black guibg=Grey70
 
 highlight Float                     ctermfg=Blue                       guifg=#88AAEE
-highlight Exception                 ctermfg=Red        ctermbg=White   guifg=Red      guibg=White
+"highlight Exception                 ctermfg=Red        ctermbg=White   guifg=Red      guibg=White
 highlight Typedef                   ctermfg=White      ctermbg=Blue    gui=bold       guifg=White guibg=Blue
 highlight SpecialChar               ctermfg=Black      ctermbg=White   guifg=Black    guibg=White
 highlight Delimiter                 ctermfg=White      ctermbg=Black   guifg=White    guibg=Black
