@@ -14,6 +14,9 @@ set noswapfile "Disable any swap files
 "set wildmode=longest:full
 
 
+set sessionoptions=blank
+
+
 set completeopt=longest,menuone "Insert the longest common text even if there is only one match
 
 set autoread "Set to auto read when a file is changed from an outside source
@@ -90,6 +93,7 @@ function! InsertJSFunction(...)
   put=fun
   :normal kk<c-j>
 endfunction
+
 function! DotToGTDot(...) range
 	:s/\./->/g
 endfunction
@@ -184,3 +188,30 @@ map ζ z
 "other greek mappings
 map δδ dd
 map υυ yy
+
+
+function! IsRootDir(dir)
+	"let working_directory = getcwd()
+	let isRoot = 0
+	if filereadable( a:dir . "/root.vim")
+		let isRoot = 1
+		"echom "Root Directory Found!"
+	else
+		"echom "Not the Root Directory" . a:dir
+	endif
+	return isRoot
+endfunction
+
+function! GetRootDir()
+	let dir = getcwd()
+	"Use a counter in order to break in case there is no root.vim found
+	let counter = 1
+	while IsRootDir(dir) == 0 && counter < 100
+		let dir = fnamemodify( dir , ':h')
+		let counter += 1
+		"echom counter
+	endwhile
+	return dir
+endfunction
+
+let g:root_dir = GetRootDir()
