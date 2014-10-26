@@ -56,7 +56,12 @@ if has("win64") || has("win32") || has("win16")
 	endif
 endif
 
-"Fuck you! Real men dont use arrow keys
+if has("clipboard")
+	vmap <C-c> "+yi
+	imap <C-v> <ESC>"+p
+endif
+
+"Real men dont use arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -207,7 +212,7 @@ function! GetRootDir()
 	"Use a counter in order to break in case there is no root.vim found
 	let counter = 1
 	while IsRootDir(dir) == 0 && counter < 100
-		let dir = fnamemodify( dir , ':h')
+		let dir = fnamemodify( dir , ':h') "Get the parent directory
 		let counter += 1
 		"echom counter
 	endwhile
@@ -215,3 +220,8 @@ function! GetRootDir()
 endfunction
 
 let g:root_dir = GetRootDir()
+
+try
+	:source root.vim
+catch
+endtry
