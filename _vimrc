@@ -1,11 +1,16 @@
+set nocompatible
+filetype plugin on
 set encoding=utf-8
 set fileencoding=utf-8
 set nu      "Set line numbering
 syntax on   "Set syntax highlight
 set autochdir "Change to the directory of the file that is edited
+set relativenumber
 
 set tabstop=2    "Tab is equal to 2 columns
 set shiftwidth=2 "Use 2 spaces when autoindenting
+" Use _ as a word-separator
+" set iskeyword-=_
 
 set noswapfile "Disable any swap files
 
@@ -76,7 +81,6 @@ augroup filetypedetect
 	au BufNewFile,BufRead *.asy     setf asy
 augroup END
 
-filetype plugin on
 
 "Code completion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -237,7 +241,15 @@ function! GenerateTags()
 	execute("!" . tagexe . tagopts)
 endfunction
 
-
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
 try
 	:source root.vim
 catch
