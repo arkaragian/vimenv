@@ -25,9 +25,9 @@ let mapleader = "\<Space>"
 
 "Try to set the colorscheme
 try
-    colorscheme adrian 
+	colorscheme adrian 
 catch
-    colorscheme torte
+	colorscheme torte
 endtry
 
 " A syntax for placeholders
@@ -44,8 +44,8 @@ if has("win64") || has("win32") || has("win16")
 	set backspace=indent,eol,start
 
 	"Set mingw32 for windows
-	set makeprg=mingw32-make
-	map <Leader>m :make
+	"set makeprg=mingw32-make
+	"map <Leader>m :make
 
 	"Set a proper font and make the window bigger
 	if has("gui_running")
@@ -73,8 +73,9 @@ setlocal spell spelllang=en_us
 "autocmd Filetype tex set nonu
 
 augroup filetypedetect
-au BufNewFile,BufRead *.asy     setf asy
+	au BufNewFile,BufRead *.asy     setf asy
 augroup END
+
 filetype plugin on
 
 "Code completion
@@ -85,6 +86,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+"au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
 
 "Set highlighting when searching, use :noh to remove it
@@ -94,9 +96,9 @@ set hlsearch
 
 
 function! InsertJSFunction(...)
-  let fun = "function <++>(<++>){\n\t<++>}"
-  put=fun
-  :normal kk<c-j>
+	let fun = "function <++>(<++>){\n\t<++>}"
+	put=fun
+	:normal kk<c-j>
 endfunction
 
 function! DotToGTDot(...) range
@@ -118,11 +120,11 @@ highlight PmenuSel guibg=black  guifg=yellow gui=bold ctermbg=black   ctermfg=ye
 "  autocmd BufRead,BufNewFile *.html* :echom "Reading, or writing HTML file"
 "endif
 
-"Map iritating commands
- :command WQ wq
- :command Wq wq
- :command W w
- :command Q q
+"Map irritating commands added ! in order to overwrite them in case they exist
+:command! WQ wq
+:command! Wq wq
+:command! W w
+:command! Q q
 
 "Easily move between splits
 nmap <c-h> <c-w>h
@@ -130,8 +132,13 @@ nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
 
-map <c-t> :tabnew<cr>
+"Edit vimrc
+"Reload vimrc
+map <Leader>rc      :tabnew ~\_vimrc<cr>
+noremap <Leader>rrc :source ~\_vimrc<cr>
 
+map <c-t> :tabnew<cr>
+map ; :
 
 map <Leader>z :noh<cr>
 " assign keyboard commands while using the greek keyboard:
@@ -220,6 +227,16 @@ function! GetRootDir()
 endfunction
 
 let g:root_dir = GetRootDir()
+
+function! GenerateTags()
+	let tagexe  =  "C:\\ctags58\\ctags.exe "
+	let tagopts = "--exclude=build --exclude=root.vim --exclude=*.txt  -R " . g:root_dir
+	"let cmd     =  tagexe . tagopts --extra=+fq --fields=+iaS
+	"let resp    = system(cmd)
+	"execute "!" . g:potion_command . " " . bufname("%") 
+	execute("!" . tagexe . tagopts)
+endfunction
+
 
 try
 	:source root.vim
