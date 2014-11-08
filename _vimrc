@@ -1,7 +1,23 @@
 set nocompatible
+"filetype off
+"
+"set rtp+= ~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"
+"
+"
+"Plugin 'gmarik/Vundle.vim'
+"
+"
+"" All of your Plugins must be added before the following line
+"call vundle#end()            " required
+"filetype plugin indent on    " required
+
+set wrap
 filetype plugin on
 set encoding=utf-8
 set fileencoding=utf-8
+set textwidth=0 wrapmargin=0
 set nu      "Set line numbering
 syntax on   "Set syntax highlight
 set autochdir "Change to the directory of the file that is edited
@@ -14,9 +30,9 @@ set shiftwidth=2 "Use 2 spaces when autoindenting
 
 set noswapfile "Disable any swap files
 
-"set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 "Set a more friendly code completion
-"set wildmode=longest:full
+set wildmode=longest:full
 
 
 set sessionoptions=blank
@@ -83,13 +99,13 @@ augroup END
 
 
 "Code completion
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+"autocmd FileType c set omnifunc=ccomplete#Complete
 "au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
 
@@ -232,13 +248,15 @@ endfunction
 
 let g:root_dir = GetRootDir()
 
+map <Leader>sr :echom g:root_dir<cr>
 function! GenerateTags()
+	let g:root_dir = GetRootDir()
 	let tagexe  =  "C:\\ctags58\\ctags.exe "
-	let tagopts = "--exclude=build --exclude=root.vim --exclude=*.txt  -R " . g:root_dir
+	let tagopts = "--exclude=build --exclude=root.vim --exclude=*.py --exclude=*.txt --tag-relative=yes --fields=+iaS -R -f " . g:root_dir . "\\tags"
 	"let cmd     =  tagexe . tagopts --extra=+fq --fields=+iaS
 	"let resp    = system(cmd)
 	"execute "!" . g:potion_command . " " . bufname("%") 
-	execute("!" . tagexe . tagopts)
+	execute("!cd " . g:root_dir ." && " . tagexe . tagopts)
 endfunction
 
 function! RenameFile()
@@ -250,7 +268,37 @@ function! RenameFile()
         redraw!
     endif
 endfunction
+
+function! Cmake()
+	execute(":cd " . g:root_dir)
+	execute("!C:\\cmake-3.0.2-win32-x86\\cmake-3.0.2-win32-x86\\bin\\cmake.exe " . g:root_dir)
+endfunction!
+
+function! CreateCPPProject()
+	let g:root_dir = getcwd()
+	let mainContents =['#include<iostream>', ' ', 'int main(){', 'std::cout <<
+	''Hello World'' << std::endl;', ' }']
+call writefile(mainContents,g:root_dir . "\\main.cpp")		
+endfunction
+
+function! ShowRootDir()
+	:echom g:root_dir
+endfunction
+
+function! RefreshRoot()
+	let g:root_dir = GetRootDir()
+endfunction!
+
+map <Leader>sr :call ShowRootDir()<cr>
+map <Leader>rrd :call RefreshRoot()<cr>
+
 try
 	:source root.vim
 catch
 endtry
+
+set tags=./tags;
+
+"Examples of root.vim contents
+"map <Leader>b :!"C:\Program Files (x86)\MSBuild\12.0\Bin\msbuild.exe" build\tetris.vcxproj<cr>
+"map <Leader>r :!build\Debug\tetris.exe<cr>
