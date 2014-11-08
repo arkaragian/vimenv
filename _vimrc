@@ -66,7 +66,7 @@ if has("win64") || has("win32") || has("win16")
 
 	"Set mingw32 for windows
 	"set makeprg=mingw32-make
-	"map <Leader>m :make
+	"map <Leader>m :make<cr>
 
 	"Set a proper font and make the window bigger
 	if has("gui_running")
@@ -130,7 +130,6 @@ filetype indent on
 "A kind of a personal colorsheme
 set background=dark
 
-
 "Change the highlight of code completion popup menu
 highlight Pmenu    guibg=yellow guifg=black  gui=bold ctermbg=yellow  ctermfg=black    term=bold
 highlight PmenuSel guibg=black  guifg=yellow gui=bold ctermbg=black   ctermfg=yellow   term=bold
@@ -152,8 +151,7 @@ nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
 
-"Edit vimrc
-"Reload vimrc
+"Edit vimrc and reload vimrc
 map <Leader>rc      :tabnew ~\_vimrc<cr>
 noremap <Leader>rrc :source ~\_vimrc<cr>
 
@@ -221,34 +219,44 @@ map ζ z
 map δδ dd
 map υυ yy
 
-
+"Check if this directory is the root directory
+"by seeing if there is a root.vim inside it
 function! IsRootDir(dir)
-	"let working_directory = getcwd()
 	let isRoot = 0
 	if filereadable( a:dir . "/root.vim")
 		let isRoot = 1
 		"echom "Root Directory Found!"
-	else
-		"echom "Not the Root Directory" . a:dir
 	endif
 	return isRoot
 endfunction
 
+"Iterate directories upwards until I find a root directory
 function! GetRootDir()
 	let dir = getcwd()
 	"Use a counter in order to break in case there is no root.vim found
 	let counter = 1
-	while IsRootDir(dir) == 0 && counter < 100
+	while IsRootDir(dir) == 0 && counter < 20
 		let dir = fnamemodify( dir , ':h') "Get the parent directory
 		let counter += 1
 		"echom counter
 	endwhile
-	return dir
+
+	"If no root.vim file exists, then result will be
+	"C:\ in windows and / in UNIX systems. Either way
+	"the length of the string will be 3 or less
+	if strlen(dir) <= 3
+ 		echo "No Root directory found!"
+		return getcwd()
+	else
+		return dir
+	endif
 endfunction
 
 let g:root_dir = GetRootDir()
 
 map <Leader>sr :echom g:root_dir<cr>
+
+"We need to set the executable here for the cmake
 function! GenerateTags()
 	let g:root_dir = GetRootDir()
 	let tagexe  =  "C:\\ctags58\\ctags.exe "
@@ -269,11 +277,13 @@ function! RenameFile()
     endif
 endfunction
 
+"Find the root directory, cd to the build directory(which is assumed to be inside the root) and execute cmake
 function! Cmake()
 	call RefreshRoot()
 	execute("!" . "cd " . g:root_dir . "\\build"." && "."C:\\cmake-3.0.2-win32-x86\\cmake-3.0.2-win32-x86\\bin\\cmake.exe " . g:root_dir)
 endfunction!
 
+"Not working
 function! CreateCPPProject()
 	let g:root_dir = getcwd()
 	let mainContents =['#include<iostream>', ' ', 'int main(){', 'std::cout <<
@@ -285,11 +295,7 @@ function! ShowRootDir()
 	:echom g:root_dir
 endfunction
 
-function! RefreshRoot()
-	let g:root_dir = GetRootDir()
-endfunction!
 
-map <Leader>sr :call ShowRootDir()<cr>
 map <Leader>rrd :call RefreshRoot()<cr>
 
 try
