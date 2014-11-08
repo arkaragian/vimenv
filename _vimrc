@@ -270,8 +270,8 @@ function! RenameFile()
 endfunction
 
 function! Cmake()
-	execute(":cd " . g:root_dir)
-	execute("!C:\\cmake-3.0.2-win32-x86\\cmake-3.0.2-win32-x86\\bin\\cmake.exe " . g:root_dir)
+	call RefreshRoot()
+	execute("!" . "cd " . g:root_dir . "\\build"." && "."C:\\cmake-3.0.2-win32-x86\\cmake-3.0.2-win32-x86\\bin\\cmake.exe " . g:root_dir)
 endfunction!
 
 function! CreateCPPProject()
