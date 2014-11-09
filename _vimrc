@@ -279,9 +279,11 @@ endfunction
 
 "Find the root directory, cd to the build directory(which is assumed to be inside the root) and execute cmake
 function! Cmake()
-	call RefreshRoot()
+	let g:root_dir = GetRootDir()
 	execute("!" . "cd " . g:root_dir . "\\build"." && "."C:\\cmake-3.0.2-win32-x86\\cmake-3.0.2-win32-x86\\bin\\cmake.exe " . g:root_dir)
 endfunction!
+
+:command! Cmake :call Cmake()
 
 "Not working
 function! CreateCPPProject()
@@ -296,10 +298,9 @@ function! ShowRootDir()
 endfunction
 
 
-map <Leader>rrd :call RefreshRoot()<cr>
-
 try
-	:source root.vim
+	:exec ":source " .g:root_dir. "\\root.vim"
+	echo "root.vim sourced"
 catch
 endtry
 
