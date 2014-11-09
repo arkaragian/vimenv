@@ -297,6 +297,7 @@ function! ShowRootDir()
 	:echom g:root_dir
 endfunction
 
+map <Leader>or :exec ":tabnew ".g:root_dir. "\\root.vim"<cr>
 
 try
 	:exec ":source " .g:root_dir. "\\root.vim"
