@@ -5,16 +5,14 @@ set nocompatible
 "call vundle#begin()
 "
 "
-"
 "Plugin 'gmarik/Vundle.vim'
 "
 "
 "" All of your Plugins must be added before the following line
 "call vundle#end()            " required
-"filetype plugin indent on    " required
+filetype plugin indent on    " required
 
 set wrap
-filetype plugin on
 set encoding=utf-8
 set fileencoding=utf-8
 set textwidth=0 wrapmargin=0
@@ -124,7 +122,6 @@ endfunction
 function! DotToGTDot(...) range
 	:s/\./->/g
 endfunction
-filetype indent on	
 
 
 "A kind of a personal colorsheme
@@ -219,40 +216,119 @@ map ζ z
 map δδ dd
 map υυ yy
 
-"Check if this directory is the root directory
-"by seeing if there is a root.vim inside it
-function! IsRootDir(dir)
-	let isRoot = 0
-	if filereadable( a:dir . "/root.vim")
-		let isRoot = 1
-		"echom "Root Directory Found!"
+"Checks if the given filename is inside the given directory
+function! IsFileDir(dir,filename)
+	let isDir = 0
+	if filereadable( a:dir . "/". a:filename)
+		let isDir = 1
 	endif
-	return isRoot
+	return isDir
 endfunction
 
-"Iterate directories upwards until I find a root directory
-function! GetRootDir()
+"Used to find the root and project files. Is starts from the current directory
+"and moves upwards until it finds a directory containing the given filename
+"or when the escape counter is met.
+function! GetDirOfFileInTree(filename)
 	let dir = getcwd()
 	"Use a counter in order to break in case there is no root.vim found
 	let counter = 1
-	while IsRootDir(dir) == 0 && counter < 20
+	while IsFileDir(dir,a:filename) == 0 && counter < 20
 		let dir = fnamemodify( dir , ':h') "Get the parent directory
 		let counter += 1
-		"echom counter
 	endwhile
 
-	"If no root.vim file exists, then result will be
-	"C:\ in windows and / in UNIX systems. Either way
-	"the length of the string will be 3 or less
+	"If no file exists, then result will be "C:\ in windows
+	"and / in UNIX systems(This really depends on the filesystem
+	"and the value of the counter that is set. Either way for the
+	"top level directory the length of the string will be 3 or less
 	if strlen(dir) <= 3
- 		echo "No Root directory found!"
 		return getcwd()
 	else
 		return dir
 	endif
 endfunction
 
+"Use the above function to find the root
+"and the project directory
+function! GetRootDir()
+	return GetDirOfFileInTree("root.vim")
+endfunction
+
+function! GetProjectDir()
+	return GetDirOfFileInTree("project.vim")
+endfunction
+
+
+"This function might be implemented within the
+"root.vim and project.vim
+function! BuildProjectDirective()
+	"if !exists("g:target_name")
+	"	return
+	"endif
+
+	"if !exists("g:rel_project_path_to_rootdir")
+	"	return
+	"endif
+
+	"if !exists("g:build_sys")
+	"	return
+	"endif
+
+endfunction
+
+function! BuildRootDirective()
+	try
+		:exec ":source " .g:root_dir. "\\root.vim"
+	catch
+		echo "No root.vim file found. Aborting execution"	
+		return
+	endtry
+
+	if !exists("g:build_exe")
+		echo "No g:build_exe variable exists check your root.vim"
+		return
+	endif
+
+	if !exists("g:build_opts")
+		echo "No g:build_opts variable exists check your root.vim"
+		return
+	endif
+
+	if !exists("g:project_rel_path")
+		echo "No g:project_rel_path variable exists check your root.vim"
+		return
+	endif
+	if !exists("g:project_name")
+		echo "No g:project_name variable exists check your root.vim"
+		return
+	endif
+
+	echo "All variables set! Building Root project"
+
+	"Those are global variables that are defined inside the root.vim
+	"that we previously sourced
+	let project_path = g:root_dir.g:project_rel_path.g:project_name
+	execute("!".g:build_exe." ".g:build_opts." ".project_path)
+
+endfunction
+
+
 let g:root_dir = GetRootDir()
+let g:proj_dir = GetProjectDir()
+
+function! RefreshRoot()
+	let g:root_dir = GetRootDir()
+endfunction
+
+function! RefreshProject()
+	let g:proj_dir = GetProjectDir()
+endfunction
+
+"To Use this an autocommand
+function! RefreshSolution()
+	call RefreshRoot()
+	call RefreshProject()
+endfunction
 
 map <Leader>sr :echom g:root_dir<cr>
 
@@ -268,13 +344,13 @@ function! GenerateTags()
 endfunction
 
 function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
+	let old_name = expand('%')
+	let new_name = input('New file name: ', expand('%'), 'file')
+	if new_name != '' && new_name != old_name
+		exec ':saveas ' . new_name
+		exec ':silent !rm ' . old_name
+		redraw!
+	endif
 endfunction
 
 "Find the root directory, cd to the build directory(which is assumed to be inside the root) and execute cmake
@@ -290,23 +366,40 @@ function! CreateCPPProject()
 	let g:root_dir = getcwd()
 	let mainContents =['#include<iostream>', ' ', 'int main(){', 'std::cout <<
 	''Hello World'' << std::endl;', ' }']
-call writefile(mainContents,g:root_dir . "\\main.cpp")		
+	call writefile(mainContents,g:root_dir . "\\main.cpp")		
 endfunction
 
 function! ShowRootDir()
 	:echom g:root_dir
 endfunction
 
+"Open and edit the root file
 map <Leader>or :exec ":tabnew ".g:root_dir. "\\root.vim"<cr>
 
 try
 	:exec ":source " .g:root_dir. "\\root.vim"
-	echo "root.vim sourced"
+	:exec ":source " .g:proj_dir. "\\project.vim"
 catch
 endtry
 
 set tags=./tags;
 
-"Examples of root.vim contents
-"map <Leader>b :!"C:\Program Files (x86)\MSBuild\12.0\Bin\msbuild.exe" build\tetris.vcxproj<cr>
-"map <Leader>r :!build\Debug\tetris.exe<cr>
+"Automatically re-source root.vim and project.vim when we make changes to them
+autocmd! BufWritePost root.vim :source root.vim
+autocmd! BufWritePost project.vim :source project.vim
+
+"When I go to another file refresh the variables pointing to the root and
+"project folders. Also we may need to source those files also
+autocmd! BufNewFile,BufRead,BufEnter,TabEnter * :call RefreshSolution()
+
+map <Leader>b :call BuildRootDirective()<cr>
+
+"Examples of root.vim contents"Escape the msbuild path because it contains spaces
+
+"let g:build_exe = "\"C:\\Program Files (x86)\\MSBuild\\12.0\\Bin\\msbuild.exe\""
+"let g:build_opts = ""
+""The path of the project relative to the root directory
+"let g:project_rel_path = "\\build\\tests\\"
+"let g:project_name = "market_lib_test.vcxproj"
+"let g:ex_name = "Debug\\market_lib_test.exe"
+"echom "root.vim sourced"
