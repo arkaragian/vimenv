@@ -19,7 +19,6 @@ set textwidth=0 wrapmargin=0
 set nu      "Set line numbering
 syntax on   "Set syntax highlight
 set autochdir "Change to the directory of the file that is edited
-set relativenumber
 
 set tabstop=2    "Tab is equal to 2 columns
 set shiftwidth=2 "Use 2 spaces when autoindenting
