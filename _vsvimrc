@@ -36,3 +36,5 @@ nmap <c-l> <c-w>l
 map <c-t> :tabnew<cr>
 map ; :
 
+let mapleader = <Space>
+nnoremap <Leader>br :vsc Build.BuildSolution<CR>
