@@ -10,3 +10,7 @@ map ; :
 
 let mapleader = "<Space>"
 nnoremap <Leader>br :vsc Build.BuildSolution<CR>
+nnoremap <Leader>bp :vsc Build.BuildOnlyProject<CR>
+nnoremap <Leader>fd :vsc Edit.FormatDocument<CR>
+vnoremap <Leader>cc :vsc Edit.CommentSelection<CR>
+vnoremap <Leader>uc :vsc Edit.UncommentSelection<CR>
