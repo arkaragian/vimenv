@@ -1,40 +1,12 @@
-set nu      "Set line numbering
-syntax on   "Set syntax highlight
+set nu
 
-set tabstop=2    "Tab is equal to 2 columns
-set shiftwidth=2 "Use 2 spaces when autoindenting
-" Use _ as a word-separator
-" set iskeyword-=_
-
-
-
-" A syntax for placeholders
-" Pressing Control-j jumps to the next match.
-" INSERT mode only
-inoremap <c-j> <Esc>/<++><CR><Esc>cf>
-
-
-"Real men dont use arrow keys
+""Real men dont use arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-
-"Map irritating commands added ! in order to overwrite them in case they exist
-:command! WQ wq
-:command! Wq wq
-:command! W w
-:command! Q q
-
-"Easily move between splits
-nmap <c-h> <c-w>h
-nmap <c-j> <c-w>j
-nmap <c-k> <c-w>k
-nmap <c-l> <c-w>l
-
-map <c-t> :tabnew<cr>
 map ; :
 
-let mapleader = <Space>
+let mapleader = "<Space>"
 nnoremap <Leader>br :vsc Build.BuildSolution<CR>
