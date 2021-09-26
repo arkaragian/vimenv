@@ -1,6 +1,5 @@
 "This file should be used for neovim. Named init.vim it should be placed in
 "~/AppData/Local/nvim
-set nocompatible
 "filetype off
 "
 "set rtp+= ~/.vim/bundle/Vundle.vim
@@ -12,11 +11,8 @@ set nocompatible
 "
 "" All of your Plugins must be added before the following line
 "call vundle#end()            " required
-filetype plugin indent on    " required
 
 set wrap
-set encoding=utf-8
-set fileencoding=utf-8
 set textwidth=0 wrapmargin=0
 set nu      "Set line numbering
 syntax on   "Set syntax highlight
@@ -28,18 +24,6 @@ set shiftwidth=2 "Use 2 spaces when autoindenting
 " set iskeyword-=_
 
 set noswapfile "Disable any swap files
-
-set omnifunc=syntaxcomplete#Complete
-"Set a more friendly code completion
-set wildmode=longest:full
-
-
-set sessionoptions=blank
-
-
-set completeopt=longest,menuone "Insert the longest common text even if there is only one match
-
-set autoread "Set to auto read when a file is changed from an outside source
 
 let mapleader = "\<Space>"
 
@@ -54,27 +38,6 @@ endtry
 " Pressing Control-j jumps to the next match.
 " INSERT mode only
 inoremap <c-j> <Esc>/<++><CR><Esc>cf>
-
-"Deal with hostile environments
-if has("win64") || has("win32") || has("win16")
-	"Disable beeping!
-	set vb t_vb=
-
-	"Fix backspace to work as expected in windows
-	set backspace=indent,eol,start
-
-	"Set mingw32 for windows
-	"set makeprg=mingw32-make
-	"map <Leader>m :make<cr>
-
-	"Set a proper font and make the window bigger
-	if has("gui_running")
-		set lines=999 columns=999
-		set guifont=Consolas:h10
-		"Set format of the titles in the tabs
-		set guitablabel=\[%N\]\ %t\ %M
-	endif
-endif
 
 if has("clipboard")
 	vmap <C-c> "+yi
@@ -108,12 +71,6 @@ augroup END
 "au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
 
-"Set highlighting when searching, use :noh to remove it
-"after you are done
-set hlsearch
-
-
-
 function! InsertJSFunction(...)
 	let fun = "function <++>(<++>){\n\t<++>}"
 	put=fun
@@ -123,10 +80,6 @@ endfunction
 function! DotToGTDot(...) range
 	:s/\./->/g
 endfunction
-
-
-"A kind of a personal colorsheme
-set background=dark
 
 "Change the highlight of code completion popup menu
 highlight Pmenu    guibg=yellow guifg=black  gui=bold ctermbg=yellow  ctermfg=black    term=bold
