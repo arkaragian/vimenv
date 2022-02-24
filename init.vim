@@ -34,6 +34,7 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_view_general_viewer = 'SumatraPDF'
 let g:vimtex_view_general_options = '-reuse-instace -forward-search @tex @line @pdf'
 
+set ff=dos
 set wrap
 set encoding=utf-8
 set fileencoding=utf-8
