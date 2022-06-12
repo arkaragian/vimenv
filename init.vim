@@ -1,7 +1,13 @@
-"This file should be used for neovim. Named init.vim it should be placed in
-"~/AppData/Local/nvim
-set nocompatible
+"This file should be used for neovim. Named init.vim it should be placed in ~/AppData/Local/nvim
 
+set nocompatible "This is always true for nvim
+
+" Plugins are managed through the use of vim-plug. A minimalist plugin manager
+" https://github.com/junegunn/vim-plug
+"
+" In order for the plugins to be installed the :PlugInstall Command needs to
+" be issued
+"
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
