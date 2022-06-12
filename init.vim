@@ -29,8 +29,8 @@ let g:Tex_CompileRule_pdf = 'latexmk'
 set shellslash
 
 
-set ff=dos
-set wrap
+set ff=dos "Set line endings to CRLF
+set wrap "enable wrap when a line is too long
 set encoding=utf-8
 set fileencoding=utf-8
 set textwidth=0 wrapmargin=0
