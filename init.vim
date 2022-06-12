@@ -40,6 +40,7 @@ set autochdir "Change to the directory of the file that is edited
 
 set tabstop=2    "Tab is equal to 2 columns
 set shiftwidth=2 "Use 2 spaces when autoindenting
+
 " Use _ as a word-separator
 " set iskeyword-=_
 
@@ -103,7 +104,7 @@ if has("clipboard")
 endif
 
 
-setlocal spell spelllang=en_us
+"setlocal spell spelllang=en_us
 
 "Set something special for a specific file type
 "autocmd Filetype tex set nonu
