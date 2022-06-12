@@ -12,7 +12,7 @@ set nocompatible "This is always true for nvim
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin()
-Plug 'lervag/vimtex'
+Plug 'https://github.com/vim-latex/vim-latex.git'
 call plug#end()
 
 "filetype off
@@ -28,17 +28,17 @@ call plug#end()
 "call vundle#end()            " required
 filetype plugin indent on    " required
 
+"vim-latex configuration
+"The target of the resulting compilation is a pdf.
+"The compile rule for the pdf is the latexmk command.
+"There we define any rules for our document such as xelatex etc
+"
+"Compilation is initiated using the <leader>ll
+"Viewing is initiated using <leader>lv
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_CompileRule_pdf = 'latexmk'
+set shellslash
 
-let g:vimtex_compiler_latexmk = {
-      \ 'options' : [
-      \   '-pdfxe',
-      \   '-synctex=1',
-      \   '-interaction=nonstopmode',
-      \ ]
-      \}
-
-let g:vimtex_view_general_viewer = 'SumatraPDF'
-let g:vimtex_view_general_options = '-reuse-instace -forward-search @tex @line @pdf'
 
 set ff=dos
 set wrap
