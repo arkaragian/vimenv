@@ -13,7 +13,20 @@ vim.cmd('colorscheme codedark')
 --
 --gvim.api.nvim_win_set_option(0, 'number', true)
 --vim.wo.number = true
+
+--Display both relative and absolute numbers. In order to do that we need
+--to enable both options
+vim.o.number = true
 vim.o.relativenumber = true
+--Disable wraping when the line is too large
+vim.o.wrap = false
+--Set encoding
+vim.o.encoding = 'utf-8'
+vim.o.fileencoding = 'utf-8'
+--Disable swapfile
+vim.o.swapfile = false
+--Aumaticaly read the file from disk what it changes
+vim.o.autoread = true
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
