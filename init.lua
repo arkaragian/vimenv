@@ -54,11 +54,12 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
+local omnisharp_bin = "C:\\Users\\Aris\\bin\\omnisharp-win-x64-net6.0\\OmniSharp.exe"
+
 --Enable the LSP. This requires that the lsp is installed at the path
 require'lspconfig'.omnisharp.setup {
-    cmd = { "dotnet", "C:\\Users\\Aris\\bin\\omnisharp-win-x64-net6.0\\OmniSharp.dll" },
+    cmd = { omnisharp_bin }, --Arguments are added automatically from the nvim-lspconfig
     on_attach = on_attach,
-    
     -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
     -- true
     analyze_open_documents_only = false,
