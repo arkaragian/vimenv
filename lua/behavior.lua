@@ -31,3 +31,5 @@ vim.o.swapfile = false
 vim.o.autoread = true
 
 vim.g.mapleader = ' '
+
+vim.o.tabstop = 2
