@@ -1,4 +1,13 @@
---local is_wsl = vim.env.USER == "tj-wsl"
+--This file is copied from https://github.com/tjdevries/config_manager
+--from the path config_manager/xdg_config/nvim/after/plugin/completion.lua on 28-Jul-2022.
+--further modifications may be needed as I use this file.
+--
+--Some initial modifications have already been made.
+--
+--The goal of this file is to configure the nvim-cmp plugin.
+--
+--local is_wsl = vim.env.USER == "tj-wsl" this line is from tj. We don't need this here
+--
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -20,8 +29,14 @@ vim.api.nvim_set_keymap(
   { noremap = true }
 )
 
+local ok, lspkind = pcall(require, "lspkind")
+if not ok then
+  return
+end
 
-local cmp = require "cmp"
+lspkind.init()
+
+local cmp = require('cmp')
 
 cmp.setup {
   mapping = {
@@ -95,15 +110,17 @@ cmp.setup {
   --        priority
   --        max_item_count
   --        (more?)
+	--        We could have the sources inside a filetype autocommand so that different sources are
+	--        loaded with different files.
   sources = {
     { name = "gh_issues" },
 
-    -- Youtube: Could enable this only for lua, but nvim_lua handles that already.
+    -- Could enable this only for lua using an autocommand, but nvim_lua handles that already.
     { name = "nvim_lua" },
 
-    { name = "nvim_lsp" },
-    { name = "path" },
-    { name = "luasnip" },
+    { name = "nvim_lsp" }, -- Suggestions from the lsp client
+    --{ name = "path" }, We don't use path suggestions
+    --{ name = "luasnip" }, We don't use luasnip
     { name = "buffer", keyword_length = 5 },
   },
 
@@ -132,6 +149,29 @@ cmp.setup {
       cmp.config.compare.sort_text,
       cmp.config.compare.length,
       cmp.config.compare.order,
+    },
+  },
+
+  -- Youtube: mention that you need a separate snippets plugin
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+  },
+
+  formatting = {
+    -- Youtube: How to set up nice formatting for your sources.
+    format = lspkind.cmp_format {
+      with_text = true,
+      menu = {
+        buffer = "[buf]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[api]",
+        path = "[path]",
+        luasnip = "[snip]",
+        gh_issues = "[issues]",
+        tn = "[TabNine]",
+      },
     },
   },
 
@@ -210,7 +250,3 @@ _ = vim.cmd [[
 " Disable cmp for a buffer
 autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 --]]
-
--- Youtube: customizing appearance
---
--- nvim-cmp highlight groups.
