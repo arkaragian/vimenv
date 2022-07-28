@@ -7,8 +7,14 @@ Plug 'tomasiser/vim-code-dark'
 --Plugins for debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
+
+--Plugins for code completion. We use the cmp plugin. This also requires completion
+--sources. For now we only use the lsp source
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
 vim.call('plug#end')
 
 require('behavior')
 require('languageServer')
 require('debugAdapter')
+require('completion')
