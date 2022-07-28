@@ -31,3 +31,11 @@ vim.keymap.set('n', 'os', ":lua require'dapui'.open()<CR>", opts) --Toggle Break
 vim.keymap.set('n', 'cs', ":lua require'dapui'.close()<CR>", opts) --Toggle Breakpoint
 
 require("dapui").setup()
+
+function StartDebugSession()
+				--TODO: Need to find a way to start and stop the session
+				local dap = require('dap')
+				dap.continue()
+				local dapui = require('dapui')
+				dapui.open()
+end
