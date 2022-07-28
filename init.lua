@@ -97,7 +97,6 @@ require'lspconfig'.omnisharp.setup {
     -- Specifies whether to include preview versions of the .NET SDK when
     -- determining which version to use for project loading.
     sdk_include_prereleases = true,
-
 }
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -145,5 +144,7 @@ vim.keymap.set('n', '<F5>', ":lua require'dap'.continue()<CR>", opts) --Toggle B
 vim.keymap.set('n', '<F10>', ":lua require'dap'.step_over()<CR>", opts) --Toggle Breakpoint
 vim.keymap.set('n', '<F11>', ":lua require'dap'.step_into()<CR>", opts) --Toggle Breakpoint
 vim.keymap.set('n', '<F12>', ":lua require'dap'.step_out()<CR>", opts) --Toggle Breakpoint
+vim.keymap.set('n', 'os', ":lua require'dapui'.open()<CR>", opts) --Toggle Breakpoint
+vim.keymap.set('n', 'cs', ":lua require'dapui'.close()<CR>", opts) --Toggle Breakpoint
 
 require("dapui").setup()
