@@ -1,6 +1,7 @@
 -- This file defines the behavior of neovim
 -- Author: Aris Karagiannidis arkaragian@gmail.com
 --
+-- This file needs to be called first at the start of init.lua
 
 --First define a colorscheme
 vim.cmd('colorscheme codedark')
@@ -28,3 +29,5 @@ vim.o.swapfile = false
 
 --Aumaticaly read the file from disk what it changes
 vim.o.autoread = true
+
+vim.g.mapleader = ' '
