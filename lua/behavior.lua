@@ -6,6 +6,12 @@
 --First define a colorscheme
 vim.cmd('colorscheme codedark')
 
+-- Display invisible characters
+vim.cmd('set invlist')
+
+-- Set the vim options as a local variable so that i can easily change it later if needed.
+local opt = vim.opt
+
 --Now define options for that use the meta-accessor o (option) in order to get the option.
 --This is the same as calling:
 --
@@ -14,22 +20,28 @@ vim.cmd('colorscheme codedark')
 --other meta accessors are go(Global options), bo(buffer local option) wo(window local option)
 
 --Display both relative and absolute numbers. In order to do that we need to enable both options
-vim.o.number = true
-vim.o.relativenumber = true
+opt.number = true
+opt.relativenumber = true
 
 --Disable wraping when the line is too large
-vim.o.wrap = false
+opt.wrap = false
 
 --Set encoding
-vim.o.encoding = 'utf-8'
-vim.o.fileencoding = 'utf-8'
+opt.encoding = 'utf-8'
+opt.fileencoding = 'utf-8'
 
 --Disable swapfile
-vim.o.swapfile = false
+opt.swapfile = false
 
 --Aumaticaly read the file from disk what it changes
-vim.o.autoread = true
+opt.autoread = true
 
 vim.g.mapleader = ' '
 
-vim.o.tabstop = 2
+--Add two characters when typing the tab key
+opt.tabstop = 2
+-- Control the identation side
+opt.shiftwidth = 2
+opt.listchars = {
+	tab ='->',
+}
