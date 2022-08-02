@@ -40,8 +40,11 @@ vim.g.mapleader = ' '
 
 --Add two characters when typing the tab key
 opt.tabstop = 2
+opt.softtabstop = 2
 -- Control the identation side
 opt.shiftwidth = 2
 opt.listchars = {
 	tab ='->',
 }
+-- Use spaces instead of tabs when pressing the tab key
+opt.expandtab = true
