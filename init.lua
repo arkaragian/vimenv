@@ -14,9 +14,17 @@ Plug 'hrsh7th/cmp-nvim-lsp' -- Source for internal nvim lua completion
 Plug 'hrsh7th/cmp-buffer' -- Cmp source buffer
 Plug 'onsails/lspkind.nvim' -- Formating of completion sources
 Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
+
+-- Tree Sitter
+Plug 'nvim-treesitter/nvim-treesitter'
+
+-- Telescope fuzzy finder
+-- Plug 'nvim-lua/plenary.nvim'
+-- Plug ('nvim-telescope/telescope.nvim',{tag='0.1.0'})
 vim.call('plug#end')
 
 require('behavior')
 require('languageServer')
 require('debugAdapter')
 require('completion')
+--require('ConfigTelescope')
