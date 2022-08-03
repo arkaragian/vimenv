@@ -74,6 +74,14 @@ require('lspconfig').omnisharp.setup {
     -- determining which version to use for project loading.
     sdk_include_prereleases = true,
 }
+
+
+local clangd_bin = "C:\\Program Files\\LLVM\\bin"
+--Enable the LSP. This requires that the lsp is installed at the path
+require('lspconfig').clangd.setup {
+    cmd = { clangd_bin }, --Arguments are added automatically from the nvim-lspconfig
+    on_attach = on_attach,
+}
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 --
