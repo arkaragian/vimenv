@@ -3,7 +3,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 --Plug 'https://github.com/vim-latex/vim-latex.git'
 Plug 'https://github.com/neovim/nvim-lspconfig'
-Plug 'tomasiser/vim-code-dark'
+Plug 'Mofiqul/vscode.nvim'
 --Plugins for debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
@@ -16,7 +16,7 @@ Plug 'onsails/lspkind.nvim' -- Formating of completion sources
 Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 
 -- Tree Sitter
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate']})
 
 -- Telescope fuzzy finder
 -- Plug 'nvim-lua/plenary.nvim'
@@ -27,4 +27,5 @@ require('behavior')
 require('languageServer')
 require('debugAdapter')
 require('completion')
+require('TreeSitter')
 --require('ConfigTelescope')
