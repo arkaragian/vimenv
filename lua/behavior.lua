@@ -48,3 +48,6 @@ opt.listchars = {
 }
 -- Use spaces instead of tabs when pressing the tab key
 opt.expandtab = true
+
+--Set file ending to unix. This is important for bash scripts
+opt.ff = "unix"
