@@ -4,7 +4,14 @@
 -- This file needs to be called first at the start of init.lua
 
 --First define a colorscheme
-vim.cmd('colorscheme codedark')
+--local success = (pcall(vim.cmd,'colorscheme codedark'))
+--if not sucess then
+--    print("Could not apply colorscheme. Reverting to default")
+--end
+local c = require('vscode.colors')
+require('vscode').setup({
+    italic_comments = true,
+})
 
 -- Display invisible characters
 vim.cmd('set invlist')
