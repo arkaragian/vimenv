@@ -79,7 +79,7 @@ require('lspconfig').omnisharp.setup {
 local clangd_bin = "C:\\Users\\Aris\\bin\\clangd\\bin\\clangd.exe"
 --Enable the LSP. This requires that the lsp is installed at the path
 require('lspconfig').clangd.setup {
-    cmd = { clangd_bin }, --Arguments are added automatically from the nvim-lspconfig
+    cmd = { clangd_bin ,"-log=error","--query-driver=C:\\Users\\Aris\\bin\\msys64\\mingw64\\**\\g++*.exe,C:\\Users\\Aris\\bin\\msys64\\mingw64\\**\\gcc*.exe","--pretty"}, --Arguments are added automatically from the nvim-lspconfig
     on_attach = on_attach,
 }
 -- Mappings.
