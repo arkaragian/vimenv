@@ -43,6 +43,7 @@ opt.swapfile = false
 --Aumaticaly read the file from disk what it changes
 opt.autoread = true
 
+-- Set leader to spacebar
 vim.g.mapleader = ' '
 
 --Add two characters when typing the tab key
