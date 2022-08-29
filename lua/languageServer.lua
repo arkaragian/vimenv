@@ -33,7 +33,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 end
 
-local omnisharp_bin = "C:\\Users\\Aris\\bin\\omnisharp-win-x64-net6.0\\OmniSharp.exe"
+local omnisharp_bin = "OmniSharp.exe"
 
 --Enable the LSP. This requires that the lsp is installed at the path
 require('lspconfig').omnisharp.setup {
@@ -76,9 +76,10 @@ require('lspconfig').omnisharp.setup {
 }
 
 
-local clangd_bin = "C:\\Users\\Aris\\bin\\clangd\\bin\\clangd.exe"
+local clangd_bin = "clangd.exe"
 --Enable the LSP. This requires that the lsp is installed at the path
 require('lspconfig').clangd.setup {
+    --TODO: Configure the query driver
     cmd = { clangd_bin ,"-log=error","--query-driver=C:\\Users\\Aris\\bin\\msys64\\mingw64\\**\\g++*.exe,C:\\Users\\Aris\\bin\\msys64\\mingw64\\**\\gcc*.exe","--pretty"}, --Arguments are added automatically from the nvim-lspconfig
     on_attach = on_attach,
 }

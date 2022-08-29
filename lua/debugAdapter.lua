@@ -3,9 +3,9 @@ local dap = require('dap')
 dap.set_log_level('INFO')
 dap.adapters.csharp = {
   type = 'executable',
-  command = 'C:\\Users\\Aris\\bin\\netcoredbg\\netcoredbg.exe',
+  command = 'netcoredbg',
   args = {'--interpreter=vscode',
-	  '--engineLogging=C:\\Users\\Aris\\enginelog.log',
+	  '--engineLogging='..os.getenv("HOME")..'/NetCoreDebugEnginelog.log',
 	 },
 }
 
