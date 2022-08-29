@@ -24,7 +24,7 @@ Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate']})
 vim.call('plug#end')
 
 require('behavior')
-require('languageServer')
+require('LanguageServer')
 require('debugAdapter')
 require('completion')
 require('TreeSitter')
