@@ -2,6 +2,8 @@
 
 --- Format a file using the appropriate third party tool. Assume that this tool is in our path.
 function FormatFile()
+  --TODO: Check if the buffer has unwritten changes. Do the format then re-read the buffer from the
+  --disk.
   local filetype = vim.bo.filetype
   print("Filetype is " .. filetype)
   if filetype == "c" or filetype == "cpp" or filetype == ".h" then
