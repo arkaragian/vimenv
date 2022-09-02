@@ -5,16 +5,21 @@ function FormatFile()
   --TODO: Check if the buffer has unwritten changes. Do the format then re-read the buffer from the
   --disk.
   local filetype = vim.bo.filetype
+
+
   print("Filetype is " .. filetype)
-  if filetype == "c" or filetype == "cpp" or filetype == ".h" then
-    print("Formatiing using clang " .. vim.api.nvim_buf_get_name(0))
+  if not vim.bo.modified then
+    if filetype == "c" or filetype == "cpp" or filetype == ".h" then
+      print("Formating using clang " .. vim.api.nvim_buf_get_name(0))
 
-    -- I/O Pipe open execute clang. -i argument means format the file in place.
-    io.popen("clang-format -i " .. vim.api.nvim_buf_get_name(0))
-    return
+      -- I/O Pipe open execute clang. -i argument means format the file in place.
+      io.popen("clang-format -i " .. vim.api.nvim_buf_get_name(0))
+      return
+    end
+    print("No formating rule found. Doing nothing")
+  else
+    print("File has unsaved changes. Save before formatting")
   end
-
-  print("No formating rule found. Doing nothing")
 end
 
 -- Setup any keybindings we want for formating our file.
