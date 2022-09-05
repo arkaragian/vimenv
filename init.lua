@@ -8,6 +8,9 @@ Plug 'Mofiqul/vscode.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 
+--nvim api Autocompletion
+Plug 'tjdevries/nlua.nvim'
+
 --Plugins for code completion. We use the cmp plugin. This also requires completion
 --sources. For now we only use the lsp source
 Plug 'hrsh7th/cmp-nvim-lsp' -- Source for internal nvim lua completion

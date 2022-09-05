@@ -83,6 +83,18 @@ require('lspconfig').clangd.setup {
     cmd = { clangd_bin ,"--log=error","--pretty"}, --Arguments are added automatically from the nvim-lspconfig
     on_attach = on_attach,
 }
+
+-- To get builtin LSP running, do something like:
+-- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
+require('nlua.lsp.nvim').setup(require('lspconfig'), {
+  on_attach = on_attach,
+
+  -- Include globals you want to tell the LSP are real :)
+  --globals = {
+    -- Colorbuddy
+  --  "Color", "c", "Group", "g", "s",
+  --}
+})
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 --
