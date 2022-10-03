@@ -13,8 +13,10 @@ function FormatFile()
       print("Formating using clang " .. vim.api.nvim_buf_get_name(0))
 
       -- I/O Pipe open execute clang. -i argument means format the file in place.
-      io.popen("clang-format -i " .. vim.api.nvim_buf_get_name(0))
+      io.popen("clang-format -i -style=file " .. vim.api.nvim_buf_get_name(0))
       return
+      -- Reload file by executing vim script command.
+      -- TODO: Convert this to lua
     end
     print("No formating rule found. Doing nothing")
   else
