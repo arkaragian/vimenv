@@ -103,7 +103,7 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 require('lspconfig').sumneko_lua.setup {
-  cmd = {"C:/Users/Aris/bin/lua-language-server-3.5.5-win32-x64/bin/lua-language-server.exe"},
+  cmd = {"lua-language-server.exe"},
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
