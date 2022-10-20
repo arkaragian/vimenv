@@ -19,6 +19,9 @@ vim.cmd('set invlist')
 -- Set the vim options as a local variable so that i can easily change it later if needed.
 local opt = vim.opt
 
+-- Set colorcolumn
+opt.colorcolumn = "79"
+
 --Now define options for that use the meta-accessor o (option) in order to get the option.
 --This is the same as calling:
 --
