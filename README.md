@@ -6,6 +6,9 @@ offered by modern IDEs. Those should be:
 1. Code formatting
 1. Debugging
 
+## Dependencies
+tree sitter requires a copiler. The LLVM toolchain is used for this reason
+
 ## Installation
 This repo can be cloned in the appropriate locations. More specifically this can be used in the nvim folder located
 ### For Windows
