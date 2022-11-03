@@ -57,8 +57,8 @@ opt.shiftwidth = 2
 opt.listchars = {
 	tab ='->',
 }
--- Use spaces instead of tabs when pressing the tab key
-opt.expandtab = true
+-- Do not use spaces instead of tabs when pressing the tab key
+opt.expandtab = false
 
 --Set file ending to unix. This is important for bash scripts
 opt.ff = "unix"
