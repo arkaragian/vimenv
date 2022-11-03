@@ -46,3 +46,15 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 /path/to/src -G 'Unix Makefiles'
 ```
 
 Additional languages will be added as I continue to experiment with the neovim config
+
+## Cheatsheet
+1. `<leader>f` will perform a file formatting if the file extension supports such
+formatting
+2. `<leader>ff` will use telescope to find files
+3. `<leader>fb` will list the open buffers
+
+### LSP Key Bindings
+1. `gD` go to declaration
+2. `gd` go to definition
+3. `<leader>ca` perform code action
+4. `<leader>rn` rename symbol

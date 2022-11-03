@@ -1,7 +1,7 @@
 --Call the vim-plug using the vimscript methods since vim plug does not have native lua calls.
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
---Plug 'https://github.com/vim-latex/vim-latex.git'
+Plug ('https://github.com/vim-latex/vim-latex.git', {tag='v1.10.0'})
 Plug 'https://github.com/neovim/nvim-lspconfig'
 Plug 'Mofiqul/vscode.nvim'
 --Plugins for debugging
@@ -22,8 +22,8 @@ Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate']})
 
 -- Telescope fuzzy finder
--- Plug 'nvim-lua/plenary.nvim'
--- Plug ('nvim-telescope/telescope.nvim',{tag='0.1.0'})
+Plug 'nvim-lua/plenary.nvim'
+Plug ('nvim-telescope/telescope.nvim',{tag='0.1.0'})
 vim.call('plug#end')
 
 require('behavior')
@@ -32,4 +32,4 @@ require('debugAdapter')
 require('completion')
 require('TreeSitter')
 require('Formatting')
---require('ConfigTelescope')
+require('ConfigTelescope')
