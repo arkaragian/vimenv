@@ -58,3 +58,7 @@ formatting
 2. `gd` go to definition
 3. `<leader>ca` perform code action
 4. `<leader>rn` rename symbol
+
+### Debug
+1. `os` open debug
+2. `cs` close debug
