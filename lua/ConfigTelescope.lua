@@ -1,13 +1,39 @@
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
+--- Launch the telescope git files picker at the neovim configuration file.
+-- This function sets up viewing options and then launches the picker with
+-- those options.
+local function EditNeovimConfiguration()
+	local options
+
+	if os.getenv('NVCONF') ~= true then
+		print("No variable NVCONF found define NVCONF in your environment to "..
+		"point to the configuration location")
+		return
+	end
+
+	-- Define options here
+	options = {
+		prompt_title = "Neovim Configuration Files",
+		cwd =  os.getenv('NVCONF'),
+	}
+
+	-- launch the picker
+	builtin.git_files(options)
+end
+
+
 -- First we define the key bindings to call telescope
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- Find in all files
 vim.keymap.set('n', '<leader>gf', builtin.git_files, {}) -- Find in only git files
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {}) -- Find in open buffers
 
--- In the section bellow we perform telescope setup
+-- Special keymaps
+vim.keymap.set('n', '<leader>ev',EditNeovimConfiguration,{}) -- Edit neovim
+vim.keymap.set('n', '<leader>sc',builtin.commands,{}) -- Show commands
 
+-- In the section bellow we perform telescope setup
 require('telescope').setup{
 	defaults = {
 		-- Setup the prompt prefix text
