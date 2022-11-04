@@ -66,3 +66,7 @@ opt.ff = "unix"
 -- Define Some General keybindings
 vim.keymap.set('n','bl',vim.cmd.bnext)
 vim.keymap.set('n','bh',vim.cmd.bprevious)
+
+
+-- Configure our shell to be able to execute the commands from within VIM
+opt.shell='cmd.exe'
