@@ -2,11 +2,9 @@ local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
 -- First we define the key bindings to call telescope
--- One can remember the following
--- Find Files
--- Find Buffers
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- Find in all files
+vim.keymap.set('n', '<leader>gf', builtin.git_files, {}) -- Find in only git files
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {}) -- Find in open buffers
 
 -- In the section bellow we perform telescope setup
 
