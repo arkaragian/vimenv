@@ -26,7 +26,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug ('nvim-telescope/telescope.nvim',{tag='0.1.0'})
 vim.call('plug#end')
 
-require('behavior')
+require('Behavior')
 require('LanguageServer')
 require('debugAdapter')
 require('completion')
