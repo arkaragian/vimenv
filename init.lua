@@ -21,7 +21,7 @@ Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 -- Tree Sitter
 Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate']})
 
--- Telescope fuzzy finder
+-- Telescope dependencies and telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug ('nvim-telescope/telescope.nvim',{tag='0.1.0'})
 vim.call('plug#end')

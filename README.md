@@ -52,6 +52,7 @@ Additional languages will be added as I continue to experiment with the neovim c
 formatting
 2. `<leader>ff` will use telescope to find files
 3. `<leader>fb` will list the open buffers
+4. `bh` and `bl` are buffer previous and buffer next
 
 ### LSP Key Bindings
 1. `gD` go to declaration

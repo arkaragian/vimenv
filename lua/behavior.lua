@@ -62,3 +62,7 @@ opt.expandtab = false
 
 --Set file ending to unix. This is important for bash scripts
 opt.ff = "unix"
+
+-- Define Some General keybindings
+vim.keymap.set('n','bl',vim.cmd.bnext)
+vim.keymap.set('n','bh',vim.cmd.bprevious)
