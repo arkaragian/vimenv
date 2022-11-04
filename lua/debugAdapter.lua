@@ -4,9 +4,7 @@ dap.set_log_level('INFO')
 dap.adapters.csharp = {
   type = 'executable',
   command = 'netcoredbg',
-  args = {'--interpreter=vscode',
-	  '--engineLogging='..os.getenv("HOME")..'/NetCoreDebugEnginelog.log',
-	 },
+  args = {'--interpreter=vscode', '--engineLogging='..os.getenv("HOME")..'/NetCoreDebugEnginelog.log'},
 }
 
 dap.configurations.cs = {
@@ -33,9 +31,9 @@ vim.keymap.set('n', 'cs', ":lua require'dapui'.close()<CR>", opts) --Toggle Brea
 require("dapui").setup()
 
 function StartDebugSession()
-				--TODO: Need to find a way to start and stop the session
-				local dap = require('dap')
-				dap.continue()
-				local dapui = require('dapui')
-				dapui.open()
+  --TODO: Need to find a way to start and stop the session
+  local dap = require('dap')
+  dap.continue()
+  local dapui = require('dapui')
+  dapui.open()
 end
