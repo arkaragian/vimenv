@@ -28,6 +28,7 @@ end
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- Find in all files
 vim.keymap.set('n', '<leader>gf', builtin.git_files, {}) -- Find in only git files
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {}) -- Find in open buffers
+vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {}) -- Find in open buffers
 
 -- Special keymaps
 vim.keymap.set('n', '<leader>ev',EditNeovimConfiguration,{}) -- Edit neovim

@@ -50,16 +50,23 @@ Additional languages will be added as I continue to experiment with the neovim c
 ## Cheatsheet
 1. `<leader>f` will perform a file formatting if the file extension supports such
 formatting
-2. `<leader>ff` will use telescope to find files
-3. `<leader>fb` will list the open buffers
-4. `bh` and `bl` are buffer previous and buffer next
+2. `bh` and `bl` are buffer previous and buffer next
+
+### Fuzzy Finding
+Bellow are the keybindings for fuzzy finding
+1. `<leader>ff` Find Files 
+1. `<leader>gf` Git files
+1. `<leader>fb` find vim buffers
+1. `<leader>fs` find symbols provided by the lsp
+1. `<leader>ev` show nvim config files
+1. `<leader>sc` show commands
 
 ### LSP Key Bindings
 1. `gD` go to declaration
-2. `gd` go to definition
-3. `<leader>ca` perform code action
-4. `<leader>rn` rename symbol
+1. `gd` go to definition
+1. `<leader>ca` perform code action
+1. `<leader>rn` rename symbol
 
 ### Debug
 1. `os` open debug
-2. `cs` close debug
+1. `cs` close debug
