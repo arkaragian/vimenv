@@ -7,7 +7,7 @@ local builtin = require("telescope.builtin")
 local function EditNeovimConfiguration()
 	local options
 
-	if os.getenv('NVCONF') ~= true then
+	if os.getenv('NVCONF') == nil then
 		print("No variable NVCONF found define NVCONF in your environment to "..
 		"point to the configuration location")
 		return
@@ -28,10 +28,13 @@ end
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- Find in all files
 vim.keymap.set('n', '<leader>gf', builtin.git_files, {}) -- Find in only git files
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {}) -- Find in open buffers
-vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {}) -- Find in open buffers
+-- Symbols can be invoked with both find symbls and show symbols
+vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {}) -- Find symbols
+vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, {}) -- Show symbols
 
 -- Special keymaps
-vim.keymap.set('n', '<leader>ev',EditNeovimConfiguration,{}) -- Edit neovim
+vim.keymap.set('n', '<leader>ev',EditNeovimConfiguration,{}) -- Edit vim
+vim.keymap.set('n', '<leader>en',EditNeovimConfiguration,{}) -- Edit neovim
 vim.keymap.set('n', '<leader>sc',builtin.commands,{}) -- Show commands
 
 -- In the section bellow we perform telescope setup
