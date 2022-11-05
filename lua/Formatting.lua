@@ -20,8 +20,10 @@ function FormatFile()
     io.popen("clang-format -i -style=file " .. vim.api.nvim_buf_get_name(0))
     fileFormatted = true
   elseif filetype == "cs" then
-    print("Formating a single C# file is not supported." ..
-    "Execute dotnet format to format the entire project or solution")
+    print("Formating using dotnet format " .. vim.api.nvim_buf_get_name(0))
+
+    io.popen("dotnet format --include --no-restore" .. vim.api.nvim_buf_get_name(0))
+    fileFormatted = true
   else
     print("No formating rule found. Doing nothing")
     return
@@ -41,7 +43,7 @@ end
 
 -- Setup any keybindings we want for formating our file.
 function SetupKeyBindings()
- vim.keymap.set('n','<leader>f',FormatFile)
+ vim.keymap.set('n','<leader>fo',FormatFile)
 end
 
 -- Register format autocommand group that helps us manage the group commands as
@@ -56,7 +58,7 @@ local FormatAutoGroup = vim.api.nvim_create_augroup("FormatAutoGroup", { clear =
 -- This means that when we enter a buffer with the specified pattern register
 -- the commands that are defined in the SetupKeyBindings function.
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = {"*.h","*.c","*.cpp"},
+  pattern = {"*.h","*.c","*.cpp","*.cs"},
   callback = SetupKeyBindings, 
   group = FormatAutoGroup,
 })
