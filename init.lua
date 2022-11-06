@@ -27,10 +27,12 @@ Plug 'nvim-lua/plenary.nvim'
 Plug ('nvim-telescope/telescope.nvim',{tag='0.1.0'})
 vim.call('plug#end')
 
-require('Behavior')
-require('LanguageServer')
-require('debugAdapter')
-require('completion')
-require('TreeSitter')
-require('Formatting')
-require('ConfigTelescope')
+
+-- Source personal configurations
+require('Behavior') -- Generic keybindings
+require('LanguageServer') -- LSP configuration
+require('debugAdapter') -- Debug Adapter configuration
+require('Completion') -- Code completion Configuration
+require('TreeSitter') -- TreeSitter configuration
+require('Formatting') -- Custom code formatting methods
+require('ConfigTelescope') -- Telescope Configuration
