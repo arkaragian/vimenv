@@ -16,6 +16,7 @@ Plug 'tjdevries/nlua.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp' -- Source for internal nvim lua completion
 Plug 'hrsh7th/cmp-buffer' -- Cmp source buffer
 Plug 'onsails/lspkind.nvim' -- Formating of completion sources
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help' -- Signature help from lsp
 Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 
 -- Tree Sitter
