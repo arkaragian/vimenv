@@ -31,7 +31,7 @@ vim.call('plug#end')
 -- Source personal configurations
 require('Behavior') -- Generic keybindings
 require('LanguageServer') -- LSP configuration
-require('debugAdapter') -- Debug Adapter configuration
+require('DebugAdapter') -- Debug Adapter configuration
 require('Completion') -- Code completion Configuration
 require('TreeSitter') -- TreeSitter configuration
 require('Formatting') -- Custom code formatting methods
