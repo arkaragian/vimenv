@@ -79,3 +79,17 @@ opt.shell='cmd.exe'
 
 -- Configure CTRL+C in the clipboard register
 vim.keymap.set('v','<C-c>','"+y')
+
+local texGroup = vim.api.nvim_create_augroup("LatexSpellCheck", { clear = true })
+
+-- Create autocommand in the BufEnter event that is matched against a pattern
+-- BufEnter event is nice for setting options for a file type accoding to
+-- vim documentation :h BufEnter. This command bellongs to our Formatting group
+--
+-- This means that when we enter a buffer with the specified pattern register
+-- the commands that are defined in the SetupKeyBindings function.
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = {"*.tex"},
+  command = ":setlocal spell spelllang=en_us",
+  group = texGroup,
+})
