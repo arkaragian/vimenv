@@ -56,14 +56,17 @@ dap.configurations.cpp = {
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
-vim.keymap.set('n', '<space>b', ":lua require'dap'.toggle_breakpoint()<CR>", opts) --Toggle Breakpoint
-vim.keymap.set('n', '<F5>', ":lua require'dap'.continue()<CR>", opts) --Toggle Breakpoint
-vim.keymap.set('n', '<F10>', ":lua require'dap'.step_over()<CR>", opts) --Toggle Breakpoint
-vim.keymap.set('n', '<F11>', ":lua require'dap'.step_into()<CR>", opts) --Toggle Breakpoint
-vim.keymap.set('n', '<F12>', ":lua require'dap'.step_out()<CR>", opts) --Toggle Breakpoint
-vim.keymap.set('n', '<F1>', ":lua require'dap'.terminate()<CR>", opts) --Toggle Breakpoint
-vim.keymap.set('n', 'os', ":lua require'dapui'.open()<CR>", opts) --Toggle Breakpoint
-vim.keymap.set('n', 'cs', ":lua require'dapui'.close()<CR>", opts) --Toggle Breakpoint
+vim.keymap.set('n', '<Leader>b', ":lua require'dap'.toggle_breakpoint()<CR>") --Toggle Breakpoint
+
+vim.keymap.set('n', 'sds', ":lua require'dapui'.open()<CR>") --Start debug session
+vim.keymap.set('n', 'eds', ":lua require'dapui'.close()<CR>") --End debug session
+
+vim.keymap.set('n', '<F1>', ":lua require'dap'.continue()<CR>") --Start the session
+vim.keymap.set('n', '<F2>', ":lua require'dap'.step_over()<CR>") --Toggle Breakpoint
+vim.keymap.set('n', '<F3>', ":lua require'dap'.step_into()<CR>") --Toggle Breakpoint
+vim.keymap.set('n', '<F4>', ":lua require'dap'.step_out()<CR>") --Toggle Breakpoint
+vim.keymap.set('n', '<F9>', ":lua require'dap'.run_to_cursor()<CR>") --Toggle Breakpoint
+vim.keymap.set('n', '<F12>', ":lua require'dap'.terminate()<CR>") --Toggle Breakpoint
 
 require("dapui").setup()
 
