@@ -1,6 +1,9 @@
 --Call the vim-plug using the vimscript methods since vim plug does not have native lua calls.
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
+-- Snippets support
+Plug ('L3MON4D3/LuaSnip', {tag='v1.1.0'})
+
 Plug ('https://github.com/vim-latex/vim-latex.git', {tag='v1.10.0'})
 Plug 'https://github.com/neovim/nvim-lspconfig'
 Plug 'Mofiqul/vscode.nvim'
@@ -36,3 +39,4 @@ require('Completion') -- Code completion Configuration
 require('TreeSitter') -- TreeSitter configuration
 require('Formatting') -- Custom code formatting methods
 require('ConfigTelescope') -- Telescope Configuration
+require('LuaSnipConfig')
