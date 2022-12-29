@@ -28,6 +28,10 @@ Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate']})
 -- Telescope dependencies and telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug ('nvim-telescope/telescope.nvim',{tag='0.1.0'})
+
+
+-- Tree viewer plugin. Configured automatically through after/plugin/nvim-tree.lua file
+Plug 'nvim-tree/nvim-tree.lua'
 vim.call('plug#end')
 
 
