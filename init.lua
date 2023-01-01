@@ -40,6 +40,5 @@ require('Behavior') -- Generic keybindings
 require('LanguageServer') -- LSP configuration
 require('DebugAdapter') -- Debug Adapter configuration
 require('Completion') -- Code completion Configuration
-require('TreeSitter') -- TreeSitter configuration
 require('Formatting') -- Custom code formatting methods
 require('LuaSnipConfig')
