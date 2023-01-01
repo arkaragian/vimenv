@@ -42,5 +42,4 @@ require('DebugAdapter') -- Debug Adapter configuration
 require('Completion') -- Code completion Configuration
 require('TreeSitter') -- TreeSitter configuration
 require('Formatting') -- Custom code formatting methods
-require('ConfigTelescope') -- Telescope Configuration
 require('LuaSnipConfig')
