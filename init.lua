@@ -23,7 +23,7 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help' -- Signature help from lsp
 Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 
 -- Tree Sitter
-Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate']})
+Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate'], tag = 'v0.8.1'})
 
 -- Telescope dependencies and telescope
 Plug 'nvim-lua/plenary.nvim'
