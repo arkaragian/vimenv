@@ -1,4 +1,4 @@
---print('Loading the LuaSnip file')
+print('Loading the LuaSnip file')
 
 local ls = require("luasnip")
 local types = require("luasnip.util.types")
@@ -39,18 +39,19 @@ ls.config.set_config {
 ls.snippet = {
     all = {
         -- Available snippets for all filetypes
-        ls.parser.parse_snippet('expand','-- this is what expanded'),
+        ls.parser.parse_snippet("expand","-- this is what expanded",{}),
     },
 
     lua = {
         --Lua specific snippets
+        ls.parser.parse_snippet("lua","-- this is what expanded",{}),
     },
 
 
     c = {
         -- C specific snippets
         --
-        ls.parser.parse_snippet('for','for(int $1=$2; $1$3$4){\n}'),
+        ls.parser.parse_snippet('for','for(int $1=$2; $1$3$4){\n}',{}),
     },
 }
 
@@ -64,6 +65,7 @@ ls.snippet = {
 vim.keymap.set({ 'i', 's' }, '<c-k>', function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
+    print("Expanding Snippet!")
   end
 end, { silent = true })
 
