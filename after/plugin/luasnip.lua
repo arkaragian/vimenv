@@ -29,6 +29,14 @@ ls.config.set_config {
 -----------------------------
 ---   SNIPET DEFINITION   ---
 -----------------------------
+---
+ls.add_snippets(nil, {
+  -- basic, don't need to know anything else
+  --    arg 1: string
+  --    arg 2: a node
+  --snippet("simple", t "wow, you were right!"),
+  })
+
 
 --Definting snippets. Using VS Code style snippets
 --ls.parser.parser(<text>, <VS style snippet>)
@@ -36,6 +44,7 @@ ls.config.set_config {
 -- This is the snippet table. It defines snippets for each filetype
 -- $1, $2 .. are the placeholders where we jump to complete the snippet.
 -- $0 is counterintuitively the final placeholder.
+
 ls.snippet = {
     all = {
         -- Available snippets for all filetypes
@@ -44,7 +53,7 @@ ls.snippet = {
 
     lua = {
         --Lua specific snippets
-        ls.parser.parse_snippet("lua","-- this is what expanded",{}),
+        ls.parser.parse_snippet("lua","-- LuaSnip!",{})
     },
 
 
@@ -54,6 +63,7 @@ ls.snippet = {
         ls.parser.parse_snippet('for','for(int $1=$2; $1$3$4){\n}',{}),
     },
 }
+
 
 
 ----------------------------------
