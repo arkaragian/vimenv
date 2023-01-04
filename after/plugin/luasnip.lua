@@ -1,6 +1,8 @@
 print('Loading the LuaSnip file')
 
 local ls = require("luasnip")
+-- some shorthands...
+
 local types = require("luasnip.util.types")
 
 ls.config.set_config {
@@ -30,13 +32,23 @@ ls.config.set_config {
 ---   SNIPET DEFINITION   ---
 -----------------------------
 ---
-ls.add_snippets(nil, {
-  -- basic, don't need to know anything else
-  --    arg 1: string
-  --    arg 2: a node
-  --snippet("simple", t "wow, you were right!"),
-  })
+local date = function() return {os.date('%Y-%m-%d akar')} end
 
+ls.add_snippets(nil, {
+    -- basic, don't need to know anything else
+    --    arg 1: string
+    --    arg 2: a node
+    --snippet("simple", t "wow, you were right!"),
+    all = {
+        ls.snippet({
+            trig = "date",
+            namr = "Date",
+            dscr = "Date in the form of YYYY-MM-DD",
+        }, {
+            ls.function_node(date, {}),
+        }),
+    },
+})
 
 --Definting snippets. Using VS Code style snippets
 --ls.parser.parser(<text>, <VS style snippet>)
