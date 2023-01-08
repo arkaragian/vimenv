@@ -1,4 +1,3 @@
-print("After nvim-tree loaded")
 -- empty setup using defaults
 require("nvim-tree").setup()
 
