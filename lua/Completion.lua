@@ -121,7 +121,7 @@ cmp.setup {
     { name = "nvim_lsp" }, -- Suggestions from the lsp client
     { name = 'nvim_lsp_signature_help' }, -- LSP signature help
     { name = "path" }, -- We don't use path suggestions
-    --{ name = "luasnip" }, We don't use luasnip
+    { name = "luasnip" }, --We use luasnip
     { name = "buffer", keyword_length = 5 },
   },
 
