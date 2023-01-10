@@ -88,6 +88,29 @@ local function ForLoop()
 end
 
 --- Defines an inheritdoc header in csharp
+local function CSSummary()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "///", --trigeted with the for keyword
+        name="summary", -- The name of the snippet
+        dscr="An xml summary"
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    /// <summary>
+    /// {text}
+    /// </summary>
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        text = i(1,"Summary"),
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
+--- Defines an inheritdoc header in csharp
 local function InheritDoc()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
@@ -143,7 +166,7 @@ end
 
 ls.add_snippets(nil, {
     lua = { LuadocHeader()},
-    cs = {ForLoop(), InheritDoc()}
+    cs = {ForLoop(), CSSummary(),InheritDoc()}
 })
 
 
