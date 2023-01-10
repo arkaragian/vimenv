@@ -87,6 +87,32 @@ local function ForLoop()
     return s( context, fmt(snippet_string, nodes) )
 end
 
+--- Defines class snippet in csharp
+local function CSClass()
+    local context = {
+        trig = "class", --trigeted with the for keyword
+        name="Class", -- The name of the snippet
+        dscr="A C# class snippet"
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    internal class {} {{
+        public {}() {{
+        }}
+    }}
+    ]]
+
+    -- TODO: Have choice node that can either be the filename that is currently edided
+    -- or have the user input the class name.
+    local nodes ={
+        i(1,"Hello"),
+        rep(1) --The class can either be named from the file or have the name typed.
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
+
 --- Defines an inheritdoc header in csharp
 local function CSSummary()
     -- Defines a for snippet using a the fmt function of the luasnip
@@ -166,7 +192,7 @@ end
 
 ls.add_snippets(nil, {
     lua = { LuadocHeader()},
-    cs = {ForLoop(), CSSummary(),InheritDoc()}
+    cs = {ForLoop(), CSSummary(),InheritDoc(), CSClass()}
 })
 
 
