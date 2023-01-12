@@ -5,14 +5,18 @@ vim.call('plug#begin')
 Plug ('L3MON4D3/LuaSnip', {tag='v1.1.0'})
 
 Plug ('https://github.com/vim-latex/vim-latex.git', {tag='v1.10.0'})
-Plug 'https://github.com/neovim/nvim-lspconfig'
+
+--nvim api Autocompletion. Must be before lspconfig
+Plug ('folke/neodev.nvim', {tag='v2.0.0'})
+
+Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v0.1.5'})
 Plug 'Mofiqul/vscode.nvim'
 --Plugins for debugging
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
+Plug ('mfussenegger/nvim-dap', {tag='0.4.0'})
+Plug ('rcarriga/nvim-dap-ui', {tag='v2.6.0'})
 
---nvim api Autocompletion
-Plug 'tjdevries/nlua.nvim'
+
+
 
 --Plugins for code completion. We use the cmp plugin. This also requires completion
 --sources. For now we only use the lsp source
@@ -27,12 +31,13 @@ Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate'], tag = 'v0.8.1'})
 
 -- Telescope dependencies and telescope
-Plug 'nvim-lua/plenary.nvim'
+Plug ('nvim-lua/plenary.nvim', {tag='v0.1.2'})
 Plug ('nvim-telescope/telescope.nvim',{tag='0.1.0'})
 
 
 -- Tree viewer plugin. Configured automatically through after/plugin/nvim-tree.lua file
 Plug 'nvim-tree/nvim-tree.lua'
+Plug '~/source/repos/solution'
 vim.call('plug#end')
 
 
