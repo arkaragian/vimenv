@@ -84,6 +84,85 @@ local function CSClass()
     return s( context, fmt(snippet_string, nodes) )
 end
 
+--- Defines class snippet in csharp
+local function CSTestClass()
+    local context = {
+        trig = "tclass", --trigeted with the for keyword
+        name="A Test Class", -- The name of the snippet
+        dscr="A C# MSTest class snippet"
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string= [[
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    namespace {}{{
+
+        [TestClass]
+        public class {}{{
+
+            [ClassInitialize()]
+            static public void OnceBeforeAllTests(TestContext context){{
+
+            }}
+
+            [ClassCleanup()]
+            static public void OnceAfterAllTests(){{
+
+            }}
+
+            [TestInitialize()]
+            public void BeforeEveryTest(){{
+
+            }}
+
+            [TestCleanup()]
+            public void AfterEachTest(){{
+
+            }}
+
+            [TestMethod]
+            public void TestCase(){{
+
+            }}
+        }}
+    }}
+    ]]
+
+    -- TODO: Have choice node that can either be the filename that is currently edided
+    -- or have the user input the class name.
+    local nodes ={
+        i(1,"NamespaceName"),
+        i(0,"ClassName"),
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
+--- Defines class snippet in csharp
+local function CSRecord()
+    local context = {
+        trig = "rec", --trigeted with the for keyword
+        name="Record", -- The name of the snippet
+        dscr="A C# record snippet"
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    public record {} {{
+        public {}() {{
+        }}
+    }}
+    ]]
+
+    -- TODO: Have choice node that can either be the filename that is currently edided
+    -- or have the user input the class name.
+    local nodes ={
+        i(1,"Hello"),
+        rep(1) --The class can either be named from the file or have the name typed.
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
 
 --- Defines an inheritdoc header in csharp
 local function CSSummary()
@@ -133,6 +212,8 @@ return {
     --Regular snippets
     CSForLoop(),
     CSClass(),
+    CSTestClass(),
+    CSRecord(),
     --Documentation Related
     CSSummary(),
     CSInheritDoc()
