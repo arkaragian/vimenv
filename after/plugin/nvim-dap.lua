@@ -58,22 +58,9 @@ dap.configurations.rust = dap.configurations.cpp
 
 vim.keymap.set('n', '<Leader>b', ":lua require'dap'.toggle_breakpoint()<CR>") --Toggle Breakpoint
 
-vim.keymap.set('n', 'sds', ":lua require'dapui'.open()<CR>") --Start debug session
-vim.keymap.set('n', 'eds', ":lua require'dapui'.close()<CR>") --End debug session
-
 vim.keymap.set('n', '<F1>', ":lua require'dap'.continue()<CR>") --Start the session
 vim.keymap.set('n', '<F2>', ":lua require'dap'.step_over()<CR>") --Toggle Breakpoint
 vim.keymap.set('n', '<F3>', ":lua require'dap'.step_into()<CR>") --Toggle Breakpoint
 vim.keymap.set('n', '<F4>', ":lua require'dap'.step_out()<CR>") --Toggle Breakpoint
 vim.keymap.set('n', '<F9>', ":lua require'dap'.run_to_cursor()<CR>") --Toggle Breakpoint
 vim.keymap.set('n', '<F12>', ":lua require'dap'.terminate()<CR>") --Toggle Breakpoint
-
-require("dapui").setup()
-
-function StartDebugSession()
-  --TODO: Need to find a way to start and stop the session
-  local dap = require('dap')
-  dap.continue()
-  local dapui = require('dapui')
-  dapui.open()
-end
