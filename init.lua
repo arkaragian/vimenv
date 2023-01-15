@@ -43,6 +43,5 @@ vim.call('plug#end')
 
 -- Source personal configurations
 require('Behavior') -- Generic keybindings
-require('DebugAdapter') -- Debug Adapter configuration
 require('Completion') -- Code completion Configuration
 require('Formatting') -- Custom code formatting methods
