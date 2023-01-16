@@ -29,6 +29,7 @@ Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 
 -- Tree Sitter
 Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate'], tag = 'v0.8.1'})
+Plug 'nvim-treesitter/playground'
 
 -- Telescope dependencies and telescope
 Plug ('nvim-lua/plenary.nvim', {tag='v0.1.2'})
