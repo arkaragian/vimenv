@@ -208,6 +208,31 @@ local function CSInheritDoc()
     return s( context, fmt(snippet_string, nodes) )
 end
 
+local function CSSystemTextJsonProperty()
+
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "jsonprop", --trigeted with the for keyword
+        name="JSON Property", -- The name of the snippet
+        dscr="A JSON property definition" -- The 
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+        [JsonPropertyName("{}")]
+        public {} {}{{ get; set; }} = {};
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        i(1,"PropertyName"),
+        i(2,"Type"),
+        rep(1),
+        i(0,"PropertyValue")
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
 return {
     --Regular snippets
     CSForLoop(),
@@ -216,7 +241,9 @@ return {
     CSRecord(),
     --Documentation Related
     CSSummary(),
-    CSInheritDoc()
+    CSInheritDoc(),
+    -- JSON Related
+    CSSystemTextJsonProperty()
 
 },{
     --autosnippets
