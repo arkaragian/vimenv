@@ -10,7 +10,7 @@ Plug ('https://github.com/vim-latex/vim-latex.git', {tag='v1.10.0'})
 Plug ('folke/neodev.nvim', {tag='v2.0.0'})
 
 Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v0.1.5'})
-Plug 'Mofiqul/vscode.nvim'
+--Plug 'Mofiqul/vscode.nvim'
 --Plugins for debugging
 Plug ('mfussenegger/nvim-dap', {tag='0.4.0'})
 Plug ('rcarriga/nvim-dap-ui', {tag='v2.6.0'})
@@ -33,7 +33,7 @@ Plug 'nvim-treesitter/playground'
 
 -- Telescope dependencies and telescope
 Plug ('nvim-lua/plenary.nvim', {tag='v0.1.2'})
-Plug ('nvim-telescope/telescope.nvim',{tag='0.1.0'})
+Plug ('nvim-telescope/telescope.nvim',{tag='0.1.1'})
 
 
 -- Tree viewer plugin. Configured automatically through after/plugin/nvim-tree.lua file
@@ -42,8 +42,12 @@ Plug 'nvim-tree/nvim-tree.lua'
 -- This is a local directory pointed like that since the plugin is already under
 -- development.
 Plug '~/source/repos/Solution.nvim'
+--Plug 'EdenEast/nightfox.nvim'
+Plug ("rebelot/kanagawa.nvim", {commit= '4c8d48726621a7f3998c7ed35b2c2535abc22def'})
 vim.call('plug#end')
 
+
+vim.cmd.colorscheme("kanagawa")
 
 -- Source personal configurations
 require('Behavior') -- Generic keybindings
