@@ -26,6 +26,7 @@ local postfix = require("luasnip.extras.postfix").postfix
 local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 
+
 ls.config.set_config {
   -- This tells LuaSnip to remember to keep around the last snippet.
   -- You can jump back into it even if you move outside of the selection
@@ -36,6 +37,15 @@ ls.config.set_config {
 
   -- Autosnippets:
   enable_autosnippets = true,
+
+
+  --load_ft_func =
+  -- Also load tex when a plaintex-file is opened,
+  -- javascript for html.
+  -- Other filetypes just load themselves.
+  --require("luasnip.extras.filetype_functions").extend_load_ft({
+  --    plaintex = {"tex"},
+  --}),
 
   -- Crazy highlights!!
   -- #vid3
@@ -51,25 +61,19 @@ ls.config.set_config {
 
 
 ------------------------------------------------------------------------------
---          T R A D I T I O N A L  C O N F I G U R A T I O N                --
-------------------------------------------------------------------------------
--- Instead of adding all snippets via add_snippets, it's possible to store
--- them in separate files and load all of those.
-
---ls.add_snippets(nil, {
---    lua = { LuadocHeader()},
---    cs = {ForLoop(), CSSummary(),InheritDoc(), CSClass()}
---})
-
-------------------------------------------------------------------------------
 --                             L O A D E R S                                --
 ------------------------------------------------------------------------------
 
 --the files may return two lists of snippets, the snippets in the first are all
 --added as regular snippets, while the snippets in the second will be added as
---autosnippets (both are the defaults, if a snippet defines a different snippetType,
---that will have preference)
+--autosnippets (both are the defaults, if a snippet defines a different snippet-
+--Type, that will have preference)
 --
+-- Make lusnip to load all latex plugins even though we might have multiple tex
+-- variations.
+--ls.filetype_extend("tex", { "latex", "plaintex" })
+--ls.filetype_extend("latex", { "tex", "plaintex" })
+--ls.filetype_extend("plaintex", { "tex", "latex" })
 --This will look for a folder named luasnippet and lazy load any snippets that
 --may be required based on the filetype.
 require("luasnip.loaders.from_lua").lazy_load()
