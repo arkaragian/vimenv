@@ -45,6 +45,23 @@ Plug '~/source/repos/Solution.nvim'
 Plug ("rebelot/kanagawa.nvim", {commit= '4c8d48726621a7f3998c7ed35b2c2535abc22def'})
 vim.call('plug#end')
 
+------------------------------------------------------------------------------
+--        C O L O R S C H E M E  T E X  C O N F I G U R A T I O N           --
+------------------------------------------------------------------------------
+local default_colors = require("kanagawa.colors").setup()
+
+local tex_color_overrides = {
+    -- create a new hl-group using default palette colors and/or new ones
+    -- This matches the names returned from :TSHighlightCapturesUnderCursor
+    -- The colors are selected after looking alot in the kanagawa repository.
+    ["@text.environment"] = { fg = default_colors.co },
+    ["@text.environment.name"] = { fg = default_colors.st },
+    -- Variables use color fg
+}
+
+-- TODO: Maybe make this adjustment based on the filetype
+require'kanagawa'.setup({ overrides = tex_color_overrides})
+
 
 vim.cmd.colorscheme("kanagawa")
 
