@@ -1,14 +1,39 @@
+--- Defines an inheritdoc header in csharp
+local function TEXItemize()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "bbit", --trigeted with the for keyword
+        name="itemize", -- The name of the snippet
+        dscr="An itemize environment" -- The
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    \\begin{{itemize}}
+        \\item {item}
+    \\end{{itemize}}
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        item = i(0,"TextHere"),
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
+
 
 return {
     {
         -- rec_ls is self-referencing. That makes this snippet 'infinite' eg. have as many
         -- \item as necessary by utilizing a choiceNode.
-        s("ls", {
-            t({ "\\begin{itemize}", "\t\\item " }),
-            i(1),
-            d(2, rec_ls, {}),
-            t({ "", "\\end{itemize}" }),
-        }),
+        --s("ls", {
+        --    t({ "\\begin{itemize}", "\t\\item " }),
+        --    i(1),
+        --    d(2, rec_ls, {}),
+        --    t({ "", "\\end{itemize}" }),
+        --}),
+        TEXItemize()
 
 
         -- --- lemon moll_snippets

@@ -4,7 +4,7 @@ vim.call('plug#begin')
 -- Snippets support
 Plug ('L3MON4D3/LuaSnip', {tag='v1.1.0'})
 
-Plug ('https://github.com/vim-latex/vim-latex.git', {tag='v1.10.0'})
+--Plug ('https://github.com/vim-latex/vim-latex.git', {tag='v1.10.0'})
 
 --nvim api Autocompletion. Must be before lspconfig
 Plug ('folke/neodev.nvim', {tag='v2.0.0'})

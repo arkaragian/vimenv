@@ -7,8 +7,12 @@
 -- Display invisible characters
 vim.cmd.set("invlist")
 
+
 -- Set the vim options as a local variable so that i can easily change it later if needed.
 local opt = vim.opt
+
+-- TODO: If Windows gnumake if linux make.
+opt.makeprg = "gnumake"
 
 -- Set colorcolumn
 opt.colorcolumn = "79"
