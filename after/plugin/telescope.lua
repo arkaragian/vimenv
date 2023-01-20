@@ -25,17 +25,17 @@ end
 
 
 -- First we define the key bindings to call telescope
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- Find in all files
-vim.keymap.set('n', '<leader>fgf', builtin.git_files, {}) -- Find in only git files
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {}) -- Find in open buffers
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find files"}) -- Find in all files
+vim.keymap.set('n', '<leader>fgf', builtin.git_files, {desc = "Find GIT files"}) -- Find in only git files
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find open buffers"}) -- Find in open buffers
 -- Symbols can be invoked with both find symbls and show symbols
-vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {}) -- Find symbols
-vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, {}) -- Show symbols
+vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "Find LSP Symbols"}) -- Find symbols
+vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, { desc = "Show LSP Symbols"}) -- Show symbols
 
 -- Special keymaps
-vim.keymap.set('n', '<leader>ev',EditNeovimConfiguration,{}) -- Edit vim
-vim.keymap.set('n', '<leader>en',EditNeovimConfiguration,{}) -- Edit neovim
-vim.keymap.set('n', '<leader>sc',builtin.commands,{}) -- Show commands
+vim.keymap.set('n', '<leader>ev',EditNeovimConfiguration,{ desc = "Edit Neovim Configuration"}) -- Edit vim
+vim.keymap.set('n', '<leader>en',EditNeovimConfiguration,{ desc = "Edit Neovim Configuration"}) -- Edit neovim
+vim.keymap.set('n', '<leader>sc',builtin.commands,{ desc = "Show Builtin Commands"}) -- Show commands
 
 -- In the section bellow we perform telescope setup
 require('telescope').setup{
@@ -50,7 +50,8 @@ require('telescope').setup{
 				-- map actions.which_key to <C-h> (default: <C-/>)
 				-- actions.which_key shows the mappings for your picker,
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-				["<esc>"] = actions.close,
+				["<esc>"] = actions.close, -- Close telescope
+                ["<CR>"] = actions.select_tab -- Open selection to new tab
 			}
 		}
 	},
