@@ -25,6 +25,8 @@ end
 
 -- Always show the tabline
 opt.showtabline = 2
+--TODO: Investigate this
+opt.guitablabel="%t"
 
 -- Set colorcolumn
 opt.colorcolumn = "79"
