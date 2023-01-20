@@ -7,6 +7,9 @@
 -- Display invisible characters
 vim.cmd.set("invlist")
 
+-- Map Q to lowercase q since I make this mistake often.
+vim.api.nvim_create_user_command("Q","q",{})
+
 
 -- Set the vim options as a local variable so that i can easily change it later if needed.
 local opt = vim.opt
