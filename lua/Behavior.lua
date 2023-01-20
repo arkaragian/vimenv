@@ -14,20 +14,22 @@ vim.api.nvim_create_user_command("Q","q",{})
 -- Set the vim options as a local variable so that i can easily change it later if needed.
 local opt = vim.opt
 
--- TODO: If Windows gnumake if linux make.
-opt.makeprg = "gnumake"
+if (string.lower(jit.os) == "windows") then
+    opt.makeprg = "gnumake"
+
+    -- Configure our shell to be able to execute the commands from within VIM
+    opt.shell='cmd.exe'
+else
+    opt.makeprg = "make"
+end
+
+-- Always show the tabline
+opt.showtabline = 2
 
 -- Set colorcolumn
 opt.colorcolumn = "79"
 
---Now define options for that use the meta-accessor o (option) in order to get the option.
---This is the same as calling:
---
---gvim.api.nvim_win_set_option(0, 'number', true)
---
---other meta accessors are go(Global options), bo(buffer local option) wo(window local option)
-
---Display both relative and absolute numbers. In order to do that we need to enable both options
+--Display both relative and absolute numbers.
 opt.number = true
 opt.relativenumber = true
 
@@ -66,18 +68,15 @@ opt.expandtab = true
 opt.ff = "unix"
 
 -- Define Some General keybindings
-vim.keymap.set('n','<leader>bl',vim.cmd.bnext)
-vim.keymap.set('n','<leader>bh',vim.cmd.bprevious)
+vim.keymap.set('n','<leader>bl',vim.cmd.bnext, {desc = "Move to next buffer"})
+vim.keymap.set('n','<leader>bh',vim.cmd.bprevious, {desc = "Move to previous buffer"})
 
+vim.keymap.set('n','<leader>pu',':PlugUpdate<CR>', {desc = "Update plugins"})
 
-vim.keymap.set('n','<leader>pu',':PlugUpdate<CR>')
-
--- Configure our shell to be able to execute the commands from within VIM
-opt.shell='cmd.exe'
 
 
 -- Configure CTRL+C in the clipboard register
-vim.keymap.set('v','<C-c>','"+y')
+vim.keymap.set('v','<C-c>','"+y',{desc = "Copy to system clipboard"})
 
 local texGroup = vim.api.nvim_create_augroup("LatexSpellCheck", { clear = true })
 
