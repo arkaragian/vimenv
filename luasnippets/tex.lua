@@ -1,4 +1,145 @@
+------------------------------------------------------------------------------
+--                   G L O B A L  D E F I N I T I O N S                     --
+------------------------------------------------------------------------------
+local s = require("luasnip.nodes.snippet").S
+local sn = require("luasnip.nodes.snippet").SN
+local isn = require("luasnip.nodes.snippet").ISN
+local t = require("luasnip.nodes.textNode").T
+local i = require("luasnip.nodes.insertNode").I
+local f = require("luasnip.nodes.functionNode").F
+local c = require("luasnip.nodes.choiceNode").C
+local d = require("luasnip.nodes.dynamicNode").D
+local r = require("luasnip.nodes.restoreNode").R
+local events = require("luasnip.util.events")
+local ai = require("luasnip.nodes.absolute_indexer")
+local extras = require("luasnip.extras")
+local l = require("luasnip.extras").lambda
+local rep = require("luasnip.extras").rep
+local p = require("luasnip.extras").partial
+local m = require("luasnip.extras").match
+local n = require("luasnip.extras").nonempty
+local dl = require("luasnip.extras").dynamic_lambda
+local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
+local conds = require("luasnip.extras.expand_conditions")
+local postfix = require("luasnip.extras.postfix").postfix
+local types = require("luasnip.util.types")
+local parse = require("luasnip.util.parser").parse_snippet
+
+
+---Generate a generic snippet environment that contains a single node.
+-- This node can then be populated with a snippet node with the appropriate
+-- contents.
+local function Environment(name)
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    \begin{{SnipPlaceholder}}
+        {}
+    \end{{SnipPlaceholder}}
+    ]]
+
+    return string.gsub(snippet_string,"SnipPlaceholder",name)
+end
+
+------------------------------------------------------------------------------
+--                      S N I P P E T  N O D E S                            --
+--  Function Nodes insert text based on the content of other nodes using a  --
+--  user-defined function. All of the functions here accept a number as     --
+--  their first argument. This is to define the placement of each node      --
+--  within the calling snippet. All functions start with the SN prefix      --
+------------------------------------------------------------------------------
+
+local function SNIncludeGraphics(number)
+    local snippet_string = "\\includegraphics[width={}]{{{}}}{}"
+
+    -- Nodes contained in the snippet node
+    local nodes ={
+        i(1,"\\linewidth"),
+        i(2,"FilePath"),
+        t({"",""}) -- Append those nodes in order to have a new line
+    }
+
+    return sn(number, fmt(snippet_string, nodes))
+end
+
+local function SNCaption(number)
+    local snippet_string ="\\caption{{{}}}{}"
+
+    -- Nodes contained in the snippet node
+    local nodes ={
+        i(1,"Caption"),
+        t({"",""}) -- Append those nodes in order to have a new line
+    }
+
+    return isn(number, fmt(snippet_string, nodes),"$PARENT_INDENT" )
+end
+
+local function SNGenericLabel(prefix,number)
+    local snippet_string = "\\label{{PlaceHolder:{}}}"
+
+    snippet_string = string.gsub(snippet_string,"PlaceHolder",prefix)
+
+    -- Nodes contained in the snippet node
+    local nodes ={
+        i(1,"LabelName"),
+    }
+    return isn(number, fmt(snippet_string, nodes),"$PARENT_INDENT" )
+end
+
+local function SNFigureLabel(number)
+    return SNGenericLabel("fig",number)
+end
+
+-- This is a playground function not meant to be used.
+local function GenericEnvironment()
+    local context = {
+        trig = "gen", --trigeted with the for keyword
+        name="Figure", -- The name of the snippet
+        dscr="A figure" -- The
+    }
+
+    local snippet_string = Environment("Hello")
+
+    local nodes ={
+        isn(1,{
+            t({"\\centering",""}),
+            SNIncludeGraphics(1),
+            SNCaption(2),
+            SNFigureLabel(3)
+        },"$PARENT_INDENT")
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
 local function TEXFigure()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "fig", --trigeted with the for keyword
+        name="Figure", -- The name of the snippet
+        dscr="A figure" -- The
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    \begin{{figure}}
+        \centering
+        \includegraphics[width={}]{{{}}}
+        \caption{{{}}}
+        \label{{fig:{}}}
+    \end{{figure}}
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        i(1,"\\linewidth"),
+        i(2,"FigurePath"),
+        i(3,"Caption"),
+        i(0,"Label"),
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
+local function TEXMinipageFigure()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "mpfig", --trigeted with the for keyword
@@ -155,10 +296,12 @@ end
     --}),
 
     return {
+        GenericEnvironment(),
         TEXResizeBox(),
         TEXMinipage(),
         TEXTwoColumnMinipage(),
         TEXFigure(),
+        TEXMinipageFigure(),
         TEXCenter(),
         TEXItemize()
     },{
