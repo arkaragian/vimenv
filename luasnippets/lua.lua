@@ -31,10 +31,32 @@ local function LUALuadocHeader()
     return s( context, fmt(snippet_string, nodes) )
 end
 
+local function LUAFor()
+    local context = {
+        trig = "for", --trigeted with the for keyword
+        name="for", -- The name of the snippet
+        dscr="A Lua for loop" -- The 
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    for({}) do
+        {}
+    end
+    ]]
+
+    local nodes ={
+        i(1,"Condition"),
+        i(0,""),
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
 return {
     --Regular snippets
     --Documentation Related
-    LUALuadocHeader()
+    LUALuadocHeader(),
+    LUAFor()
 },{
     --autosnippets
 }
