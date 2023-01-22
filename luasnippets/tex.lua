@@ -50,7 +50,7 @@ end
 ------------------------------------------------------------------------------
 
 local function SNIncludeGraphics(number)
-    local snippet_string = "\\includegraphics[width={}]{{{}}}{}"
+    local snippet_string = "\\includegraphics[width=<>]{<>}<>"
 
     -- Nodes contained in the snippet node
     local nodes ={
@@ -59,11 +59,11 @@ local function SNIncludeGraphics(number)
         t({"",""}) -- Append those nodes in order to have a new line
     }
 
-    return sn(number, fmt(snippet_string, nodes))
+    return sn(number, fmta(snippet_string, nodes))
 end
 
 local function SNCaption(number)
-    local snippet_string ="\\caption{{{}}}{}"
+    local snippet_string ="\\caption{<>}<>"
 
     -- Nodes contained in the snippet node
     local nodes ={
@@ -71,11 +71,11 @@ local function SNCaption(number)
         t({"",""}) -- Append those nodes in order to have a new line
     }
 
-    return isn(number, fmt(snippet_string, nodes),"$PARENT_INDENT" )
+    return isn(number, fmta(snippet_string, nodes),"$PARENT_INDENT" )
 end
 
 local function SNGenericLabel(prefix,number)
-    local snippet_string = "\\label{{PlaceHolder:{}}}"
+    local snippet_string = "\\label{PlaceHolder:<>}"
 
     snippet_string = string.gsub(snippet_string,"PlaceHolder",prefix)
 
@@ -83,7 +83,7 @@ local function SNGenericLabel(prefix,number)
     local nodes ={
         i(1,"LabelName"),
     }
-    return isn(number, fmt(snippet_string, nodes),"$PARENT_INDENT" )
+    return isn(number, fmta(snippet_string, nodes),"$PARENT_INDENT" )
 end
 
 local function SNFigureLabel(number)
@@ -121,12 +121,12 @@ local function TEXFigure()
 
     --We use a multiline string denoted by [[ and ]].
     local snippet_string = [[
-    \begin{{figure}}
+    \begin{figure}
         \centering
-        \includegraphics[width={}]{{{}}}
-        \caption{{{}}}
-        \label{{fig:{}}}
-    \end{{figure}}
+        \includegraphics[width=<>]{<>}
+        \caption{<>}
+        \label{fig:<>}
+    \end{figure}
     ]]
 
     --Here are the nodes that are defined in the multiline string
@@ -136,7 +136,7 @@ local function TEXFigure()
         i(3,"Caption"),
         i(0,"Label"),
     }
-    return s( context, fmt(snippet_string, nodes) )
+    return s( context, fmta(snippet_string, nodes) )
 end
 
 local function TEXMinipageFigure()
@@ -149,12 +149,12 @@ local function TEXMinipageFigure()
 
     --We use a multiline string denoted by [[ and ]].
     local snippet_string = [[
-    \begin{{minipage}}[b]{{{}}}
-        \includegraphics[width=\linewidth]{{{}}}
-        \captionsetup{{hypcap=false}}
-        \captionof{{figure}}{{{}}}
-        \label{{fig:{}}}
-    \end{{minipage}}
+    \begin{minipage}[b]{<>}
+        \includegraphics[width=\linewidth]{<>}
+        \captionsetup{hypcap=false}
+        \captionof{figure}{<>}
+        \label{fig:<>}
+    \end{minipage}
     ]]
 
     --Here are the nodes that are defined in the multiline string
@@ -164,7 +164,7 @@ local function TEXMinipageFigure()
         i(3,"Caption"),
         i(0,"Label"),
     }
-    return s( context, fmt(snippet_string, nodes) )
+    return s( context, fmta(snippet_string, nodes) )
 end
 
 local function TEXResizeBox()
@@ -177,9 +177,9 @@ local function TEXResizeBox()
 
     --We use a multiline string denoted by [[ and ]].
     local snippet_string = [[
-    \resizebox{{{}}}{{!}}{{
-        {}
-    }}
+    \resizebox{<>}{!}{
+        <>
+    }
     ]]
 
     --Here are the nodes that are defined in the multiline string
@@ -187,7 +187,7 @@ local function TEXResizeBox()
         i(1,"\\linewidth"),
         i(0,"TextHere"),
     }
-    return s( context, fmt(snippet_string, nodes) )
+    return s( context, fmta(snippet_string, nodes) )
 end
 
 local function TEXMinipage()
@@ -200,9 +200,9 @@ local function TEXMinipage()
 
     --We use a multiline string denoted by [[ and ]].
     local snippet_string = [[
-    \begin{{minipage}}{{{}}}
-        {}
-    \end{{minipage}}
+    \begin{minipage}{<>}
+        <>
+    \end{minipage}
     ]]
 
     --Here are the nodes that are defined in the multiline string
@@ -223,14 +223,14 @@ local function TEXTwoColumnMinipage()
 
     --We use a multiline string denoted by [[ and ]].
     local snippet_string = [[
-    \begin{{minipage}}{{\linewidth}}
-        \begin{{minipage}}{{0.5\linewidth}}
-            {}
-        \end{{minipage}}
-        \begin{{minipage}}{{0.5\linewidth}}
-            {}
-        \end{{minipage}}
-    \end{{minipage}}
+    \begin{minipage}{\linewidth}
+        \begin{minipage}{0.5\linewidth}
+            <>
+        \end{minipage}%This comment is required in order to not produce whitespace
+        \begin{minipage}{0.5\linewidth}
+            <>
+        \end{minipage}
+    \end{minipage}
     ]]
 
     --Here are the nodes that are defined in the multiline string
@@ -238,7 +238,7 @@ local function TEXTwoColumnMinipage()
         i(1,"Column 1 Text"),
         i(0,"Column 2 Text"),
     }
-    return s( context, fmt(snippet_string, nodes) )
+    return s( context, fmta(snippet_string, nodes) )
 end
 
 local function TEXCenter()
@@ -251,16 +251,16 @@ local function TEXCenter()
 
     --We use a multiline string denoted by [[ and ]].
     local snippet_string = [[
-    \begin{{center}}
-        {}
-    \end{{center}}
+    \begin{center}
+        <>
+    \end{center}
     ]]
 
     --Here are the nodes that are defined in the multiline string
     local nodes ={
         i(0,"TextHere"),
     }
-    return s( context, fmt(snippet_string, nodes) )
+    return s( context, fmta(snippet_string, nodes) )
 end
 
 local function TEXItemize()
@@ -273,17 +273,18 @@ local function TEXItemize()
 
     --We use a multiline string denoted by [[ and ]].
     local snippet_string = [[
-    \begin{{itemize}}
-        \item {}
-    \end{{itemize}}
+    \begin{itemize}
+        \item <>
+    \end{itemize}
     ]]
 
     --Here are the nodes that are defined in the multiline string
     local nodes ={
         i(0,"TextHere"),
     }
-    return s( context, fmt(snippet_string, nodes) )
+    return s( context, fmta(snippet_string, nodes) )
 end
+
 
 
 -- rec_ls is self-referencing. That makes this snippet 'infinite' eg. have as many
