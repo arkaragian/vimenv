@@ -4,9 +4,13 @@ SolutionConfig = {
     selection = "first",
     ext = ".csproj",
     conf = "Debug",
-    arch = "x64"
+    arch = "x64",
+    display = {
+        removeCR = true
+    }
 }
 
 sol.setup(SolutionConfig)
 
-vim.keymap.set('n', '<leader>cc',sol.Compile,{}) -- Edit vim
+vim.keymap.set('n', '<leader>cc',sol.Compile,{desc="CS Solution Compile"})
+vim.keymap.set('n', '<leader>cl',sol.Clean,{desc="CS Solution clean"})
