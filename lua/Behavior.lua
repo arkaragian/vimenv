@@ -33,7 +33,7 @@ opt.colorcolumn = "79"
 
 --Display both relative and absolute numbers.
 opt.number = true
-opt.relativenumber = true
+--opt.relativenumber = true -- This would not fit my taste
 
 --Disable wraping when the line is too large
 opt.wrap = false
