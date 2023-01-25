@@ -41,6 +41,8 @@ Plug 'nvim-tree/nvim-tree.lua'
 
 Plug ("tpope/vim-fugitive" , {tag ="v3.7"})
 
+Plug ("godlygeek/tabular", {tag = "1.0.0"})
+
 -- This is a local directory pointed like that since the plugin is already under
 -- development.
 Plug '~/source/repos/Solution.nvim'
