@@ -19,7 +19,7 @@ local p = require("luasnip.extras").partial
 local m = require("luasnip.extras").match
 local n = require("luasnip.extras").nonempty
 local dl = require("luasnip.extras").dynamic_lambda
-local fmt = require("luasnip.extras.fmt").fmt
+--local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local conds = require("luasnip.extras.expand_conditions")
 local postfix = require("luasnip.extras.postfix").postfix
@@ -33,9 +33,9 @@ local parse = require("luasnip.util.parser").parse_snippet
 local function Environment(name)
     --We use a multiline string denoted by [[ and ]].
     local snippet_string = [[
-    \begin{{SnipPlaceholder}}
-        {}
-    \end{{SnipPlaceholder}}
+    \begin{SnipPlaceholder}
+        <>
+    \end{SnipPlaceholder}
     ]]
 
     return string.gsub(snippet_string,"SnipPlaceholder",name)
@@ -108,7 +108,7 @@ local function GenericEnvironment()
             SNFigureLabel(3)
         },"$PARENT_INDENT")
     }
-    return s( context, fmt(snippet_string, nodes) )
+    return s( context, fmta(snippet_string, nodes) )
 end
 
 local function TEXFigure()
@@ -210,7 +210,7 @@ local function TEXMinipage()
         i(1,"\\linewidth"),
         i(0,"TextHere"),
     }
-    return s( context, fmt(snippet_string, nodes) )
+    return s( context, fmta(snippet_string, nodes) )
 end
 
 local function TEXTwoColumnMinipage()
