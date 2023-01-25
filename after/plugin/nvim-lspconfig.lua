@@ -9,28 +9,28 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts) -- Shorthand for "workspace add"
-  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)-- Shorthand for "workspace remove"
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,{ desc="Go to declaration", noremap=true, silent=true, buffer=bufnr } )
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc="Go to definition", noremap=true, silent=true, buffer=bufnr })
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc="Hover", noremap=true, silent=true, buffer=bufnr })
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc="Go to implementation", noremap=true, silent=true, buffer=bufnr })
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc="Display signature help", noremap=true, silent=true, buffer=bufnr })
+  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { desc="Add workspace folder", noremap=true, silent=true, buffer=bufnr }) -- Shorthand for "workspace add"
+  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { desc="Remove workspace folder", noremap=true, silent=true, buffer=bufnr })-- Shorthand for "workspace remove"
   vim.keymap.set('n', '<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts) --Shorthand for "workspace list"
-  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts) -- Shorthand for "Code Actions"
-  vim.keymap.set('n', '<leader>fr', vim.lsp.buf.references, bufopts)  -- Shorthand for "Find references"
+  end,{ desc="List workspace folders", noremap=true, silent=true, buffer=bufnr }) --Shorthand for "workspace list"
+  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition,{ desc="Type Definition", noremap=true, silent=true, buffer=bufnr })
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,{ desc="Perform code action", noremap=true, silent=true, buffer=bufnr }) -- Shorthand for "Code Actions"
+  vim.keymap.set('n', '<leader>fr', vim.lsp.buf.references,{ desc="Find References", noremap=true, silent=true, buffer=bufnr })  -- Shorthand for "Find references"
   --vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
 
-  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
-  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, bufopts)
+  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float,{ desc="Open Diagnostic float", noremap=true, silent=true, buffer=bufnr })
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,{ desc="Go to next diagnostic", noremap=true, silent=true, buffer=bufnr })
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next,{ desc="Go to previous diagnostic", noremap=true, silent=true, buffer=bufnr })
+  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist,{ desc="Set Location List", noremap=true, silent=true, buffer=bufnr } )
   
   -- Add some common functionallity here
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts) -- Shorthand for "Rename". This would rename the symbol under the cursor
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,{ desc="Rename symbol under cursor", noremap=true, silent=true, buffer=bufnr }) -- Shorthand for "Rename". This would rename the symbol under the cursor
 end
 
 local omnisharp_bin = "OmniSharp.exe"
