@@ -47,6 +47,7 @@ Plug ("godlygeek/tabular", {tag = "1.0.0"})
 -- development.
 Plug '~/source/repos/Solution.nvim'
 Plug ("rebelot/kanagawa.nvim", {commit= '4c8d48726621a7f3998c7ed35b2c2535abc22def'})
+Plug ('mechatroner/rainbow_csv')
 vim.call('plug#end')
 
 ------------------------------------------------------------------------------
