@@ -90,7 +90,7 @@ local texGroup = vim.api.nvim_create_augroup("LatexSpellCheck", { clear = true }
 -- the commands that are defined in the SetupKeyBindings function.
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = {"*.tex"},
-  command = ":setlocal spell spelllang=en_us",
+  command = ":setlocal spell spelllang=en_us,el",
   group = texGroup,
 })
 
