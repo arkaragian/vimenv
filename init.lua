@@ -50,6 +50,7 @@ Plug ("akinsho/bufferline.nvim", {tag = "v3.1.0"})
 Plug '~/source/repos/Solution.nvim'
 Plug ("rebelot/kanagawa.nvim", {commit= '4c8d48726621a7f3998c7ed35b2c2535abc22def'})
 Plug ('mechatroner/rainbow_csv')
+Plug ('lukas-reineke/indent-blankline.nvim', {tag='v2.20.3'})
 vim.call('plug#end')
 
 ------------------------------------------------------------------------------
