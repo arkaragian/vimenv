@@ -93,3 +93,68 @@ vim.api.nvim_create_autocmd("BufEnter", {
   command = ":setlocal spell spelllang=en_us",
   group = texGroup,
 })
+
+
+-- greek layout keybindings ---
+--
+
+--- GREEK LAYOUT KEYBINDINGS---o
+--assign keyboard commands while using the greek keyboard:
+vim.keymap.set('n','Α', 'A')
+vim.keymap.set('n','Β', 'B')
+vim.keymap.set('n','Ψ', 'C')
+vim.keymap.set('n','Δ', 'D')
+vim.keymap.set('n','Ε', 'E')
+vim.keymap.set('n','Φ', 'F')
+vim.keymap.set('n','Γ', 'G')
+vim.keymap.set('n','Η', 'H')
+vim.keymap.set('n','Ι', 'I')
+vim.keymap.set('n','Ξ', 'J')
+vim.keymap.set('n','Κ', 'K')
+vim.keymap.set('n','Λ', 'L')
+vim.keymap.set('n','Μ', 'M')
+vim.keymap.set('n','Ν', 'N')
+vim.keymap.set('n','Ο', 'O')
+vim.keymap.set('n','Π', 'P')
+vim.keymap.set('n','Q', 'Q')
+
+vim.keymap.set('n','Ρ','R')
+vim.keymap.set('n','Σ','S')
+vim.keymap.set('n','Τ','T')
+vim.keymap.set('n','Θ','U')
+vim.keymap.set('n','Ω','V')
+vim.keymap.set('n','W','W')
+vim.keymap.set('n','Χ','X')
+vim.keymap.set('n','Υ','Y')
+vim.keymap.set('n','Ζ','Z')
+vim.keymap.set('n','α','a')
+vim.keymap.set('n','β','b')
+vim.keymap.set('n','ψ','c')
+vim.keymap.set('n','δ','d')
+vim.keymap.set('n','ε','e')
+vim.keymap.set('n','φ','f')
+vim.keymap.set('n','γ','g')
+vim.keymap.set('n','η','h')
+vim.keymap.set('n','ι','i')
+vim.keymap.set('n','ξ','j')
+
+vim.keymap.set('n','κ', 'k')
+vim.keymap.set('n','λ', 'l')
+vim.keymap.set('n','μ', 'm')
+vim.keymap.set('n','ν', 'n')
+vim.keymap.set('n','ο', 'o')
+vim.keymap.set('n','π', 'p')
+vim.keymap.set('n','q', 'q')
+vim.keymap.set('n','ρ', 'r')
+vim.keymap.set('n','σ', 's')
+vim.keymap.set('n','τ', 't')
+vim.keymap.set('n','θ', 'u')
+vim.keymap.set('n','ω', 'v')
+vim.keymap.set('n','ς', 'w')
+vim.keymap.set('n','χ', 'x')
+vim.keymap.set('n','υ', 'y')
+vim.keymap.set('n','ζ', 'z')
+
+-- Other greek mappings
+vim.keymap.set('n','δδ', 'dd')
+vim.keymap.set('n','υυ', 'yy')
