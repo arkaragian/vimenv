@@ -37,11 +37,13 @@ Plug ('nvim-telescope/telescope.nvim',{tag='0.1.1'})
 
 
 -- Tree viewer plugin. Configured automatically through after/plugin/nvim-tree.lua file
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 
 Plug ("tpope/vim-fugitive" , {tag ="v3.7"})
 
 Plug ("godlygeek/tabular", {tag = "1.0.0"})
+Plug ("akinsho/bufferline.nvim", {tag = "v3.1.0"})
 
 -- This is a local directory pointed like that since the plugin is already under
 -- development.

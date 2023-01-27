@@ -70,8 +70,8 @@ opt.expandtab = true
 opt.ff = "unix"
 
 -- Define Some General keybindings
-vim.keymap.set('n','<leader>bl',vim.cmd.bnext, {desc = "Move to next buffer"})
-vim.keymap.set('n','<leader>bh',vim.cmd.bprevious, {desc = "Move to previous buffer"})
+vim.keymap.set('n','<S-Right>',vim.cmd.bnext, {desc = "Move to next buffer"})
+vim.keymap.set('n','<S-Left>',vim.cmd.bprevious, {desc = "Move to previous buffer"})
 
 vim.keymap.set('n','<leader>pu',':PlugUpdate<CR>', {desc = "Update plugins"})
 
