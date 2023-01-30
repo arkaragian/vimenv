@@ -286,6 +286,29 @@ local function TEXItemize()
 end
 
 
+local function TIKZNode()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "tnode", --trigeted with the for keyword
+        name="node", -- The name of the snippet
+        dscr="A tikz node" -- The
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    \node at (<>,<>) [<>] {<>};
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        i(1,"xcoord"),
+        i(2,"ycoord"),
+        i(3,"style"),
+        i(0,"text"),
+    }
+    return s( context, fmta(snippet_string, nodes) )
+end
+
 
 -- rec_ls is self-referencing. That makes this snippet 'infinite' eg. have as many
 -- \item as necessary by utilizing a choiceNode.
@@ -304,7 +327,8 @@ end
         TEXFigure(),
         TEXMinipageFigure(),
         TEXCenter(),
-        TEXItemize()
+        TEXItemize(),
+        TIKZNode()
     },{
         --Autosnippets
     }
