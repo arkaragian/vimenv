@@ -95,6 +95,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = texGroup,
 })
 
+vim.keymap.set('n','<leader>xf', ':PlenaryBustedFile %<CR>',{desc = "Execute Lua spec file"})
 
 -- greek layout keybindings ---
 --
