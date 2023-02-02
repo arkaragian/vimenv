@@ -5,7 +5,8 @@ SolutionConfig = {
     BuildConfiguration = "Debug",
     arch = "x64",
     display = {
-        removeCR = true
+        removeCR = true,
+        HideCompilationWarnings = true
     }
 }
 
