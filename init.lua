@@ -2,18 +2,18 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 -- Snippets support
-Plug ('L3MON4D3/LuaSnip', {tag='v1.1.0'})
+Plug ('L3MON4D3/LuaSnip', {tag='v1.2.1'})
 
 --Plug ('https://github.com/vim-latex/vim-latex.git', {tag='v1.10.0'})
 
 --nvim api Autocompletion. Must be before lspconfig
-Plug ('folke/neodev.nvim', {tag='v2.0.0'})
+Plug ('folke/neodev.nvim', {tag='v2.0.1'})
 
 Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v0.1.5'})
 
 --Plugins for debugging
 Plug ('mfussenegger/nvim-dap', {tag='0.4.0'})
-Plug ('rcarriga/nvim-dap-ui', {tag='v2.6.0'})
+Plug ('rcarriga/nvim-dap-ui', {tag='v3.2.4'})
 
 
 
