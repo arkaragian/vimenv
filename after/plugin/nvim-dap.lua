@@ -57,7 +57,6 @@ dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
 vim.keymap.set('n', '<Leader>b', ":lua require'dap'.toggle_breakpoint()<CR>") --Toggle Breakpoint
-
 vim.keymap.set('n', '<F1>', ":lua require'dap'.continue()<CR>") --Start the session
 vim.keymap.set('n', '<F2>', ":lua require'dap'.step_over()<CR>") --Toggle Breakpoint
 vim.keymap.set('n', '<F3>', ":lua require'dap'.step_into()<CR>") --Toggle Breakpoint

@@ -1,12 +1,23 @@
-require("dapui").setup()
+local dapui = require("dapui")--
 
-vim.keymap.set('n', 'sds', ":lua require'dapui'.open()<CR>") --Start debug session
-vim.keymap.set('n', 'eds', ":lua require'dapui'.close()<CR>") --End debug session
+ local config = {
+    controls = {
+      element = "repl",
+      enabled = false,
+      icons = {
+        pause = "",
+        play = "",
+        run_last = "",
+        step_back = "",
+        step_into = "",
+        step_out = "",
+        step_over = "",
+        terminate = ""
+      }
+    }
+  }
+dapui.setup(config)
 
-function StartDebugSession()
-  --TODO: Need to find a way to start and stop the session
-  local dap = require('dap')
-  dap.continue()
-  local dapui = require('dapui')
-  dapui.open()
-end
+vim.keymap.set('n', 'sds', ":lua require('dapui').open()<CR>",{desc="Start Debug Session"})
+vim.keymap.set('n', 'eds', ":lua require('dapui').close()<CR>",{desc="End Debug Session"})
+
