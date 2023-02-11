@@ -13,20 +13,28 @@ SolutionConfig = {
 solution.setup(SolutionConfig)
 
 -- Need this for plugin development purposes.
-vim.keymap.set('n' , '<leader>sss' , solution.FunctionTest , {desc="Test a Plugin Function" , buffer=0 } )
+vim.keymap.set('n' , '<leader>sss' , solution.FunctionTest  , {desc="Test a Plugin Function" , buffer=0 } )
+vim.keymap.set('n' , '<leader>wp'  , solution.WriteSolution , {desc="Write project to disk"  , buffer=0 } )
+vim.keymap.set('n' , '<leader>ws'  , solution.WriteSolution , {desc="Write project to disk"  , buffer=0 } )
 
 function SetupSolutionNvimKeyBindings()
-    vim.keymap.set('n' , '<leader>cc'  , solution.Compile      , {desc="C# Solution Compile"    , buffer=0 } )
-    vim.keymap.set('n' , '<leader>cl'  , solution.Clean        , {desc="C# Solution clean"      , buffer=0 } )
-    vim.keymap.set('n' , '<leader>st'  , solution.Test         , {desc="Test a Plugin Function" , buffer=0 } )
-    vim.keymap.set('n' , '<leader>ft'  , solution.GetTests     , {desc="Test a Plugin Function" , buffer=0 } )
+    print("Setting up Solution.nvim mappings")
+    vim.keymap.set('n' , '<leader>cc' , solution.Compile             , {desc="C# Solution Compile"         , buffer=0 } )
+    vim.keymap.set('n' , '<leader>cl' , solution.Clean               , {desc="C# Solution clean"           , buffer=0 } )
+    vim.keymap.set('n' , '<leader>st' , solution.Test                , {desc="Test a Plugin Function"      , buffer=0 } )
+    vim.keymap.set('n' , '<leader>ft' , solution.GetTests            , {desc="Test a Plugin Function"      , buffer=0 } )
+    vim.keymap.set('n' , '<leader>sp' , solution.SelectConfiguration , {desc="Select Compilation Platform" , buffer=0 } )
+    --vim.keymap.set('n' , '<leader>ds' , solution.DisplaySolution , {desc="Select Compilation Platform" , buffer=0 } )
 end
 
 function TearDownSolutionNvimKeyBindings()
+    print("Tearing down Solution.nvim mappings")
     vim.keymap.del('n' , '<leader>cc'  , { buffer=0 } )
     vim.keymap.del('n' , '<leader>cl'  , { buffer=0 } )
     vim.keymap.del('n' , '<leader>st'  , { buffer=0 } )
     vim.keymap.del('n' , '<leader>ft'  , { buffer=0 } )
+    vim.keymap.set('n' , '<leader>sp'  , { buffer=0 } )
+    --vim.keymap.set('n' , '<leader>ds'  , { buffer=0 } )
 end
 
 
@@ -41,7 +49,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = SolutionAutoCommandGroup,
 })
 
-vim.api.nvim_create_autocmd("BufLeave", {
+-- This crashes when we try to call for example compile and use the BufLeave event
+-- This might be the order of firing. Because compiling opens a new window we
+-- actualy leave the buffer need to investigate the events.
+vim.api.nvim_create_autocmd("BufWipeout", {
   pattern = {"*.cs, *.csproj, *.sln"},
   callback = TearDownSolutionNvimKeyBindings,
   group = SolutionAutoCommandGroup,
