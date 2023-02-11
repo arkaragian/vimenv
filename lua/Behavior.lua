@@ -29,7 +29,7 @@ opt.showtabline = 2
 opt.guitablabel="%t"
 
 -- Set colorcolumn
-opt.colorcolumn = "79"
+opt.colorcolumn = "78,79,80,81,82"
 
 --Display both relative and absolute numbers.
 opt.number = true
