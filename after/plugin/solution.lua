@@ -18,22 +18,21 @@ vim.keymap.set('n' , '<leader>wp'  , solution.WriteSolution , {desc="Write proje
 vim.keymap.set('n' , '<leader>ws'  , solution.WriteSolution , {desc="Write project to disk"  , buffer=0 } )
 
 function SetupSolutionNvimKeyBindings()
-    print("Setting up Solution.nvim mappings")
-    vim.keymap.set('n' , '<leader>cc' , solution.Compile             , {desc="C# Solution Compile"         , buffer=0 } )
-    vim.keymap.set('n' , '<leader>cl' , solution.Clean               , {desc="C# Solution clean"           , buffer=0 } )
-    vim.keymap.set('n' , '<leader>st' , solution.Test                , {desc="Test a Plugin Function"      , buffer=0 } )
-    vim.keymap.set('n' , '<leader>ft' , solution.GetTests            , {desc="Test a Plugin Function"      , buffer=0 } )
-    vim.keymap.set('n' , '<leader>sp' , solution.SelectConfiguration , {desc="Select Compilation Platform" , buffer=0 } )
+    vim.keymap.set('n' , '<leader>cc'        , solution.Compile             , {desc="C# Solution Compile"         , buffer=0 } )
+    vim.keymap.set('n' , '<leader>cl'        , solution.Clean               , {desc="C# Solution clean"           , buffer=0 } )
+    vim.keymap.set('n' , '<leader>st'        , solution.Test                , {desc="Test a Plugin Function"      , buffer=0 } )
+    vim.keymap.set('n' , '<leader>ft'        , solution.GetTests            , {desc="Get Solution tests"          , buffer=0 } )
+    vim.keymap.set('n' , '<leader><leader>c' , solution.SelectConfiguration , {desc="Select build configuration"  , buffer=0 } )
     --vim.keymap.set('n' , '<leader>ds' , solution.DisplaySolution , {desc="Select Compilation Platform" , buffer=0 } )
 end
 
 function TearDownSolutionNvimKeyBindings()
     print("Tearing down Solution.nvim mappings")
-    vim.keymap.del('n' , '<leader>cc'  , { buffer=0 } )
-    vim.keymap.del('n' , '<leader>cl'  , { buffer=0 } )
-    vim.keymap.del('n' , '<leader>st'  , { buffer=0 } )
-    vim.keymap.del('n' , '<leader>ft'  , { buffer=0 } )
-    vim.keymap.set('n' , '<leader>sp'  , { buffer=0 } )
+    vim.keymap.del('n' , '<leader>cc'        , { buffer=0 } )
+    vim.keymap.del('n' , '<leader>cl'        , { buffer=0 } )
+    vim.keymap.del('n' , '<leader>st'        , { buffer=0 } )
+    vim.keymap.del('n' , '<leader>ft'        , { buffer=0 } )
+    vim.keymap.set('n' , '<leader><leader>c' , { buffer=0 } )
     --vim.keymap.set('n' , '<leader>ds'  , { buffer=0 } )
 end
 
