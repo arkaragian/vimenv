@@ -29,7 +29,8 @@ Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 
 -- Tree Sitter
 Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate'], tag = 'v0.8.1'})
-Plug 'nvim-treesitter/playground'
+Plug ('nvim-treesitter/playground')
+Plug ("nvim-treesitter/nvim-treesitter-textobjects")
 
 -- Telescope dependencies and telescope
 Plug ('nvim-lua/plenary.nvim', {tag='v0.1.2'})
@@ -53,7 +54,23 @@ Plug ('mechatroner/rainbow_csv')
 Plug ('lukas-reineke/indent-blankline.nvim', {tag='v2.20.3'})
 
 Plug ('folke/which-key.nvim', {tag = 'v1.1.0'})
+Plug ("Eandrju/cellular-automaton.nvim")
+
+Plug ("tpope/vim-surround" ,{tag = "v2.2"})
+Plug ("rcarriga/nvim-notify" ,{tag = "v3.11.0"})
+-- For Future Installation
+--Plug ("numToStr/Comment.nvim")
+--Plug ("j-hui/fidget.nvim" ,{tag = "v2.2"})
+--Plug ("https://github.com/AckslD/nvim-neoclip.lua")
+--Plug ("https://github.com/luukvbaal/statuscol.nvim") -- Requires nvim 0.9
+--Plug ("https://github.com/jbyuki/one-small-step-for-vimkind")
 vim.call('plug#end')
+
+------------------------------------------------------------------------------
+--          M I N O R  P L U G I N S  C O N F I G U R A T I O N             --
+------------------------------------------------------------------------------
+vim.notify = require("notify")
+
 
 ------------------------------------------------------------------------------
 --        C O L O R S C H E M E  T E X  C O N F I G U R A T I O N           --
