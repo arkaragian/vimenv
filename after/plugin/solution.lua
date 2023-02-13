@@ -23,7 +23,7 @@ function SetupSolutionNvimKeyBindings()
     vim.keymap.set('n' , '<leader>st'        , solution.Test                , {desc="Test a Plugin Function"      , buffer=0 } )
     vim.keymap.set('n' , '<leader>ft'        , solution.GetTests            , {desc="Get Solution tests"          , buffer=0 } )
     vim.keymap.set('n' , '<leader><leader>c' , solution.SelectConfiguration , {desc="Select build configuration"  , buffer=0 } )
-    --vim.keymap.set('n' , '<leader>ds' , solution.DisplaySolution , {desc="Select Compilation Platform" , buffer=0 } )
+    --vim.keymap.set('n' , '<leader>ds'        , solution.DisplaySolution     , {desc="Select Compilation Platform" , buffer=0 } )
 end
 
 function TearDownSolutionNvimKeyBindings()
@@ -33,7 +33,7 @@ function TearDownSolutionNvimKeyBindings()
     vim.keymap.del('n' , '<leader>st'        , { buffer=0 } )
     vim.keymap.del('n' , '<leader>ft'        , { buffer=0 } )
     vim.keymap.set('n' , '<leader><leader>c' , { buffer=0 } )
-    --vim.keymap.set('n' , '<leader>ds'  , { buffer=0 } )
+    --vim.keymap.set('n' , '<leader>ds'        , { buffer=0 } )
 end
 
 
