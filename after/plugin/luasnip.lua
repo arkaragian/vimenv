@@ -110,6 +110,8 @@ end)
 
 vim.keymap.set('i', '<c-u>', require 'luasnip.extras.select_choice')
 
-local sourcePath = os.getenv("NVCONF") .. "/after/plugin/luasnip.lua"
+--local sourcePath = os.getenv("NVCONF") .. "/after/plugin/luasnip.lua"
+local sourcePath = vim.api.nvim_list_runtime_paths()[1] .. "/after/plugin/luasnip.lua"
+
 -- shorcut to source my luasnips file again, which will reload my snippets
 vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load()<CR>',{desc = "Reload Lua snippets"})
