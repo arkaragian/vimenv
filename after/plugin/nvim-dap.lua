@@ -1,10 +1,18 @@
 -- This file configures the Debug Adapter Prototol functionallity
 local dap = require('dap')
 dap.set_log_level('INFO')
+
+local home
+if(jit.os == "Windows") then
+    home = os.getenv("USERPROFILE")
+else
+    home = os.getenv("HOME")
+end
+
 dap.adapters.csharp = {
   type = 'executable',
   command = 'netcoredbg',
-  args = {'--interpreter=vscode', '--engineLogging='..os.getenv("HOME")..'/NetCoreDebugEnginelog.log'},
+  args = {'--interpreter=vscode', '--engineLogging='..home..'/NetCoreDebugEnginelog.log'},
 }
 
 
