@@ -9,7 +9,7 @@ Plug ('L3MON4D3/LuaSnip', {tag='v1.2.1'})
 --nvim api Autocompletion. Must be before lspconfig
 Plug ('folke/neodev.nvim', {tag='v2.0.1'})
 
-Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v0.1.5'})
+Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v0.1.6'})
 
 --Plugins for debugging
 Plug ('mfussenegger/nvim-dap', {tag='0.4.0'})
