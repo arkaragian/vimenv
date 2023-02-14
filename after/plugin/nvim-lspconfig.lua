@@ -2,6 +2,10 @@
 -- Author Aris Karagiannidis e-mail:arkaragian@gmail.com
 --
 -- Use an on_attach function to only map keys after the language server attaches to the current buffer
+--
+local augroup_highlight = vim.api.nvim_create_augroup("custom-lsp-references", { clear = true })
+local augroup_codelens = vim.api.nvim_create_augroup("custom-lsp-codelens", { clear = true })
+
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -31,6 +35,37 @@ local on_attach = function(client, bufnr)
   
   -- Add some common functionallity here
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,{ desc="Rename symbol under cursor", noremap=true, silent=true, buffer=bufnr }) -- Shorthand for "Rename". This would rename the symbol under the cursor
+
+  local autocmd_clear = vim.api.nvim_clear_autocmds
+  local autocmd = function(args)
+      local event = args[1]
+      local group = args[2]
+      local callback = args[3]
+
+      vim.api.nvim_create_autocmd(event, {
+          group = group,
+          buffer = args[4],
+          callback = function()
+              callback()
+          end,
+          once = args.once,
+      })
+  end
+
+    -- Set autocommands conditional on server_capabilities
+  if client.server_capabilities.documentHighlightProvider then
+    autocmd_clear { group = augroup_highlight, buffer = bufnr }
+    autocmd { "CursorHold", augroup_highlight, vim.lsp.buf.document_highlight, bufnr }
+    autocmd { "CursorMoved", augroup_highlight, vim.lsp.buf.clear_references, bufnr }
+  end
+
+  --if false and client.server_capabilities.codeLensProvider then
+  if false and client.server_capabilities.codeLensProvider then
+      autocmd_clear { group = augroup_codelens, buffer = bufnr }
+      autocmd { "BufEnter", augroup_codelens, vim.lsp.codelens.refresh, bufnr, once = true }
+      autocmd { { "BufWritePost", "CursorHold" }, augroup_codelens, vim.lsp.codelens.refresh, bufnr }
+  end
+
 end
 
 local omnisharp_bin = "OmniSharp.exe"
@@ -102,10 +137,10 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
   cmd = {"lua-language-server.exe"},
   on_attach = on_attach,
-  capabilities = capabilities,
+ -- capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -117,12 +152,24 @@ require('lspconfig').sumneko_lua.setup {
       diagnostics = {
         globals = { 'vim' },
       },
-      workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+      workspace = {
+          library = vim.api.nvim_get_runtime_file('', true),
+          checkThirdParty = false -- Stop asking for luassert
+      },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = { enable = false, },
     },
   },
 }
+
+-- TODO:Evaluate those capabilities
+--local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
+--vim.tbl_deep_extend("force", updated_capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+
+
+
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 --
