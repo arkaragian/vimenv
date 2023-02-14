@@ -7,16 +7,10 @@ local builtin = require("telescope.builtin")
 local function EditNeovimConfiguration()
 	local options
 
-	if os.getenv('NVCONF') == nil then
-		print("No variable NVCONF found define NVCONF in your environment to "..
-		"point to the configuration location")
-		return
-	end
-
 	-- Define options here
 	options = {
 		prompt_title = "Neovim Configuration Files",
-		cwd =  os.getenv('NVCONF'),
+		cwd = vim.api.nvim_list_runtime_paths()[1],
 	}
 
 	-- launch the picker
