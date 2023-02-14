@@ -73,6 +73,17 @@ vim.notify = require("notify")
 
 
 ------------------------------------------------------------------------------
+--               N E O V I D E  C O N F I G U R A T I O N                   --
+------------------------------------------------------------------------------
+if vim.g.neovide then
+    -- Put anything you want to happen only in Neovide here
+    -- vim.opt.guifont = { "Source Code Pro", "h14" } -- text below applies for VimScript
+    -- Use neovide font definitions
+    --
+    --vim.opt.guifont = { "Cascadia Mono", "h10" } -- text below applies for VimScript
+    vim.opt.guifont = "Cascadia_Mono:h10" -- text below applies for VimScript
+end
+------------------------------------------------------------------------------
 --        C O L O R S C H E M E  T E X  C O N F I G U R A T I O N           --
 ------------------------------------------------------------------------------
 local default_colors = require("kanagawa.colors").setup()
