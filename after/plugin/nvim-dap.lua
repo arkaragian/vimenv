@@ -24,6 +24,8 @@ dap.adapters.lldb = {
 
 local csProgram = nil
 
+--- Detects the output locations and provides formated results for the user
+--to choose for debuging.
 local function FindCSharpDllLocation()
     csProgram = nil
     if(vim.g.SolutionPluginLoaded == true) then
