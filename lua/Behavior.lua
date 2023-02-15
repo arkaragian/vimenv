@@ -164,3 +164,7 @@ vim.keymap.set('n','ζ', 'z')
 -- Other greek mappings
 vim.keymap.set('n','δδ', 'dd')
 vim.keymap.set('n','υυ', 'yy')
+
+
+
+vim.keymap.set('n','<leader>gcc', ":TSHighlightCapturesUnderCursor<CR>",{ noremap = true, silent = false})
