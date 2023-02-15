@@ -58,6 +58,8 @@ Plug ("Eandrju/cellular-automaton.nvim")
 
 Plug ("tpope/vim-surround" ,{tag = "v2.2"})
 Plug ("rcarriga/nvim-notify" ,{tag = "v3.11.0"})
+
+Plug ("https://github.com/anuvyklack/hydra.nvim/", {commit="3ced42c0b6a6c85583ff0f221635a7f4c1ab0dd0"})
 -- For Future Installation
 --Plug ("numToStr/Comment.nvim")
 --Plug ("j-hui/fidget.nvim" ,{tag = "v2.2"})
