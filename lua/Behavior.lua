@@ -10,6 +10,7 @@ vim.cmd.set("invlist")
 -- Map Q to lowercase q since I make this mistake often.
 vim.api.nvim_create_user_command("Q","q",{})
 vim.api.nvim_create_user_command("Qa","qa",{})
+vim.api.nvim_create_user_command("Wq","wq",{})
 
 
 -- Set the vim options as a local variable so that i can easily change it later if needed.
