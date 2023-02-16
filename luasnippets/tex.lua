@@ -263,6 +263,29 @@ local function TEXCenter()
     return s( context, fmta(snippet_string, nodes) )
 end
 
+local function TEXTabular()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "btab", --trigeted with the for keyword
+        name="tabular", -- The name of the snippet
+        dscr="Begin tabular" -- The
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    \begin{tabular}{<>}
+        <>
+    \end{tabular}
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        i(1,"Columns"),
+        i(0,"TextHere"),
+    }
+    return s( context, fmta(snippet_string, nodes) )
+end
+
 local function TEXItemize()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
@@ -328,6 +351,7 @@ end
         TEXMinipageFigure(),
         TEXCenter(),
         TEXItemize(),
+        TEXTabular(),
         TIKZNode()
     },{
         --Autosnippets
