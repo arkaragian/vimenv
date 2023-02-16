@@ -104,6 +104,9 @@ vim.keymap.set('n','<leader>xf', ':PlenaryBustedFile %<CR>',{desc = "Execute Lua
 
 -- greek layout keybindings ---
 --
+--
+
+vim.keymap.set('n','<F5>', ':make<CR>', {desc = "Call make program"})
 
 --- GREEK LAYOUT KEYBINDINGS---o
 --assign keyboard commands while using the greek keyboard:
@@ -165,6 +168,17 @@ vim.keymap.set('n','ζ', 'z')
 -- Other greek mappings
 vim.keymap.set('n','δδ', 'dd')
 vim.keymap.set('n','υυ', 'yy')
+
+
+vim.keymap.set('n','ψς', 'cw')
+vim.keymap.set('n','δς', 'dw')
+vim.keymap.set('n','ψας', 'caw')
+
+
+--vim.api.nvim_create_user_command("ςσ","wq",{})
+--vim.api.nvim_create_user_command("ς","w",{})
+
+
 
 
 
