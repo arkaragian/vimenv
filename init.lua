@@ -1,3 +1,10 @@
+local HomeDir = ""
+if(jit.os == "Windows") then
+    HomeDir = os.getenv("USERPROFILE")
+else
+    HomeDir = os.getenv("~")
+end
+
 --Call the vim-plug using the vimscript methods since vim plug does not have native lua calls.
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
@@ -48,7 +55,6 @@ Plug ("akinsho/bufferline.nvim", {tag = "v3.1.0"})
 
 -- This is a local directory pointed like that since the plugin is already under
 -- development.
-Plug '~/source/repos/Solution.nvim'
 Plug ("rebelot/kanagawa.nvim", {commit= '4c8d48726621a7f3998c7ed35b2c2535abc22def'})
 Plug ('mechatroner/rainbow_csv')
 Plug ('lukas-reineke/indent-blankline.nvim', {tag='v2.20.3'})
@@ -60,6 +66,9 @@ Plug ("tpope/vim-surround" ,{tag = "v2.2"})
 Plug ("rcarriga/nvim-notify" ,{tag = "v3.11.0"})
 
 Plug ("https://github.com/anuvyklack/hydra.nvim/", {commit="3ced42c0b6a6c85583ff0f221635a7f4c1ab0dd0"})
+
+Plug (HomeDir.."/source/repos/Solution.nvim")
+
 -- For Future Installation
 --Plug ("numToStr/Comment.nvim")
 --Plug ("j-hui/fidget.nvim" ,{tag = "v2.2"})
