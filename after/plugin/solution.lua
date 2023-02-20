@@ -3,9 +3,10 @@ local solution = require("solution")
 SolutionConfig = {
     ProjectSelectionPolicy = "first",  -- Compile the first project that we find.
     BuildConfiguration = "Debug",      -- What configuration to build with
+    BuildPlatform = "Any CPU",
     arch = "x64",                      -- What architecture to build with
-    display = {
-        removeCR = true,               -- Remove final CR characters on popup windows
+    Display = {
+        RemoveCR = true,               -- Remove final CR characters on popup windows
         HideCompilationWarnings = true -- Hide compilation warnings
     }
 }
