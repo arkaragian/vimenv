@@ -54,18 +54,20 @@ local on_attach = function(client, bufnr)
 
     -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
-    autocmd_clear { group = augroup_highlight, buffer = bufnr }
-    autocmd { "CursorHold", augroup_highlight, vim.lsp.buf.document_highlight, bufnr }
-    autocmd { "CursorMoved", augroup_highlight, vim.lsp.buf.clear_references, bufnr }
+    autocmd_clear { group = augroup_highlight , buffer = bufnr }
+    autocmd       { "CursorHold"              , augroup_highlight , vim.lsp.buf.document_highlight , bufnr }
+    autocmd       { "CursorMoved"             , augroup_highlight , vim.lsp.buf.clear_references   , bufnr }
   end
 
-  --if false and client.server_capabilities.codeLensProvider then
-  if false and client.server_capabilities.codeLensProvider then
-      autocmd_clear { group = augroup_codelens, buffer = bufnr }
-      autocmd { "BufEnter", augroup_codelens, vim.lsp.codelens.refresh, bufnr, once = true }
-      autocmd { { "BufWritePost", "CursorHold" }, augroup_codelens, vim.lsp.codelens.refresh, bufnr }
+  --If the LSP provides codelens capabilites enable them.
+  if  client.server_capabilities.codeLensProvider then
+      autocmd_clear { group = augroup_codelens , buffer = bufnr }
+      autocmd       { "BufEnter"                        , augroup_codelens  , vim.lsp.codelens.refresh , bufnr , once = true }
+      autocmd       {{ "BufWritePost", "CursorHold" }   , augroup_codelens  , vim.lsp.codelens.refresh , bufnr }
   end
 
+
+  vim.notify("LSP server attached",vim.log.levels.INFOR,{title = "User Configuration"})
 end
 
 local omnisharp_bin = "OmniSharp.exe"
