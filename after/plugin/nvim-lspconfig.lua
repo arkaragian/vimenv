@@ -164,13 +164,15 @@ require('lspconfig').sumneko_lua.setup {
   },
 }
 
+
+
 -- TODO:Evaluate those capabilities
 --local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 --vim.tbl_deep_extend("force", updated_capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 
 
-
+require('lspconfig').texlab.setup{}
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
