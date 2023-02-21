@@ -20,7 +20,7 @@ end
 
 -- First we define the key bindings to call telescope
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find files"}) -- Find in all files
-vim.keymap.set('n', '<leader>fgf', builtin.git_files, {desc = "Find GIT files"}) -- Find in only git files
+vim.keymap.set('n', '<leader>fg', builtin.git_files, {desc = "Find GIT files"}) -- Find in only git files
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find open buffers"}) -- Find in open buffers
 -- Symbols can be invoked with both find symbls and show symbols
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "Find LSP Symbols"}) -- Find symbols
