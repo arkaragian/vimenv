@@ -8,18 +8,41 @@ if(jit.os == "Windows") then
 else
     home = os.getenv("HOME")
 end
+-------------------------------------------------------------------------------
+--                            A D A P T E R S                                --
+-------------------------------------------------------------------------------
+-- Adapters are the programs that speak to the actual debuggers. Those programs
+-- accept DAP commands and integrate with the debugers. In many cases there is
+-- no adapter needed since the debuger may be run in DAP mode and accept the
+-- DAP coomands.
 
-dap.adapters.csharp = {
+
+-- This is a debugger with DAP support
+dap.adapters.netcoredbg= {
   type = 'executable',
   command = 'netcoredbg',
   args = {'--interpreter=vscode', '--engineLogging='..home..'/NetCoreDebugEnginelog.log'},
 }
 
-
+-- This is a debugger with DAP support
 dap.adapters.lldb = {
   type = 'executable',
   command = 'lldb-vscode', -- lldb-vscode is in our path
   name = 'lldb'
+}
+
+-- This was extracted from vscode C# extension and shoul be working similar with
+-- netcoredbg. However this is not the case.
+dap.adapters.vsdbg= {
+  type = 'executable',
+  command = 'vsdbg',
+  args = {'--interpreter=vscode', '--engineLogging='..home..'/vsdbg.log'},
+  options = {
+  --    env = nil,
+      cwd = "${workspaceFolder}",
+  --    detached = nil,
+  },
+  --id = nil
 }
 
 local csProgram = nil
@@ -89,10 +112,10 @@ end
 
 dap.configurations.cs = {
     {
-        type = "csharp",
+        type = "netcoredbg",
+        --type = "vsdbg",
         name = "launch - netcoredbg",
         request = "launch",
-        --TODO: make the /bin/Debug configurable
         program = function()
             -- This will populate the csProgram
             FindCSharpDllLocation()
