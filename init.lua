@@ -67,6 +67,9 @@ Plug ("rcarriga/nvim-notify" ,{tag = "v3.11.0"})
 
 Plug ("https://github.com/anuvyklack/hydra.nvim/", {commit="3ced42c0b6a6c85583ff0f221635a7f4c1ab0dd0"})
 
+Plug ('https://github.com/nvim-neotest/neotest')
+Plug ('https://github.com/Issafalcon/neotest-dotnet')
+
 Plug (HomeDir.."/source/repos/Solution.nvim")
 
 -- For Future Installation
