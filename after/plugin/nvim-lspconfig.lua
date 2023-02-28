@@ -169,6 +169,15 @@ require('lspconfig').sumneko_lua.setup {
 }
 
 
+require('lspconfig').rust_analyzer.setup {
+    on_attach = on_attach,
+    --cmd = {
+    --    "rustup", "run", "stable", "run-analyzer"
+    -- }
+    --rust-analyzer-x86_64-pc-windows-msvc
+}
+
+
 
 -- TODO:Evaluate those capabilities
 --local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
