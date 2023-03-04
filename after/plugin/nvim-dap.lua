@@ -161,3 +161,26 @@ vim.keymap.set('n', '<F11>', ":lua require'dap'.step_into()<CR>") --Toggle Break
 vim.keymap.set('n', '<F4>', ":lua require'dap'.step_out()<CR>") --Toggle Breakpoint
 vim.keymap.set('n', '<F9>', ":lua require'dap'.run_to_cursor()<CR>") --Toggle Breakpoint
 vim.keymap.set('n', '<F12>', ":lua require'dap'.terminate()<CR>") --Toggle Breakpoint
+local dapui = require("dapui")--
+
+ local config = {
+    controls = {
+      element = "repl",
+      enabled = false,
+      icons = {
+        pause = "",
+        play = "",
+        run_last = "",
+        step_back = "",
+        step_into = "",
+        step_out = "",
+        step_over = "",
+        terminate = ""
+      }
+    }
+  }
+dapui.setup(config)
+
+vim.keymap.set('n', 'sds', ":lua require('dapui').open()<CR>",{desc="Start Debug Session"})
+vim.keymap.set('n', 'eds', ":lua require('dapui').close()<CR>",{desc="End Debug Session"})
+
