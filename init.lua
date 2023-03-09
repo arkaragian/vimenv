@@ -96,6 +96,8 @@ if vim.g.neovide then
     --
     --vim.opt.guifont = { "Cascadia Mono", "h10" } -- text below applies for VimScript
     vim.opt.guifont = "Cascadia_Mono:h10" -- text below applies for VimScript
+
+    vim.keymap.set("i","<S-Insert>","<C-R>+")
 end
 ------------------------------------------------------------------------------
 --        C O L O R S C H E M E  T E X  C O N F I G U R A T I O N           --
