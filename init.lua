@@ -1,3 +1,8 @@
+-- Setup globals that I expect to be always available.
+--  See `./lua/tj/globals.lua` for more information.
+require("Globals")
+
+
 local HomeDir = ""
 if(jit.os == "Windows") then
     HomeDir = os.getenv("USERPROFILE")
