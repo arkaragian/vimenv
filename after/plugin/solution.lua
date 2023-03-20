@@ -1,7 +1,7 @@
 local solution = require("solution")
 
 SolutionConfig = {
-    ProjectSelectionPolicy = "first",  -- Compile the first project that we find.
+    SolutionSelectionPolicy = "first",  -- Compile the first project that we find.
     DefaultBuildConfiguration = "Debug",      -- What configuration to build with
     DefaultBuildPlatform = "Any CPU",
     Display = {
