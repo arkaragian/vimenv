@@ -2,9 +2,8 @@ local solution = require("solution")
 
 SolutionConfig = {
     ProjectSelectionPolicy = "first",  -- Compile the first project that we find.
-    BuildConfiguration = "Debug",      -- What configuration to build with
-    BuildPlatform = "Any CPU",
-    arch = "x64",                      -- What architecture to build with
+    DefaultBuildConfiguration = "Debug",      -- What configuration to build with
+    DefaultBuildPlatform = "Any CPU",
     Display = {
         RemoveCR = true,               -- Remove final CR characters on popup windows
         HideCompilationWarnings = true -- Hide compilation warnings
@@ -19,12 +18,12 @@ vim.keymap.set('n' , '<leader>wp'  , solution.WriteSolution , {desc="Write proje
 vim.keymap.set('n' , '<leader>ws'  , solution.WriteSolution , {desc="Write project to disk"  , buffer=0 } )
 
 function SetupSolutionNvimKeyBindings()
-    vim.keymap.set('n' , '<leader>cc'        , solution.Compile             , {desc="C# Solution Compile"         , buffer=0 } )
-    vim.keymap.set('n' , '<leader>cl'        , solution.Clean               , {desc="C# Solution clean"           , buffer=0 } )
-    vim.keymap.set('n' , '<leader>st'        , solution.Test                , {desc="Test a Plugin Function"      , buffer=0 } )
-    vim.keymap.set('n' , '<leader>ft'        , solution.GetTests            , {desc="Get Solution tests"          , buffer=0 } )
-    vim.keymap.set('n' , '<leader><leader>c' , solution.SelectConfiguration , {desc="Select build configuration"  , buffer=0 } )
-    --vim.keymap.set('n' , '<leader>ds'        , solution.DisplaySolution     , {desc="Select Compilation Platform" , buffer=0 } )
+    vim.keymap.set('n'   , '<leader>cc'        , solution.Compile                  , {desc="C# Solution Compile"         , buffer=0 } )
+    vim.keymap.set('n'   , '<leader>cl'        , solution.Clean                    , {desc="C# Solution clean"           , buffer=0 } )
+    vim.keymap.set('n'   , '<leader>st'        , solution.Test                     , {desc="Test a Plugin Function"      , buffer=0 } )
+    vim.keymap.set('n'   , '<leader>ft'        , solution.GetTests                 , {desc="Get Solution tests"          , buffer=0 } )
+    vim.keymap.set('n'   , '<leader><leader>c' , solution.SelectBuildConfiguration , {desc="Select build configuration"  , buffer=0 } )
+    --vim.keymap.set('n' , '<leader>ds'        , solution.DisplaySolution          , {desc="Select Compilation Platform" , buffer=0 } )
 end
 
 function TearDownSolutionNvimKeyBindings()
