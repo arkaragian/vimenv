@@ -308,6 +308,28 @@ local function TEXItemize()
     return s( context, fmta(snippet_string, nodes) )
 end
 
+local function TEXEnumerate()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "ben", --trigeted with the for keyword
+        name="enumerate", -- The name of the snippet
+        dscr="An enumerate environment" -- The
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    \begin{enumerate}
+        \item <>
+    \end{enumerate}
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        i(0,"TextHere"),
+    }
+    return s( context, fmta(snippet_string, nodes) )
+end
+
 
 local function TIKZNode()
     -- Defines a for snippet using a the fmt function of the luasnip
@@ -351,6 +373,7 @@ end
         TEXMinipageFigure(),
         TEXCenter(),
         TEXItemize(),
+        TEXEnumerate(),
         TEXTabular(),
         TIKZNode()
     },{
