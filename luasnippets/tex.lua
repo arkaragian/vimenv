@@ -330,6 +330,29 @@ local function TEXEnumerate()
     return s( context, fmta(snippet_string, nodes) )
 end
 
+local function TEXDescribe()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "bdesc", --trigeted with the for keyword
+        name="describe", -- The name of the snippet
+        dscr="An describe environment" -- The
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    \begin{description}
+        \item[<>] <>
+    \end{description}
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        i(1,"DescriptionHere"),
+        i(0,"TextHere"),
+    }
+    return s( context, fmta(snippet_string, nodes) )
+end
+
 
 local function TIKZNode()
     -- Defines a for snippet using a the fmt function of the luasnip
@@ -374,6 +397,7 @@ end
         TEXCenter(),
         TEXItemize(),
         TEXEnumerate(),
+        TEXDescribe(),
         TEXTabular(),
         TIKZNode()
     },{
