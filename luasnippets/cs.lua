@@ -185,6 +185,27 @@ local function CSSummary()
     return s( context, fmt(snippet_string, nodes) )
 end
 
+local function CSXMLParameter()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "<par", --trigeted with the for keyword
+        name="Parameter", -- The name of the snippet
+        dscr="An XML parameter documentation"
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    /// <param name="{paramname}">{doc}</param>
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        paramname = i(1,"Parameter Name"),
+        doc       = i(0,"Parameter Documentation"),
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
 --- Defines an inheritdoc header in csharp
 local function CSInheritDoc()
     -- Defines a for snippet using a the fmt function of the luasnip
@@ -265,6 +286,7 @@ return {
     --Documentation Related
     CSSummary(),
     CSInheritDoc(),
+    CSXMLParameter(),
     -- JSON Related
     CSSystemTextJsonProperty(),
     CSEnumDefinition()
