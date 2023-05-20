@@ -6,6 +6,7 @@
 
 -- Display invisible characters
 vim.cmd.set("invlist")
+-- vim.cmd.set("autochdir")
 
 -- Map Q to lowercase q since I make this mistake often.
 vim.api.nvim_create_user_command("Q","q",{})
