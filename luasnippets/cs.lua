@@ -83,6 +83,30 @@ local function CSClass()
 end
 
 --- Defines class snippet in csharp
+local function CSNamespace()
+    local context = {
+        trig = "name", --trigeted with the for keyword
+        name="namespace", -- The name of the snippet
+        dscr="A C# namespace definition"
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string= [[
+    namespace {}{{
+        {}
+    }}
+    ]]
+
+    -- TODO: Have choice node that can either be the filename that is currently edided
+    -- or have the user input the class name.
+    local nodes ={
+        i(1,"NamespaceName"),
+        i(0,"CodeInput"),
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
+--- Defines class snippet in csharp
 local function CSTestClass()
     local context = {
         trig = "tclass", --trigeted with the for keyword
@@ -278,6 +302,7 @@ local function CSEnumDefinition()
     return s( context, fmta(snippet_string, nodes) )
 end
 return {
+    CSNamespace(),
     --Regular snippets
     CSForLoop(),
     CSClass(),
