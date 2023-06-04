@@ -15,7 +15,8 @@ require("nvim-treesitter.configs").setup({
         "sql",
         "latex",
         "html",
-        "javascript"
+        "javascript",
+        "query" -- query parser for query editor highlighting
     },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
