@@ -23,6 +23,7 @@ function SetupSolutionNvimKeyBindings()
     vim.keymap.set('n'   , '<leader>st'        , solution.Test                     , {desc="Test a Plugin Function"      , buffer=0 } )
     vim.keymap.set('n'   , '<leader>ft'        , solution.GetTests                 , {desc="Get Solution tests"          , buffer=0 } )
     vim.keymap.set('n'   , '<leader><leader>c' , solution.SelectBuildConfiguration , {desc="Select build configuration"  , buffer=0 } )
+    vim.keymap.set('n'   , '<leader><leader>x' , solution.LaunchSolution           , {desc="Launch Solution"             , buffer=0 } )
     --vim.keymap.set('n' , '<leader>ds'        , solution.DisplaySolution          , {desc="Select Compilation Platform" , buffer=0 } )
 end
 
