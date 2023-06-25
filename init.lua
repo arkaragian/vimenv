@@ -24,8 +24,8 @@ Plug ('folke/neodev.nvim', {tag='v2.0.1'})
 Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v0.1.6'})
 
 --Plugins for debugging
-Plug ('mfussenegger/nvim-dap', {tag='0.4.0'})
-Plug ('rcarriga/nvim-dap-ui', {tag='v3.2.4'})
+Plug ('mfussenegger/nvim-dap', {tag='0.6.0'})
+Plug ('rcarriga/nvim-dap-ui', {tag='v3.8.3'})
 
 
 
