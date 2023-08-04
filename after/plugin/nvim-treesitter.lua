@@ -1,3 +1,15 @@
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+parser_config.nu = {
+  install_info = {
+    url = "https://github.com/nushell/tree-sitter-nu",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "nu",
+}
+
+
 require("nvim-treesitter.configs").setup({
     -- A list of parser names, or "all"
     ensure_installed = {
@@ -16,6 +28,7 @@ require("nvim-treesitter.configs").setup({
         "latex",
         "html",
         "javascript",
+        "nu",
         "query" -- query parser for query editor highlighting
     },
     -- Install parsers synchronously (only applied to `ensure_installed`)
