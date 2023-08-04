@@ -9,6 +9,8 @@ parser_config.nu = {
   filetype = "nu",
 }
 
+--require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
+
 
 require("nvim-treesitter.configs").setup({
     -- A list of parser names, or "all"
@@ -83,16 +85,17 @@ require("nvim-treesitter.configs").setup({
                 -- You can use the capture groups defined in textobjects.scm
                 ["af"] = "@function.outer",
                 ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
+                ["ac"] = "@conditional.outer",
                 -- You can optionally set descriptions to the mappings (used in the desc parameter of
                 -- nvim_buf_set_keymap) which plugins like which-key display
-                ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+                ["ic"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
 
                 ["aa"] = { query = "@parameter.outer", desc = "Select outer parameter" },
                 ["ia"] = { query = "@parameter.inner", desc = "Select inner parameter" },
 
-                ["av"] = "@variable.outer",
-                ["iv"] = "@variable.inner",
+                ["av"] = { query = "@variable.outer", desc = "Select outer variable"},
+                ["iv"] = { query = "@variable.inner", desc = "Select inner variable"},
+
             },
             -- You can choose the select mode (default is charwise 'v')
             --
