@@ -135,6 +135,7 @@ local dapui = require("dapui")--
   }
 dapui.setup(config)
 
-vim.keymap.set('n', 'sds', ":lua require('dapui').open()<CR>",{desc="Start Debug Session"})
-vim.keymap.set('n', 'eds', ":lua require('dapui').close()<CR>",{desc="End Debug Session"})
+vim.keymap.set('n', '<leader>td', ":lua require('dapui').toggle()<CR>",{desc="Toggle Debug Session"})
+-- vim.keymap.set('n', 'sds', ":lua require('dapui').open()<CR>",{desc="Start Debug Session"})
+-- vim.keymap.set('n', 'eds', ":lua require('dapui').close()<CR>",{desc="End Debug Session"})
 
