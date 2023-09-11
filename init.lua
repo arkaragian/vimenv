@@ -74,6 +74,7 @@ Plug ("https://github.com/anuvyklack/hydra.nvim/", {commit="3ced42c0b6a6c85583ff
 
 Plug ('https://github.com/nvim-neotest/neotest')
 Plug ('https://github.com/Issafalcon/neotest-dotnet')
+Plug ('https://github.com/rouge8/neotest-rust.git')
 
 Plug ('https://github.com/numToStr/Comment.nvim.git',{commit='d9cfae1'}) -- This release is not tagget. Thus we point to the commit
 
