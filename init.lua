@@ -40,8 +40,8 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 
 -- Tree Sitter
-Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate'], tag = 'v0.9.0'})
-Plug ('nvim-treesitter/playground')
+Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate'], tag = 'v0.9.1'})
+-- Plug ('nvim-treesitter/playground') -- Deprecated since neovim 0.9
 Plug ("nvim-treesitter/nvim-treesitter-textobjects")
 
 -- Telescope dependencies and telescope
@@ -76,6 +76,8 @@ Plug ('https://github.com/nvim-neotest/neotest')
 Plug ('https://github.com/Issafalcon/neotest-dotnet')
 
 Plug ('https://github.com/numToStr/Comment.nvim.git',{commit='d9cfae1'}) -- This release is not tagget. Thus we point to the commit
+
+Plug ('https://github.com/windwp/nvim-ts-autotag')
 
 Plug (HomeDir.."/source/repos/Solution.nvim")
 
