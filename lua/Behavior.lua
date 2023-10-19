@@ -87,6 +87,7 @@ vim.keymap.set('n','<leader>pu',':PlugUpdate<CR>', {desc = "Update plugins"})
 
 -- Configure CTRL+C in the clipboard register
 vim.keymap.set('v','<C-c>','"+y',{desc = "Copy to system clipboard"})
+vim.keymap.set('x','<C-c>','"+y',{desc = "Copy to system clipboard"})
 
 local texGroup = vim.api.nvim_create_augroup("LatexSpellCheck", { clear = true })
 
