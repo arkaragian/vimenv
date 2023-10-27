@@ -33,6 +33,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n' , '<leader>q'  , vim.diagnostic.setloclist           , { desc="Set Location List"          , noremap=true , silent=true , buffer=bufnr })
   vim.keymap.set('n' , '<leader>rn' , vim.lsp.buf.rename                  , { desc="Rename symbol under cursor" , noremap=true , silent=true , buffer=bufnr }) -- Shorthand for "Rename". This will rename the symbol under the cursor
   vim.keymap.set('n' , '<leader>wl' , WorkspaceList                       , { desc="List workspace folders"     , noremap=true , silent=true , buffer=bufnr }) --Shorthand for "workspace list"
+  vim.keymap.set('n' , '<leader>fo' , vim.lsp.buf.format                  , { desc="Format File with LSP"       , noremap=true , silent=true , buffer=bufnr }) --Shorthand for "FOrmat"
 
 
   --vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)

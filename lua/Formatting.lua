@@ -197,7 +197,7 @@ end
 
 -- Setup any keybindings we want for formating our file.
 function SetupKeyBindings()
- vim.keymap.set('n','<leader>fo',FormatFile, {desc = "Format File"})
+ --vim.keymap.set('n','<leader>fo',FormatFile, {desc = "Format File"})
 end
 
 -- Register format autocommand group that helps us manage the group commands as

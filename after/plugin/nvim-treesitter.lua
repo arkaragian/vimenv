@@ -9,6 +9,17 @@ parser_config.nu = {
   filetype = "nu",
 }
 
+
+parser_config.razor = {
+  install_info = {
+    url = "https://github.com/arkaragian/tree-sitter-razor",
+    -- url ="C:/Users/Admin/source/repos/tree-sitter-razor",
+    files = { "src/parser.c" },
+    branch = "master",
+  },
+  filetype = "razor",
+}
+
 --require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
 
 
@@ -20,6 +31,7 @@ require("nvim-treesitter.configs").setup({
         "lua",
         "rust",
         "c_sharp",
+        "razor",
         "latex",
         "cmake",
         "cpp",
