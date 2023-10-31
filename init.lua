@@ -80,6 +80,10 @@ Plug ('https://github.com/numToStr/Comment.nvim.git',{commit='d9cfae1'}) -- This
 
 Plug ('https://github.com/windwp/nvim-ts-autotag')
 
+
+-- If you have nodejs
+Plug ('iamcco/markdown-preview.nvim', { ['do']= "cd app && npx --yes yarn install" })
+
 Plug (HomeDir.."/source/repos/Solution.nvim")
 
 -- For Future Installation
