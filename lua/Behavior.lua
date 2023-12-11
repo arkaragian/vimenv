@@ -192,5 +192,7 @@ vim.keymap.set('n','δας', 'daw')
 
 vim.keymap.set('n','<leader>cd', ":cd %:h<CR>",{ noremap = true, silent = false, desc = "Change to current buffer directory"})
 vim.keymap.set('n','<leader>gcc', ":TSHighlightCapturesUnderCursor<CR>",{ noremap = true, silent = false})
---Use the html parser for xml files
+
+--Use the html parser for xml files and xsd files
 vim.treesitter.language.register("html", "xml")
+vim.treesitter.language.register("html", "xsd")
