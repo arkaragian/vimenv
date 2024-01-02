@@ -353,6 +353,28 @@ local function TEXDescribe()
     return s( context, fmta(snippet_string, nodes) )
 end
 
+local function TIKZPicture()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "tikz", --trigeted with the for keyword
+        name="tikzpicture", -- The name of the snippet
+        dscr="A tikz picture environment" -- The
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    \begin{tikzpicture}
+        <>
+    \end{tikzpicture}
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        i(0,"text"),
+    }
+    return s( context, fmta(snippet_string, nodes) )
+end
+
 
 local function TIKZNode()
     -- Defines a for snippet using a the fmt function of the luasnip
@@ -399,6 +421,7 @@ end
         TEXEnumerate(),
         TEXDescribe(),
         TEXTabular(),
+        TIKZPicture(),
         TIKZNode()
     },{
         --Autosnippets
