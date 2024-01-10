@@ -209,6 +209,7 @@ local function CSSummary()
     return s( context, fmt(snippet_string, nodes) )
 end
 
+--- Defines a parameter documentation in C# XML documentation
 local function CSXMLParameter()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
@@ -226,6 +227,27 @@ local function CSXMLParameter()
     local nodes ={
         paramname = i(1,"Parameter Name"),
         doc       = i(0,"Parameter Documentation"),
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
+--- Defines a parameter documentation in C# XML documentation
+local function CSXMLRemark()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "<re", --trigeted with the for keyword
+        name="Remark", -- The name of the snippet
+        dscr="A C# XML Remark"
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    <remarks>{remark}</remarks>
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        remark = i(1,"Write Remarks Here"),
     }
     return s( context, fmt(snippet_string, nodes) )
 end
@@ -312,6 +334,7 @@ return {
     CSSummary(),
     CSInheritDoc(),
     CSXMLParameter(),
+    CSXMLRemark(),
     -- JSON Related
     CSSystemTextJsonProperty(),
     CSEnumDefinition()
