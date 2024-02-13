@@ -56,11 +56,19 @@ local function FindCSharpDllLocation()
     if(vim.g.SolutionPluginLoaded == true) then
         local s = require("solution")
         csProgram = s.GetCSProgram()
+
+        if(csProgram == nil) then
+            P("Got a nil program")
+        else
+            P("Got the following CS Program: " .. csProgram)
+        end
         vim.notify("dll: "..csProgram,vim.log.levels.INFO,{title="User Configuration DAP"})
         if(csProgram == nil) then
             csProgram = vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/', 'file')
         end
-        -- No Solution.nvim is loader. Prompt the user for input
+    else
+        -- No Solution.nvim is loaded. Prompt the user for input
+        csProgram = vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/', 'file')
     end
 end
 
@@ -84,6 +92,7 @@ dap.configurations.cpp = {
     type = 'lldb',
     request = 'launch',
     program = function()
+        -- TODO: Use Solution.nvim to launch specific configurations
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/a.exe', 'file')
     end,
     cwd = '${workspaceFolder}',
