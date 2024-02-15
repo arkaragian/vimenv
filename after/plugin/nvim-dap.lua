@@ -45,44 +45,41 @@ dap.adapters.vsdbg= {
   --id = nil
 }
 
-local csProgram = nil
-
 --- Detects the output locations and provides formated results for the user
 --to choose for debuging.
 local function FindCSharpDllLocation()
-    csProgram = nil
 
-    P(vim.g.SolutionPluginLoaded)
+    -- P(vim.g.SolutionPluginLoaded)
+    local prog = nil
     if(vim.g.SolutionPluginLoaded == true) then
         local s = require("solution")
-        csProgram = s.GetCSProgram()
+        prog = s.GetCSProgram()
 
-        if(csProgram == nil) then
+        if(prog == nil) then
             P("Got a nil program")
         else
-            P("Got the following CS Program: " .. csProgram)
+            P("Got the following CS Program: " .. prog)
         end
-        vim.notify("dll: "..csProgram,vim.log.levels.INFO,{title="User Configuration DAP"})
-        if(csProgram == nil) then
-            csProgram = vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/', 'file')
+        vim.notify("dll: "..prog,vim.log.levels.INFO,{title="User Configuration DAP"})
+        if(prog == nil) then
+            prog = vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/', 'file')
         end
     else
         -- No Solution.nvim is loaded. Prompt the user for input
-        csProgram = vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/', 'file')
+        prog = vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/', 'file')
     end
+
+    return prog
 end
 
 dap.configurations.cs = {
     {
         type = "netcoredbg",
-        --type = "vsdbg",
-        name = "launch - netcoredbg",
         request = "launch",
-        program = function()
-            -- This will populate the csProgram
-            FindCSharpDllLocation()
-            return csProgram
-        end
+        name = "launch - netcoredbg",
+        -- Point to function that calculates the program location and returns
+        -- it as a string.
+        program = FindCSharpDllLocation
     }
 }
 

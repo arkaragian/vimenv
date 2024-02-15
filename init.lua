@@ -23,6 +23,11 @@ Plug ('folke/neodev.nvim', {tag='v2.0.1'})
 
 Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v0.1.6'})
 
+
+-- Solution nvim must be loaded before dap because in dap config we try to
+-- see if there is a solution loaded.
+Plug (HomeDir.."/source/repos/Solution.nvim")
+
 --Plugins for debugging
 Plug ('mfussenegger/nvim-dap', {tag='0.6.0'})
 Plug ('rcarriga/nvim-dap-ui', {tag='v3.8.3'})
@@ -84,7 +89,6 @@ Plug ('https://github.com/windwp/nvim-ts-autotag')
 -- If you have nodejs
 Plug ('iamcco/markdown-preview.nvim', { ['do']= "cd app && npx --yes yarn install" })
 
-Plug (HomeDir.."/source/repos/Solution.nvim")
 
 -- For Future Installation
 --Plug ("numToStr/Comment.nvim")
