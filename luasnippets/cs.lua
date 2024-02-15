@@ -219,8 +219,11 @@ local function CSXMLParameter()
     }
 
     --We use a multiline string denoted by [[ and ]].
+    -- we assume that the comments will be extended as we are already in
+    -- a summary comment block
+
     local snippet_string = [[
-    /// <param name="{paramname}">{doc}</param>
+    <param name="{paramname}">{doc}</param>
     ]]
 
     --Here are the nodes that are defined in the multiline string
