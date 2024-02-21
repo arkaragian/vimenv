@@ -51,7 +51,7 @@ Plug ("nvim-treesitter/nvim-treesitter-textobjects")
 
 -- Telescope dependencies and telescope
 Plug ('nvim-lua/plenary.nvim', {tag='v0.1.3'})
-Plug ('nvim-telescope/telescope.nvim',{tag='0.1.1'})
+Plug ('nvim-telescope/telescope.nvim',{tag='0.1.5'})
 
 
 -- Tree viewer plugin. Configured automatically through after/plugin/nvim-tree.lua file
