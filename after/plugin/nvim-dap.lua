@@ -28,7 +28,9 @@ dap.adapters.netcoredbg= {
 dap.adapters.lldb = {
   type = 'executable',
   command = 'lldb-vscode', -- lldb-vscode is in our path
-  name = 'lldb'
+  name = 'lldb',
+  --MIMode = 'gdb',
+  --MIDebuggerPath = 'gdb.exe',
 }
 
 -- This was extracted from vscode C# extension and shoul be working similar with
@@ -90,7 +92,7 @@ dap.configurations.cpp = {
     request = 'launch',
     program = function()
         -- TODO: Use Solution.nvim to launch specific configurations
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/a.exe', 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/a.exe', 'file')
     end,
     cwd = '${workspaceFolder}',
     stopOnEntry = false,
