@@ -10,6 +10,15 @@ parser_config.nu = {
 }
 
 
+parser_config.cpp = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-cpp",
+    revision = "e0c1678",
+    files = { "src/parser.c" ,"src/scanner.c"  },
+    branch = "main",
+  },
+}
+
 -- parser_config.razor = {
 --   install_info = {
 --     url = "https://github.com/arkaragian/tree-sitter-razor",
