@@ -199,3 +199,5 @@ require('lspconfig').texlab.setup{}
 -- {lhs} Left hand side, what to map
 -- {rhs} What to do
 -- {opts} are additional options
+--
+require('lspconfig').pyright.setup{}
