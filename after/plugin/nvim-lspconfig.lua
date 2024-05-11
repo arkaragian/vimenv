@@ -120,7 +120,7 @@ local clangd_bin = "clangd.exe"
 --Enable the LSP. This requires that the lsp is installed at the path
 require('lspconfig').clangd.setup {
     --TODO: Configure the query driver
-    cmd = { clangd_bin ,"--log=error","--pretty"}, --Arguments are added automatically from the nvim-lspconfig
+    cmd = { clangd_bin ,"--log=error","--pretty", "--clang-tidy"}, --Arguments are added automatically from the nvim-lspconfig
     on_attach = on_attach,
 }
 
@@ -199,3 +199,5 @@ require('lspconfig').texlab.setup{}
 -- {lhs} Left hand side, what to map
 -- {rhs} What to do
 -- {opts} are additional options
+--
+require('lspconfig').pyright.setup{}

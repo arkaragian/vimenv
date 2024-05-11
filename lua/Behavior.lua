@@ -13,6 +13,7 @@ vim.api.nvim_create_user_command("Q","q",{})
 vim.api.nvim_create_user_command("Qa","qa",{})
 vim.api.nvim_create_user_command("Wq","wq",{})
 vim.api.nvim_create_user_command("W","w",{})
+vim.api.nvim_create_user_command("Wqa","wqa",{})
 
 
 -- Set the vim options as a local variable so that i can easily change it later if needed.

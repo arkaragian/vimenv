@@ -115,11 +115,12 @@ if vim.g.neovide then
     --vim.opt.guifont = { "Cascadia Mono", "h10" } -- text below applies for VimScript
     vim.opt.guifont = "Cascadia_Mono:h10" -- text below applies for VimScript
 
-    vim.keymap.set("i","<S-Insert>","<C-R>+")
+    vim.keymap.set("i","<S-Insert>","<C-R>+", { noremap = true, silent = true })
 
     vim.opt.title = true
-    --vim.opt.titlestring = "Neovide - %<%F%=%l/%L-%P"
-    vim.opt.titlestring = "Neovide - %F"
+    vim.opt.titlestring = "Neovide - %<%F%=%l/%L-%P"
+    vim.g.neovide_cursor_animate_in_insert_mode = true
+    --vim.opt.titlestring = "Neovide - %F"
 end
 ------------------------------------------------------------------------------
 --        C O L O R S C H E M E  T E X  C O N F I G U R A T I O N           --
