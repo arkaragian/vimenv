@@ -19,6 +19,26 @@ parser_config.cpp = {
   },
 }
 
+parser_config.markdown = {
+  install_info = {
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
+    revision = "62516e8",
+    files = { "tree-sitter-markdown/src/parser.c", "tree-sitter-markdown/src/scanner.c" },
+    branch = "split_parser",
+  },
+  -- filetype = "markdown",
+}
+
+parser_config.markdown_inline = {
+  install_info = {
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
+    revision = "62516e8",
+    files = { "tree-sitter-markdown-inline/src/parser.c", "tree-sitter-markdown-inline/src/scanner.c" },
+    branch = "split_parser",
+  },
+  -- filetype = "markdown",
+}
+
 -- parser_config.razor = {
 --   install_info = {
 --     url = "https://github.com/arkaragian/tree-sitter-razor",
@@ -48,7 +68,6 @@ require("nvim-treesitter.configs").setup({
         "make",
         "python",
         "sql",
-        "latex",
         "html",
         "javascript",
         "nu",
