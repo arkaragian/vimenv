@@ -197,3 +197,26 @@ vim.keymap.set('n','<leader>gcc', ":TSHighlightCapturesUnderCursor<CR>",{ norema
 --Use the html parser for xml files and xsd files
 vim.treesitter.language.register("html", "xml")
 vim.treesitter.language.register("html", "xsd")
+
+-- Define a function to get the filename without extension
+local function get_filename_without_extension()
+  local filename = vim.fn.expand('%:t')  -- Get the filename with extension
+  local name = filename:match("(.+)%..+$") or filename  -- Remove the extension
+  return name
+end
+
+-- Define a function to insert the filename at the cursor position
+local function insert_filename_without_extension()
+  local filename_without_extension = get_filename_without_extension()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local current_line = vim.api.nvim_get_current_line()
+  local new_line = current_line:sub(1, col) .. filename_without_extension .. current_line:sub(col + 1)
+  vim.api.nvim_set_current_line(new_line)
+end
+
+-- Create a user command to call the function
+vim.api.nvim_create_user_command('InsertFilenameWithoutExtension', insert_filename_without_extension, {})
+
+-- Optionally, map the command to a key combination
+vim.api.nvim_set_keymap('n', '<leader>ife', ':InsertFilenameWithoutExtension<CR>', { noremap = true, silent = true })
+
