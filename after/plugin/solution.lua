@@ -6,7 +6,7 @@ SolutionConfig = {
     DefaultBuildPlatform = "Any CPU",
     Display = {
         RemoveCR = true,               -- Remove final CR characters on popup windows
-        HideCompilationWarnings = true -- Hide compilation warnings
+        HideCompilationWarnings = false -- Hide compilation warnings
     }
 }
 
