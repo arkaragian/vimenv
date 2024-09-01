@@ -77,8 +77,10 @@ Plug ("rcarriga/nvim-notify" ,{tag = "v3.11.0"})
 
 Plug ("https://github.com/anuvyklack/hydra.nvim/", {commit="3ced42c0b6a6c85583ff0f221635a7f4c1ab0dd0"})
 
-Plug ('https://github.com/nvim-neotest/neotest')
-Plug ('https://github.com/Issafalcon/neotest-dotnet')
+
+Plug ("nvim-neotest/nvim-nio", {tag = "v1.9.3"})
+Plug ("https://github.com/nvim-neotest/neotest", {tag = "v5.2.3"})
+Plug ("https://github.com/Issafalcon/neotest-dotnet", {tag = "v1.6.3"})
 Plug ('https://github.com/rouge8/neotest-rust.git')
 
 Plug ('https://github.com/numToStr/Comment.nvim.git',{commit='d9cfae1'}) -- This release is not tagget. Thus we point to the commit
