@@ -70,7 +70,7 @@ local on_attach = function(client, bufnr)
 
 
   local s = string.format("LSP server %s attached",client.name)
-  vim.notify(s,vim.log.levels.INFO,{title = "User Configuration"})
+  vim.notify(s,vim.log.levels.INFO,{title = "Language Server Protocol"})
 end
 
 local omnisharp_bin = "OmniSharp.exe"
@@ -201,3 +201,84 @@ require('lspconfig').texlab.setup{}
 -- {opts} are additional options
 --
 require('lspconfig').pyright.setup{}
+
+
+-- vim.lsp.start({
+--     cmd = {
+--         "C:\\Users\\Admin\\source\\repos\\latex-lsp\\LatexLSP\\bin\\Debug\\net7.0\\LatexLSP.exe",
+--     },
+--   root_dir = vim.fn.getcwd(), -- Use PWD as project root dir.
+-- })
+--
+
+local configs = require "lspconfig.configs"
+local util = require "lspconfig.util"
+
+-- configs.custom_server = {
+--     default_config = {
+--         cmd = {
+--             "C:\\Users\\Admin\\source\\repos\\latex-lsp\\LatexLSP\\bin\\Debug\\net7.0\\LatexLSP.exe",
+--         },
+--         filetypes = { "tex", "plaintex" },
+--         root_dir = util.path.dirname,
+--         -- root_dir = {
+--         --     "C:\\Users\\Admin\\source\\repos\\latex-lsp\\LatexLSP\\bin\\Debug\\net7.0"
+--         -- }
+--     },
+--     -- on_new_config = function(new_config) end;
+--      on_attach = on_attach
+-- }
+
+configs.custom_server = {
+    default_config = {
+      cmd = {
+        "C:\\Users\\Admin\\source\\repos\\latex-lsp\\LatexLSP\\bin\\Debug\\net7.0\\LatexLSP.exe",
+      },
+      filetypes = { "tex", "plaintex" },
+      root_dir = function(fname)
+        return util.root_pattern("main.tex")(fname) or vim.fn.getcwd()
+      end,
+      settings = {
+        -- Custom settings for your LSP server
+      },
+    },
+  }
+
+
+require('lspconfig').custom_server.setup {
+    on_attach = on_attach,
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+}
+
+-- Setup custom LSP server
+-- require('lspconfig').custom_server = {
+--   -- default_config = {
+--   --   cmd = { "path/to/your/custom/lsp", "--stdio" },  -- Command to start your custom LSP
+--   --   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },  -- Supported filetypes
+--   --   root_dir = function(fname)
+--   --     return nvim_lsp.util.root_pattern("package.json", ".git")(fname) or vim.fn.getcwd()
+--   --   end,
+--   --   settings = {
+--   --     -- Custom settings for your LSP server
+--   --   }
+--   -- }
+--   -- default_config = {
+--   --   cmd = {
+--   --       "C:\\Users\\Admin\\source\\repos\\latex-lsp\\LatexLSP\\bin\\Debug\\net7.0\\LatexLSP.exe",
+--   --   },
+--   --   root_dir = function(fname)
+--   --     return require('lspconfig').util.root_pattern("main.tex")(fname) or vim.fn.getcwd()
+--   --   end,
+--   --   settings = {
+--   --     -- Custom settings for your LSP server
+--   --   }
+--   -- }
+-- }
+
+-- require('lspconfig').custom_server.setup {
+--     on_attach = on_attach,
+--     capabilities = vim.lsp.protocol.make_client_capabilities(),
+--     cmd = {
+--         "C:\\Users\\Admin\\source\\repos\\latex-lsp\\LatexLSP\\bin\\Debug\\net7.0\\LatexLSP.exe",
+--     },
+-- }
