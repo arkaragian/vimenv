@@ -92,6 +92,9 @@ Plug ('https://github.com/windwp/nvim-ts-autotag')
 Plug ('iamcco/markdown-preview.nvim', { ['do']= "cd app && npx --yes yarn install" })
 
 
+Plug ("https://github.com/mfussenegger/nvim-lint", {commit = "efc6fc8"})
+
+
 -- For Future Installation
 --Plug ("numToStr/Comment.nvim")
 --Plug ("j-hui/fidget.nvim" ,{tag = "v2.2"})

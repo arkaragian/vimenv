@@ -99,7 +99,7 @@ local texGroup = vim.api.nvim_create_augroup("LatexSpellCheck", { clear = true }
 -- This means that when we enter a buffer with the specified pattern register
 -- the commands that are defined in the SetupKeyBindings function.
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = {"*.tex"},
+  pattern = {"*.tex", "*.md"},
   command = ":setlocal spell spelllang=en_us,el",
   group = texGroup,
 })
