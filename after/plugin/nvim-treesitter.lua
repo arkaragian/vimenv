@@ -39,6 +39,25 @@ parser_config.markdown_inline = {
   -- filetype = "markdown",
 }
 
+parser_config.javascript = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-javascript",
+    revision = "463fec0",
+    files = { "src/parser.c" ,"src/scanner.c"  },
+    branch = "main",
+  },
+}
+
+
+parser_config.html= {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-html",
+    revision = "74cab04",
+    files = { "src/parser.c" ,"src/scanner.c" },
+    branch = "main",
+  },
+}
+
 -- parser_config.razor = {
 --   install_info = {
 --     url = "https://github.com/arkaragian/tree-sitter-razor",

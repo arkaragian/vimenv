@@ -47,7 +47,6 @@ Plug 'hrsh7th/nvim-cmp' -- Autocompletion engine
 
 -- Tree Sitter
 Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate'], tag = 'v0.9.2'})
--- Plug ('nvim-treesitter/playground') -- Deprecated since neovim 0.9
 Plug ("nvim-treesitter/nvim-treesitter-textobjects")
 
 -- Telescope dependencies and telescope
