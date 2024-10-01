@@ -30,8 +30,6 @@ end
 
 -- Always show the tabline
 opt.showtabline = 2
---TODO: Investigate this
-opt.guitablabel="%t"
 
 -- Set colorcolumn
 opt.colorcolumn = "78,79,80,81,82"

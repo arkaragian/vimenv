@@ -14,14 +14,15 @@ end
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 -- Snippets support
-Plug ('L3MON4D3/LuaSnip', {tag='v1.2.1'})
+Plug ('L3MON4D3/LuaSnip', {tag='v2.3.0'})
 
 --Plug ('https://github.com/vim-latex/vim-latex.git', {tag='v1.10.0'})
 
 --nvim api Autocompletion. Must be before lspconfig
+-- TODO: Replace with neodev
 Plug ('folke/neodev.nvim', {tag='v2.0.1'})
 
-Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v0.1.6'})
+Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v1.0.0'})
 
 
 -- Solution nvim must be loaded before dap because in dap config we try to
@@ -29,8 +30,8 @@ Plug ('https://github.com/neovim/nvim-lspconfig', {tag='v0.1.6'})
 Plug (HomeDir.."/source/repos/Solution.nvim")
 
 --Plugins for debugging
-Plug ('mfussenegger/nvim-dap', {tag='0.6.0'})
-Plug ('rcarriga/nvim-dap-ui', {tag='v3.8.3'})
+Plug ('mfussenegger/nvim-dap', {tag='0.8.0'})
+Plug ('rcarriga/nvim-dap-ui', {tag='v4.0.0'})
 
 
 
@@ -50,40 +51,40 @@ Plug ('nvim-treesitter/nvim-treesitter',{['do'] = vim.fn[':TSUpdate'], tag = 'v0
 Plug ("nvim-treesitter/nvim-treesitter-textobjects")
 
 -- Telescope dependencies and telescope
-Plug ('nvim-lua/plenary.nvim', {tag='v0.1.3'})
-Plug ('nvim-telescope/telescope.nvim',{tag='0.1.5'})
+Plug ('nvim-lua/plenary.nvim', {tag='v0.1.4'})
+Plug ('nvim-telescope/telescope.nvim',{tag='0.1.8'})
 
 
 -- Tree viewer plugin. Configured automatically through after/plugin/nvim-tree.lua file
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-tree/nvim-tree.lua'
+Plug ('nvim-tree/nvim-tree.lua', {tag="nvim-tree: v1.7.1"})
 
 Plug ("tpope/vim-fugitive" , {tag ="v3.7"})
 
 Plug ("godlygeek/tabular", {tag = "1.0.0"})
-Plug ("akinsho/bufferline.nvim", {tag = "v3.1.0"})
+Plug ("akinsho/bufferline.nvim", {tag = "v4.7.0"})
 
 -- This is a local directory pointed like that since the plugin is already under
 -- development.
-Plug ("rebelot/kanagawa.nvim", {commit= '4c8d48726621a7f3998c7ed35b2c2535abc22def'})
+Plug ("rebelot/kanagawa.nvim", {commit= 'f491b0fe68fffbece7030181073dfe51f45cda81'})
 Plug ('mechatroner/rainbow_csv')
-Plug ('lukas-reineke/indent-blankline.nvim', {tag='v2.20.3'})
+Plug ('lukas-reineke/indent-blankline.nvim', {tag='v3.7.2'})
 
-Plug ('folke/which-key.nvim', {tag = 'v1.1.0'})
+Plug ('folke/which-key.nvim', {tag = 'v3.13.3'})
 Plug ("Eandrju/cellular-automaton.nvim")
 
 Plug ("tpope/vim-surround" ,{tag = "v2.2"})
-Plug ("rcarriga/nvim-notify" ,{tag = "v3.11.0"})
+Plug ("rcarriga/nvim-notify" ,{tag = "v3.14.0"})
 
-Plug ("https://github.com/anuvyklack/hydra.nvim/", {commit="3ced42c0b6a6c85583ff0f221635a7f4c1ab0dd0"})
+Plug ("https://github.com/anuvyklack/hydra.nvim/", {tag="v1.0.2"})
 
 
-Plug ("nvim-neotest/nvim-nio", {tag = "v1.9.3"})
-Plug ("https://github.com/nvim-neotest/neotest", {tag = "v5.2.3"})
-Plug ("https://github.com/Issafalcon/neotest-dotnet", {tag = "v1.6.3"})
+Plug ("nvim-neotest/nvim-nio", {tag = "v1.10.0"})
+Plug ("https://github.com/nvim-neotest/neotest", {tag = "v5.6.0"})
+Plug ("https://github.com/Issafalcon/neotest-dotnet", {tag = "v1.6.5"})
 Plug ('https://github.com/rouge8/neotest-rust.git')
 
-Plug ('https://github.com/numToStr/Comment.nvim.git',{commit='d9cfae1'}) -- This release is not tagget. Thus we point to the commit
+Plug ('https://github.com/numToStr/Comment.nvim.git',{tag="v0.8.0"}) -- This release is not tagget. Thus we point to the commit
 
 Plug ('https://github.com/windwp/nvim-ts-autotag')
 

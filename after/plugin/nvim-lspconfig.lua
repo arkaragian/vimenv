@@ -148,7 +148,7 @@ table.insert(runtime_path, 'lua/?/init.lua')
 
 --require('lspconfig').lua_ls.setup
 --Use the above live when we move to lspconfig v0.2
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
   cmd = {"lua-language-server.exe"},
   on_attach = on_attach,
  -- capabilities = capabilities,
