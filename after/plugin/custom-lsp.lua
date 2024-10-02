@@ -67,31 +67,33 @@ local on_attach = function(client, bufnr)
   local s = string.format("LSP server %s attached",client.name)
   vim.notify(s,vim.log.levels.INFO,{title = "Language Server Protocol"})
 end
-local on_error = function(code)
-        vim.notify(code, vim.log.levels.ERROR, {title="Custom LSP On Error"});
-end
 
-local client = vim.lsp.start_client ({
-    name = "custom_lsp",
-    cmd = {"C:/Users/Admin/source/repos/latex-lsp/LatexLSP/bin/Debug/net7.0/LatexLSP.exe"},
-    cmd_cwd = "C:/Users/Admin/source/repos/latex-lsp/LatexLSP/bin/Debug/net7.0",
-    on_attach = on_attach,
-    on_error = on_error
-})
-
-if not client then
-    vim.notify("Client failed to start!", vim.log.levels.ERROR, {title="Custom LSP"});
-    return;
-end
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        -- if not client then
-        --     vim.notify("Hey no client",vim.log.levels.INFO)
-        -- else
-        --     vim.notify("Hey client!",vim.log.levels.INFO)
-        -- end
-        vim.lsp.buf_attach_client(0, client)
-    end,
-})
+-- local on_error = function(code)
+--         vim.notify(code, vim.log.levels.ERROR, {title="Custom LSP On Error"});
+-- end
+--
+-- local client = vim.lsp.start_client ({
+--     name = "custom_lsp",
+--     cmd = {"C:/Users/Admin/source/repos/latex-lsp/LatexLSP/bin/Debug/net7.0/LatexLSP.exe"},
+--     --TODO: This throws and error. Though it is a directory. Need to check what happens
+--     --cmd_cwd = "C:/Users/Admin/source/repos/latex-lsp/LatexLSP/bin/Debug/net7.0/",
+--     on_attach = on_attach,
+--     on_error = on_error
+-- })
+--
+-- if not client then
+--     vim.notify("Client failed to start!", vim.log.levels.ERROR, {title="Custom LSP"});
+--     return;
+-- end
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "markdown",
+--     callback = function()
+--         -- if not client then
+--         --     vim.notify("Hey no client",vim.log.levels.INFO)
+--         -- else
+--         --     vim.notify("Hey client!",vim.log.levels.INFO)
+--         -- end
+--         vim.lsp.buf_attach_client(0, client)
+--     end,
+-- })
