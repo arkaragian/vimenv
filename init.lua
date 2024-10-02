@@ -130,6 +130,7 @@ end
 ------------------------------------------------------------------------------
 --        C O L O R S C H E M E  T E X  C O N F I G U R A T I O N           --
 ------------------------------------------------------------------------------
+vim.cmd.colorscheme("kanagawa")
 local default_colors = require("kanagawa.colors").setup()
 
 local tex_color_overrides = {
@@ -142,12 +143,11 @@ local tex_color_overrides = {
 }
 
 -- TODO: Maybe make this adjustment based on the filetype
-require'kanagawa'.setup({ overrides = tex_color_overrides})
+require("kanagawa").setup({ overrides = tex_color_overrides})
 
 
-vim.cmd.colorscheme("kanagawa")
 
 -- Source personal configurations
-require('Behavior') -- Generic keybindings
-require('Completion') -- Code completion Configuration
-require('Formatting') -- Custom code formatting methods
+require("Behavior") -- Generic keybindings
+require("Completion") -- Code completion Configuration
+require("Formatting") -- Custom code formatting methods
