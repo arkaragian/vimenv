@@ -1,62 +1,65 @@
+require("nvim-treesitter.install").compilers = {"clang", "gcc"}
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
-parser_config.nu = {
-  install_info = {
-    url = "https://github.com/nushell/tree-sitter-nu",
-    files = { "src/parser.c" },
-    branch = "main",
-  },
-  filetype = "nu",
-}
+-- Do not pin the treesitter. The nvim-treesitter plugin has the parsers internally pinned.
+-- We do not pin because we cannot be sure that the parsers define a standard stable tree.
+-- parser_config.nu = {
+--   install_info = {
+--     url = "https://github.com/nushell/tree-sitter-nu",
+--     files = { "src/parser.c" },
+--     branch = "main",
+--   },
+--   filetype = "nu",
+-- }
+-- 
+-- 
+-- parser_config.cpp = {
+--   install_info = {
+--     url = "https://github.com/tree-sitter/tree-sitter-cpp",
+--     revision = "e0c1678",
+--     files = { "src/parser.c" ,"src/scanner.c"  },
+--     branch = "main",
+--   },
+-- }
+-- 
+-- parser_config.markdown = {
+--   install_info = {
+--     url = "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
+--     revision = "62516e8",
+--     files = { "tree-sitter-markdown/src/parser.c", "tree-sitter-markdown/src/scanner.c" },
+--     branch = "split_parser",
+--   },
+--   -- filetype = "markdown",
+-- }
+-- 
+-- parser_config.markdown_inline = {
+--   install_info = {
+--     url = "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
+--     revision = "62516e8",
+--     files = { "tree-sitter-markdown-inline/src/parser.c", "tree-sitter-markdown-inline/src/scanner.c" },
+--     branch = "split_parser",
+--   },
+--   -- filetype = "markdown",
+-- }
+
+-- parser_config.javascript = {
+--   install_info = {
+--     url = "https://github.com/tree-sitter/tree-sitter-javascript",
+--     revision = "463fec0",
+--     files = { "src/parser.c" ,"src/scanner.c"  },
+--     branch = "main",
+--   },
+-- }
 
 
-parser_config.cpp = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-cpp",
-    revision = "e0c1678",
-    files = { "src/parser.c" ,"src/scanner.c"  },
-    branch = "main",
-  },
-}
-
-parser_config.markdown = {
-  install_info = {
-    url = "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
-    revision = "62516e8",
-    files = { "tree-sitter-markdown/src/parser.c", "tree-sitter-markdown/src/scanner.c" },
-    branch = "split_parser",
-  },
-  -- filetype = "markdown",
-}
-
-parser_config.markdown_inline = {
-  install_info = {
-    url = "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
-    revision = "62516e8",
-    files = { "tree-sitter-markdown-inline/src/parser.c", "tree-sitter-markdown-inline/src/scanner.c" },
-    branch = "split_parser",
-  },
-  -- filetype = "markdown",
-}
-
-parser_config.javascript = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-javascript",
-    revision = "463fec0",
-    files = { "src/parser.c" ,"src/scanner.c"  },
-    branch = "main",
-  },
-}
-
-
-parser_config.html= {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-html",
-    revision = "74cab04",
-    files = { "src/parser.c" ,"src/scanner.c" },
-    branch = "main",
-  },
-}
+-- parser_config.html= {
+--   install_info = {
+--     url = "https://github.com/tree-sitter/tree-sitter-html",
+--     revision = "74cab04",
+--     files = { "src/parser.c" ,"src/scanner.c" },
+--     branch = "main",
+--   },
+-- }
 
 -- parser_config.razor = {
 --   install_info = {
@@ -89,7 +92,7 @@ require("nvim-treesitter.configs").setup({
         "sql",
         "html",
         "javascript",
-        "nu",
+        --"nu",
         "query" -- query parser for query editor highlighting
     },
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -216,15 +219,17 @@ require("nvim-treesitter.configs").setup({
                 ["[M"] = "@function.outer",
                 ["[]"] = "@class.outer",
             },
+            -- The bindings bellow are used for lsp move to next diagnostic. Thus
+            -- we have them disabled
             -- Below will go to either the start or the end, whichever is closer.
             -- Use if you want more granular movements
             -- Make it even more gradual by adding multiple queries and regex.
-            goto_next = {
-                ["]d"] = "@conditional.outer",
-            },
-            goto_previous = {
-                ["[d"] = "@conditional.outer",
-            }
+            -- goto_next = {
+            --     ["]d"] = "@conditional.outer",
+            -- },
+            -- goto_previous = {
+            --     ["[d"] = "@conditional.outer",
+            -- }
         },
     },
 })
