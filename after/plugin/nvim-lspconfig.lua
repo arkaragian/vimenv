@@ -3,12 +3,12 @@
 --
 -- Use an on_attach function to only map keys after the language server attaches to the current buffer
 --
-local augroup_highlight = vim.api.nvim_create_augroup("custom-lsp-references" , { clear = true })
+-- local augroup_highlight = vim.api.nvim_create_augroup("custom-lsp-references" , { clear = true })
 local augroup_codelens  = vim.api.nvim_create_augroup("custom-lsp-codelens"   , { clear = true })
 
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 
   local function WorkspaceList()
@@ -55,11 +55,11 @@ local on_attach = function(client, bufnr)
   end
 
     -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities.documentHighlightProvider then
-    autocmd_clear { group = augroup_highlight , buffer = bufnr }
-    autocmd       { "CursorHold"              , augroup_highlight , vim.lsp.buf.document_highlight , bufnr }
-    autocmd       { "CursorMoved"             , augroup_highlight , vim.lsp.buf.clear_references   , bufnr }
-  end
+  -- if client.server_capabilities.documentHighlightProvider then
+  --   autocmd_clear { group = augroup_highlight , buffer = bufnr }
+  --   autocmd       { "CursorHold"              , augroup_highlight , vim.lsp.buf.document_highlight , bufnr }
+  --   autocmd       { "CursorMoved"             , augroup_highlight , vim.lsp.buf.clear_references   , bufnr }
+  -- end
 
   --If the LSP provides codelens capabilites enable them.
   if  client.server_capabilities.codeLensProvider then
