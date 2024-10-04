@@ -29,11 +29,12 @@ vim.api.nvim_set_keymap(
   { noremap = true }
 )
 
-local ok, lspkind = pcall(require, "lspkind")
-if not ok then
-  return
-end
+-- local ok, lspkind = pcall(require, "lspkind")
+-- if not ok then
+--   return
+-- end
 
+local lspkind = require("lspkind")
 lspkind.init()
 
 local cmp = require('cmp')
@@ -156,7 +157,8 @@ cmp.setup {
   -- Youtube: mention that you need a separate snippets plugin
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body)
+        vim.snippet.expand(args.body)
+      -- require("luasnip").lsp_expand(args.body)
     end,
   },
 
@@ -176,13 +178,13 @@ cmp.setup {
     },
   },
 
-  experimental = {
-    -- I like the new menu better! Nice work hrsh7th
-    native_menu = false,
-
-    -- Let's play with this for a day or two
-    ghost_text = false,
-  },
+  -- experimental = {
+  --   -- I like the new menu better! Nice work hrsh7th
+  --   native_menu = false,
+  --
+  --   -- Let's play with this for a day or two
+  --   ghost_text = false,
+  -- },
 }
 
 -- cmp.setup.cmdline("/", {
