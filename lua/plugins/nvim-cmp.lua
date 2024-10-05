@@ -8,6 +8,7 @@ return  {
     --   })
     -- end,
     lazy = false,
+    -- This is not lazy but can be loaded with a low priority
     priority = 100,
     -- load cmp on InsertEnter
     -- event = "InsertEnter",
