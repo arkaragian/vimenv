@@ -172,22 +172,8 @@ if vim.g.neovide then
     vim.g.neovide_cursor_animate_in_insert_mode = true
     --vim.opt.titlestring = "Neovide - %F"
 end
+
 ------------------------------------------------------------------------------
 --        C O L O R S C H E M E  T E X  C O N F I G U R A T I O N           --
 ------------------------------------------------------------------------------
 vim.cmd.colorscheme("kanagawa")
-local default_colors = require("kanagawa.colors").setup()
-
-local tex_color_overrides = {
-    -- create a new hl-group using default palette colors and/or new ones
-    -- This matches the names returned from :TSHighlightCapturesUnderCursor
-    -- The colors are selected after looking alot in the kanagawa repository.
-    ["@text.environment"] = { fg = default_colors.co },
-    ["@text.environment.name"] = { fg = default_colors.st },
-    -- Variables use color fg
-}
-
--- TODO: Maybe make this adjustment based on the filetype
-require("kanagawa").setup({ overrides = tex_color_overrides})
-
-
