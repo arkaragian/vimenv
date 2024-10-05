@@ -33,10 +33,6 @@ return {
         priority = 900
     },
     {
-        "https://github.com/anuvyklack/hydra.nvim",
-        version = "v1.0.2"
-    },
-    {
         "nvim-neotest/nvim-nio",
         tag = "v1.10.0"
     },

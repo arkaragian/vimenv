@@ -3,15 +3,14 @@ return {
         "akinsho/bufferline.nvim",
         version = "*",
         lazy = false,
-	-- Called buring startup
+        -- Called buring startup
         init = function()
             vim.opt.termguicolors = true
         end,
-	-- A table of options pased to setup function
+        -- A table of options pased to setup function
         opts = {
         },
-	
-	-- Table of Keys defined by the plugin. similar to vim.keymap.set()
+        -- Table of Keys defined by the plugin. similar to vim.keymap.set()
         keys = {
             {
                 '<C-S-Right>',
@@ -30,7 +29,7 @@ return {
                 silent = true
             }
         },
-	-- Plugins loaded after this plugi
+        -- Plugins loaded after this plugi
         dependencies = "nvim-tree/nvim-web-devicons"
     }
 }
