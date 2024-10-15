@@ -199,8 +199,13 @@ return {
                 -- determining which version to use for project loading.
                 IncludePrereleases = true,
               },
-    },
+            },
+        },
+
+        -- Just add a "blank" server entry in order to call the default setup
+        texlab = {
         }
+
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
