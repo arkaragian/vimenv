@@ -45,10 +45,10 @@ return {
         tag = "v1.6.5"
     },
     { "https://github.com/rouge8/neotest-rust.git" },
-    {
-        "https://github.com/numToStr/Comment.nvim.git",
-        tag = "v0.8.0"
-    },
+    -- {
+    --     "https://github.com/numToStr/Comment.nvim.git",
+    --     tag = "v0.8.0"
+    -- },
     { "https://github.com/windwp/nvim-ts-autotag" },
     -- install without yarn or npm
     {
