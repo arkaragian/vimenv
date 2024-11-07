@@ -12,7 +12,26 @@ return {
         "godlygeek/tabular",
         tag = "1.0.0"
     },
-    { "mechatroner/rainbow_csv" },
+    -- { "mechatroner/rainbow_csv" },
+    {
+        'cameron-wags/rainbow_csv.nvim',
+        config = true,
+        ft = {
+            'csv',
+            'tsv',
+            'csv_semicolon',
+            'csv_whitespace',
+            'csv_pipe',
+            'rfc_csv',
+            'rfc_semicolon'
+        },
+        cmd = {
+            'RainbowDelim',
+            'RainbowDelimSimple',
+            'RainbowDelimQuoted',
+            'RainbowMultiDelim'
+        }
+    },
     {
         "lukas-reineke/indent-blankline.nvim",
         tag = "v3.7.2"
