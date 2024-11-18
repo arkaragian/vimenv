@@ -19,7 +19,10 @@ return {
         opts_extend = { "ensure_installed" },
         opts = {
             highlight = {
-                enable = true
+                enable = true,
+                -- Disable the highlighting here in order
+                -- to let rainbow csv to take over.
+                disable = { "csv" }
             },
             ensure_installed = {
                 "vim",
