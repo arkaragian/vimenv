@@ -78,7 +78,7 @@ return {
     version = "v1.0.0",
     opts = {
       -- options for vim.diagnostic.config()
-      ---@type vim.diagnostic.Opts
+      ---@type vim.diagnostic.opts
       diagnostics = {
         underline = true,
         update_in_insert = false,
@@ -204,6 +204,9 @@ return {
 
         -- Just add a "blank" server entry in order to call the default setup
         texlab = {
+        },
+
+        rust_analyzer = {
         }
 
       },
