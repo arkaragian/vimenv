@@ -207,6 +207,9 @@ return {
         },
 
         rust_analyzer = {
+        },
+
+        clangd = {
         }
 
       },
