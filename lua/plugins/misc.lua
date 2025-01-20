@@ -102,10 +102,10 @@ return {
             }
         }
     },
-    -- {
-    --     "https://github.com/numToStr/Comment.nvim.git",
-    --     tag = "v0.8.0"
-    -- },
+    {
+        "https://github.com/numToStr/Comment.nvim.git",
+        tag = "v0.8.0"
+    },
     { "https://github.com/windwp/nvim-ts-autotag" },
     -- install without yarn or npm
     {
