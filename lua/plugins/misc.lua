@@ -123,6 +123,6 @@ return {
         commit = "efc6fc8"
     },
     {
-        dir = HomeDir .. "/source/repos/Solution.nvim"
+        dir = "D:/source/repos/Solution.nvim"
     }
 }
