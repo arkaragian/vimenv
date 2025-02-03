@@ -5,16 +5,16 @@ local builtin = require("telescope.builtin")
 -- This function sets up viewing options and then launches the picker with
 -- those options.
 local function EditNeovimConfiguration()
-	local options
+    local options
 
-	-- Define options here
-	options = {
-		prompt_title = "Neovim Configuration Files",
-		cwd = vim.api.nvim_list_runtime_paths()[1],
-	}
+    -- Define options here
+    options = {
+        prompt_title = "Neovim Configuration Files",
+        cwd = vim.api.nvim_list_runtime_paths()[1],
+    }
 
-	-- launch the picker
-	builtin.git_files(options)
+    -- launch the picker
+    builtin.git_files(options)
 end
 
 
@@ -33,36 +33,36 @@ vim.keymap.set('n', '<leader>sc',builtin.commands,{ desc = "Show Builtin Command
 
 -- In the section bellow we perform telescope setup
 require('telescope').setup{
-	defaults = {
-		-- Setup the prompt prefix text
-		-- prompt_prefix = ">"
-		--
-		-- Default configuration for telescope goes here:
-		-- config_key = value,
-		mappings = {
-			i = {
-				-- map actions.which_key to <C-h> (default: <C-/>)
-				-- actions.which_key shows the mappings for your picker,
-				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-				["<esc>"] = actions.close, -- Close telescope
---                ["<CR>"] = actions.select_tab -- Open selection to new tab
-			}
-		}
-	},
-	pickers = {
-		-- Default configuration for builtin pickers goes here:
-		-- picker_name = {
-		--	 picker_config_key = value,
-		--	 ...
-		-- }
-		-- Now the picker_config_key will be applied every time you call this
-		-- builtin picker
-	},
-	extensions = {
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--	 extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
-	}
-}
+    defaults = {
+        -- Setup the prompt prefix text
+        -- prompt_prefix = ">"
+        --
+        -- Default configuration for telescope goes here:
+        -- config_key = value,
+        mappings = {
+            i = {
+                -- map actions.which_key to <C-h> (default: <C-/>)
+                -- actions.which_key shows the mappings for your picker,
+                -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+                ["<esc>"] = actions.close, -- Close telescope
+                --                ["<CR>"] = actions.select_tab -- Open selection to new tab
+            }
+        }
+    },
+    pickers = {
+        -- Default configuration for builtin pickers goes here:
+        -- picker_name = {
+            --   picker_config_key = value,
+            --   ...
+            -- }
+            -- Now the picker_config_key will be applied every time you call this
+            -- builtin picker
+        },
+        extensions = {
+            -- Your extension configuration goes here:
+            -- extension_name = {
+                --   extension_config_key = value,
+                -- }
+                -- please take a look at the readme of the extension you want to configure
+            }
+        }
