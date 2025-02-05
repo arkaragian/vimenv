@@ -19,9 +19,13 @@ end
 
 
 -- First we define the key bindings to call telescope
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find files"}) -- Find in all files
-vim.keymap.set('n', '<leader>fg', builtin.git_files, {desc = "Find GIT files"}) -- Find in only git files
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find open buffers"}) -- Find in open buffers
+vim.keymap.set('n' , '<leader>ff'  , builtin.find_files , {desc = "Find files"}) -- Find in all files
+vim.keymap.set('n' , '<leader>fg'  , builtin.git_files  , {desc = "Find GIT files"}) -- Find in only git files
+vim.keymap.set('n' , '<leader>fb'  , builtin.buffers    , {desc = "Find open buffers"}) -- Find in open buffers
+vim.keymap.set('n' , '<leader>fht' , builtin.help_tags  , {desc = "Find Help Tags"}) -- Find in open buffers
+vim.keymap.set('n' , '<leader>lg'  , builtin.live_grep  , {desc = "Live Global Regex Print"}) -- Find in open buffers
+vim.keymap.set('n' , '<leader>qf'  , builtin.quickfix   , {desc = "Find quickfix"}) -- Find in open buffers
+
 -- Symbols can be invoked with both find symbls and show symbols
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = "Find LSP Symbols"}) -- Find symbols
 vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, { desc = "Show LSP Symbols"}) -- Show symbols
@@ -29,7 +33,7 @@ vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, { desc = "Show L
 -- Special keymaps
 vim.keymap.set('n', '<leader>ev',EditNeovimConfiguration,{ desc = "Edit Neovim Configuration"}) -- Edit vim
 vim.keymap.set('n', '<leader>en',EditNeovimConfiguration,{ desc = "Edit Neovim Configuration"}) -- Edit neovim
-vim.keymap.set('n', '<leader>sc',builtin.commands,{ desc = "Show Builtin Commands"}) -- Show commands
+vim.keymap.set('n', '<leader>sb',builtin.commands,{ desc = "Show Builtin Commands"}) -- Show commands
 
 -- In the section bellow we perform telescope setup
 require('telescope').setup{
