@@ -142,7 +142,7 @@ end
 local function TEXMinipageFigure()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
-        trig = "mpfig", --trigeted with the for keyword
+        trig = "minifig", --trigeted with the for keyword
         name="Figure", -- The name of the snippet
         dscr="A minipage figure" -- The
     }
