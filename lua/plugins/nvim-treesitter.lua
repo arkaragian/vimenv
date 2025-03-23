@@ -4,7 +4,7 @@ return {
         build = ":TSUpdate",
         -- version = "v0.9.2",
         -- At this commit all the tests were working
-        commit = "7821feb7e7d55a76b7ffeeb6b0bfb7b8f499ce94",
+        commit = "d26ce0126694283cf32bf1f4192ef37ef404c037",
         lazy = false,
         init = function(plugin)
             -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
@@ -78,7 +78,8 @@ return {
                         ["av"] = { query = "@variable.outer", desc = "Select outer variable"},
                         ["iv"] = { query = "@variable.inner", desc = "Select inner variable"},
 
-                        ["ae"] = { query = "@latex.environment.outer", desc = "Select outer environment"},
+                        -- For latex
+                        ["ae"] = { query = "@block.outer", desc = "Select outer environment"},
                         ["ie"] = { query = "@block.inner", desc = "Select inner environment"},
 
                     },
