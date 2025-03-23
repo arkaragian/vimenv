@@ -78,7 +78,7 @@ return {
                         ["av"] = { query = "@variable.outer", desc = "Select outer variable"},
                         ["iv"] = { query = "@variable.inner", desc = "Select inner variable"},
 
-                        ["ae"] = { query = "@block.outer", desc = "Select outer environment"},
+                        ["ae"] = { query = "@latex.environment.outer", desc = "Select outer environment"},
                         ["ie"] = { query = "@block.inner", desc = "Select inner environment"},
 
                     },
