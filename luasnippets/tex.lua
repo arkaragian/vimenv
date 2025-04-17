@@ -38,7 +38,7 @@ local function Environment(name)
     \end{SnipPlaceholder}
     ]]
 
-    return string.gsub(snippet_string,"SnipPlaceholder",name)
+    return string.gsub(snippet_string, "SnipPlaceholder", name)
 end
 
 ------------------------------------------------------------------------------
@@ -53,70 +53,70 @@ local function SNIncludeGraphics(number)
     local snippet_string = "\\includegraphics[width=<>]{<>}<>"
 
     -- Nodes contained in the snippet node
-    local nodes ={
-        i(1,"\\linewidth"),
-        i(2,"FilePath"),
-        t({"",""}) -- Append those nodes in order to have a new line
+    local nodes = {
+        i(1, "\\linewidth"),
+        i(2, "FilePath"),
+        t({ "", "" }) -- Append those nodes in order to have a new line
     }
 
     return sn(number, fmta(snippet_string, nodes))
 end
 
 local function SNCaption(number)
-    local snippet_string ="\\caption{<>}<>"
+    local snippet_string = "\\caption{<>}<>"
 
     -- Nodes contained in the snippet node
-    local nodes ={
-        i(1,"Caption"),
-        t({"",""}) -- Append those nodes in order to have a new line
+    local nodes = {
+        i(1, "Caption"),
+        t({ "", "" }) -- Append those nodes in order to have a new line
     }
 
-    return isn(number, fmta(snippet_string, nodes),"$PARENT_INDENT" )
+    return isn(number, fmta(snippet_string, nodes), "$PARENT_INDENT")
 end
 
-local function SNGenericLabel(prefix,number)
+local function SNGenericLabel(prefix, number)
     local snippet_string = "\\label{PlaceHolder:<>}"
 
-    snippet_string = string.gsub(snippet_string,"PlaceHolder",prefix)
+    snippet_string = string.gsub(snippet_string, "PlaceHolder", prefix)
 
     -- Nodes contained in the snippet node
-    local nodes ={
-        i(1,"LabelName"),
+    local nodes = {
+        i(1, "LabelName"),
     }
-    return isn(number, fmta(snippet_string, nodes),"$PARENT_INDENT" )
+    return isn(number, fmta(snippet_string, nodes), "$PARENT_INDENT")
 end
 
 local function SNFigureLabel(number)
-    return SNGenericLabel("fig",number)
+    return SNGenericLabel("fig", number)
 end
 
 -- This is a playground function not meant to be used.
 local function GenericEnvironment()
     local context = {
         trig = "gen", --trigeted with the for keyword
-        name="Figure", -- The name of the snippet
-        dscr="A figure" -- The
+        name = "Figure", -- The name of the snippet
+        dscr = "A figure" -- The
     }
 
     local snippet_string = Environment("Hello")
 
-    local nodes ={
-        isn(1,{
-            t({"\\centering",""}),
+    local nodes = {
+        isn(1, {
+            t({ "\\centering", "" }),
             SNIncludeGraphics(1),
             SNCaption(2),
             SNFigureLabel(3)
-        },"$PARENT_INDENT")
+        }, "$PARENT_INDENT")
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXFigure()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "fig", --trigeted with the for keyword
-        name="Figure", -- The name of the snippet
-        dscr="A figure" -- The
+        name = "Figure", -- The name of the snippet
+        dscr = "A figure" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -130,21 +130,21 @@ local function TEXFigure()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(1,"\\linewidth"),
-        i(2,"FigurePath"),
-        i(3,"Caption"),
-        i(0,"Label"),
+    local nodes = {
+        i(1, "\\linewidth"),
+        i(2, "FigurePath"),
+        i(3, "Caption"),
+        i(0, "Label"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXMinipageFigure()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "minifig", --trigeted with the for keyword
-        name="Figure", -- The name of the snippet
-        dscr="A minipage figure" -- The
+        name = "Figure", -- The name of the snippet
+        dscr = "A minipage figure" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -158,21 +158,21 @@ local function TEXMinipageFigure()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(1,"\\linewidth"),
-        i(2,"FigurePath"),
-        i(3,"Caption"),
-        i(0,"Label"),
+    local nodes = {
+        i(1, "\\linewidth"),
+        i(2, "FigurePath"),
+        i(3, "Caption"),
+        i(0, "Label"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXResizeBox()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "rbox", --trigeted with the for keyword
-        name="resizebox", -- The name of the snippet
-        dscr="A Resize Box" -- The
+        name = "resizebox", -- The name of the snippet
+        dscr = "A Resize Box" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -183,19 +183,19 @@ local function TEXResizeBox()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(1,"\\linewidth"),
-        i(0,"TextHere"),
+    local nodes = {
+        i(1, "\\linewidth"),
+        i(0, "TextHere"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXMinipage()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "bmin", --trigeted with the for keyword
-        name="minipage", -- The name of the snippet
-        dscr="Begin minipage" -- The
+        name = "minipage", -- The name of the snippet
+        dscr = "Begin minipage" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -206,19 +206,19 @@ local function TEXMinipage()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(1,"\\linewidth"),
-        i(0,"TextHere"),
+    local nodes = {
+        i(1, "\\linewidth"),
+        i(0, "TextHere"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXTwoColumnMinipage()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "twocol", --trigeted with the for keyword
-        name="twocolumn", -- The name of the snippet
-        dscr="Two Column Minipage Structure" -- The
+        name = "twocolumn", -- The name of the snippet
+        dscr = "Two Column Minipage Structure" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -234,19 +234,19 @@ local function TEXTwoColumnMinipage()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(1,"Column 1 Text"),
-        i(0,"Column 2 Text"),
+    local nodes = {
+        i(1, "Column 1 Text"),
+        i(0, "Column 2 Text"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXCenter()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "bcen", --trigeted with the for keyword
-        name="center", -- The name of the snippet
-        dscr="Begin center" -- The
+        name = "center", -- The name of the snippet
+        dscr = "Begin center" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -257,18 +257,18 @@ local function TEXCenter()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(0,"TextHere"),
+    local nodes = {
+        i(0, "TextHere"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXTabular()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "btab", --trigeted with the for keyword
-        name="tabular", -- The name of the snippet
-        dscr="Begin tabular" -- The
+        name = "tabular", -- The name of the snippet
+        dscr = "Begin tabular" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -279,19 +279,19 @@ local function TEXTabular()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(1,"Columns"),
-        i(0,"TextHere"),
+    local nodes = {
+        i(1, "Columns"),
+        i(0, "TextHere"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXItemize()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "bbit", --trigeted with the for keyword
-        name="itemize", -- The name of the snippet
-        dscr="An itemize environment" -- The
+        name = "itemize", -- The name of the snippet
+        dscr = "An itemize environment" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -302,18 +302,18 @@ local function TEXItemize()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(0,"TextHere"),
+    local nodes = {
+        i(0, "TextHere"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXEnumerate()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "ben", --trigeted with the for keyword
-        name="enumerate", -- The name of the snippet
-        dscr="An enumerate environment" -- The
+        name = "enumerate", -- The name of the snippet
+        dscr = "An enumerate environment" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -324,18 +324,18 @@ local function TEXEnumerate()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(0,"TextHere"),
+    local nodes = {
+        i(0, "TextHere"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TEXDescribe()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "bdesc", --trigeted with the for keyword
-        name="describe", -- The name of the snippet
-        dscr="An describe environment" -- The
+        name = "describe", -- The name of the snippet
+        dscr = "An describe environment" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -346,19 +346,19 @@ local function TEXDescribe()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(1,"DescriptionHere"),
-        i(0,"TextHere"),
+    local nodes = {
+        i(1, "DescriptionHere"),
+        i(0, "TextHere"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
 local function TIKZPicture()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "tikz", --trigeted with the for keyword
-        name="tikzpicture", -- The name of the snippet
-        dscr="A tikz picture environment" -- The
+        name = "tikzpicture", -- The name of the snippet
+        dscr = "A tikz picture environment" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -369,19 +369,18 @@ local function TIKZPicture()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(0,"text"),
+    local nodes = {
+        i(0, "text"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
-
 
 local function TIKZNode()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
         trig = "tnode", --trigeted with the for keyword
-        name="node", -- The name of the snippet
-        dscr="A tikz node" -- The
+        name = "node", -- The name of the snippet
+        dscr = "A tikz node" -- The
     }
 
     --We use a multiline string denoted by [[ and ]].
@@ -390,39 +389,65 @@ local function TIKZNode()
     ]]
 
     --Here are the nodes that are defined in the multiline string
-    local nodes ={
-        i(1,"xcoord"),
-        i(2,"ycoord"),
-        i(3,"style"),
-        i(0,"text"),
+    local nodes = {
+        i(1, "xcoord"),
+        i(2, "ycoord"),
+        i(3, "style"),
+        i(0, "text"),
     }
-    return s( context, fmta(snippet_string, nodes) )
+    return s(context, fmta(snippet_string, nodes))
 end
 
+local function MagicTableRow()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "aris", --trigeted with the for keyword
+        name = "magic row", -- The name of the snippet
+        dscr = "latex table auto numbering" -- The
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    --fmta requires at least one node. We work around that.
+    local snippet_string = [[
+    \newcounter{<>}
+    \setcounter{magicrow}{0}
+
+    \newcommand{\tabrow}{
+        \stepcounter{magicrow}\themagicrow
+    }
+    ]]
+
+    local nodes = {
+        i(0, "magicrow"),
+    }
+
+    return s(context, fmta(snippet_string, nodes))
+end
 
 -- rec_ls is self-referencing. That makes this snippet 'infinite' eg. have as many
 -- \item as necessary by utilizing a choiceNode.
 --s("ls", {
-    --    t({ "\\begin{itemize}", "\t\\item " }),
-    --    i(1),
-    --    d(2, rec_ls, {}),
-    --    t({ "", "\\end{itemize}" }),
-    --}),
+--    t({ "\\begin{itemize}", "\t\\item " }),
+--    i(1),
+--    d(2, rec_ls, {}),
+--    t({ "", "\\end{itemize}" }),
+--}),
 
-    return {
-        GenericEnvironment(),
-        TEXResizeBox(),
-        TEXMinipage(),
-        TEXTwoColumnMinipage(),
-        TEXFigure(),
-        TEXMinipageFigure(),
-        TEXCenter(),
-        TEXItemize(),
-        TEXEnumerate(),
-        TEXDescribe(),
-        TEXTabular(),
-        TIKZPicture(),
-        TIKZNode()
-    },{
-        --Autosnippets
-    }
+return {
+    GenericEnvironment(),
+    TEXResizeBox(),
+    TEXMinipage(),
+    TEXTwoColumnMinipage(),
+    TEXFigure(),
+    TEXMinipageFigure(),
+    TEXCenter(),
+    TEXItemize(),
+    TEXEnumerate(),
+    TEXDescribe(),
+    TEXTabular(),
+    TIKZPicture(),
+    TIKZNode(),
+    MagicTableRow()
+}, {
+    --Autosnippets
+}
