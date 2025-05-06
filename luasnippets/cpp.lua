@@ -87,7 +87,33 @@ local function Doxy_Summary()
     return s( context, fmt(snippet_string, nodes) )
 end
 
+local function include_guard()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "guard",--trigeted with the for keyword
+        name="Include Guard", -- The name of the snippet
+        dscr="A Header Include Guard"
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    local snippet_string = [[
+    #ifndef {}
+    #define {}
+
+    #endif //{}
+    ]]
+
+    --Here are the nodes that are defined in the multiline string
+    local nodes ={
+        i(1,"HEADER_H"),
+        rep(1),
+        rep(1),
+    }
+    return s( context, fmt(snippet_string, nodes) )
+end
+
 return {
+    include_guard(),
     --Regular snippets
     ForLoop(),
     --Documentation Related
