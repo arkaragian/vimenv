@@ -16,6 +16,8 @@ vim.api.nvim_create_user_command("W","w",{})
 vim.api.nvim_create_user_command("Wqa","wqa",{})
 
 
+vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR><Esc>', { noremap = true, silent = true })
+
 -- Set the vim options as a local variable so that i can easily change it later if needed.
 local opt = vim.opt
 
