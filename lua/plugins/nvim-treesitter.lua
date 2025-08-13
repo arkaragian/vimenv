@@ -30,7 +30,7 @@ return {
                 "lua",
                 "rust",
                 "c_sharp",
-                --"razor",
+                "razor",
                 "latex",
                 "cmake",
                 "cpp",

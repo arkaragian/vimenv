@@ -220,3 +220,19 @@ vim.api.nvim_create_user_command('InsertFilenameWithoutExtension', insert_filena
 -- Optionally, map the command to a key combination
 vim.api.nvim_set_keymap('n', '<leader>ife', ':InsertFilenameWithoutExtension<CR>', { noremap = true, silent = true })
 
+
+vim.filetype.add({
+    extension = {
+        razor = "razor"
+    }
+})
+
+-- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+--   pattern = { "*.cshtml", "*.razor" },
+--   callback = function()
+--     vim.bo.filetype = "html.cshtml.razor"
+--   end,
+-- })
+
+
+
