@@ -1,4 +1,3 @@
-
 local augroup_codelens  = vim.api.nvim_create_augroup("custom-lsp-codelens"   , { clear = true })
 local on_attach_set_maps = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -62,7 +61,8 @@ local on_attach_set_maps = function(client, bufnr)
   -- end
 
   --If the LSP provides codelens capabilites enable them.
-  if client.server_capabilities.codeLensProvider then
+  --Note currently razor is not supported by codelens.
+  if client.server_capabilities.codeLensProvider and vim.bo[bufnr].filetype ~= "razor" then
       autocmd_clear { group = augroup_codelens , buffer = bufnr }
       autocmd       { "BufEnter"                        , augroup_codelens  , vim.lsp.codelens.refresh , bufnr , once = true }
       autocmd       {{ "BufWritePost", "CursorHold" }   , augroup_codelens  , vim.lsp.codelens.refresh , bufnr }
@@ -76,6 +76,10 @@ end
 return {
     "neovim/nvim-lspconfig",
     version = "v2.4.0",
+    -- dependencies = {
+    --     {"seblyng/roslyn.nvim" },
+    --     { "tris203/rzls.nvim", lazy = false } -- lazy-load on require("rzls.*")
+    -- },
     opts = {
       -- options for vim.diagnostic.config()
       ---@type vim.diagnostic.opts
@@ -159,50 +163,90 @@ return {
           },
         },
 
-        roslyn_ls = { },
+         -- roslyn_ls = { },
+         --
 
-        -- omnisharp = {
-        --     cmd = { "OmniSharp.exe" },
-        --     --on_attach = on_attach_set_maps,
-        --     settings = {
-        --       FormattingOptions = {
-        --         -- Enables support for reading code style, naming convention and analyzer
-        --         -- settings from .editorconfig.
-        --         EnableEditorConfigSupport = true,
-        --         -- Specifies whether 'using' directives should be grouped and sorted during
-        --         -- document formatting.
-        --         OrganizeImports = true,
-        --       },
-        --       MsBuild = {
-        --         -- If true, MSBuild project system will only load projects for files that
-        --         -- were opened in the editor. This setting is useful for big C# codebases
-        --         -- and allows for faster initialization of code navigation features only
-        --         -- for projects that are relevant to code that is being edited. With this
-        --         -- setting enabled OmniSharp may load fewer projects and may thus display
-        --         -- incomplete reference lists for symbols.
-        --         LoadProjectsOnDemand = nil,
-        --       },
-        --       RoslynExtensionsOptions = {
-        --         -- Enables support for roslyn analyzers, code fixes and rulesets.
-        --         EnableAnalyzersSupport = true,
-        --         -- Enables support for showing unimported types and unimported extension
-        --         -- methods in completion lists. When committed, the appropriate using
-        --         -- directive will be added at the top of the current file. This option can
-        --         -- have a negative impact on initial completion responsiveness,
-        --         -- particularly for the first few completion sessions after opening a
-        --         -- solution.
-        --         EnableImportCompletion = true,
-        --         -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-        --         -- true
-        --         AnalyzeOpenDocumentsOnly = true,
-        --       },
-        --       Sdk = {
-        --         -- Specifies whether to include preview versions of the .NET SDK when
-        --         -- determining which version to use for project loading.
-        --         IncludePrereleases = true,
-        --       },
+        -- roslyn_ls = {
+        --     filetypes = {
+        --         "cs",
+        --         "razor"
         --     },
+        --     cmd = {
+        --         "Microsoft.CodeAnalysis.LanguageServer",
+        --         "--logLevel",
+        --         "Trace",
+        --         "--extensionLogDirectory",
+        --         "/tmp/roslyn_ls.log",
+        --         "--stdio",
+        --         "--razorSourceGenerator",
+        --         "C:/Program Files/dotnet/sdk/9.0.302/Sdks/Microsoft.NET.Sdk.Razor/source-generators/Microsoft.CodeAnalysis.Razor.Compiler.dll",
+        --         "--razorDesignTimePath",
+        --         "C:/Program Files/dotnet/sdk/9.0.302/Sdks/Microsoft.NET.Sdk.Razor/targets/Microsoft.NET.Sdk.Razor.DesignTime.targets",
+        --         "--extension",
+        --         "C:/Users/Admin/bin/Microsoft.VisualStudioCode.RazorExtension.dll"
+        --     },
+        --     -- handlers = require("rzls.roslyn_handlers"),
         -- },
+
+        -- roslyn_ls = {
+        --   -- compose Roslyn's command with Razor args from Mason's rzls
+        --   cmd = (function()
+        --     local rz = vim.fn.expand("$MASON/packages/rzls/libexec")
+        --     return {
+        --       "roslyn", "--stdio",
+        --       "--logLevel=Information",
+        --       "--extensionLogDirectory", vim.fs.dirname(vim.lsp.get_log_path()),
+        --       "--razorSourceGenerator=" .. vim.fs.joinpath(rz, "Microsoft.CodeAnalysis.Razor.Compiler.dll"),
+        --       "--razorDesignTimePath=" .. vim.fs.joinpath(rz, "Targets", "Microsoft.NET.Sdk.Razor.DesignTime.targets"),
+        --       "--extension", vim.fs.joinpath(rz, "RazorExtension", "Microsoft.VisualStudioCode.RazorExtension.dll"),
+        --     }
+        --   end)(),
+        --   handlers = require("rzls.roslyn_handlers"),
+        -- },
+
+
+        omnisharp = {
+            cmd = { "OmniSharp.exe" },
+            --on_attach = on_attach_set_maps,
+            settings = {
+              FormattingOptions = {
+                -- Enables support for reading code style, naming convention and analyzer
+                -- settings from .editorconfig.
+                EnableEditorConfigSupport = true,
+                -- Specifies whether 'using' directives should be grouped and sorted during
+                -- document formatting.
+                OrganizeImports = true,
+              },
+              MsBuild = {
+                -- If true, MSBuild project system will only load projects for files that
+                -- were opened in the editor. This setting is useful for big C# codebases
+                -- and allows for faster initialization of code navigation features only
+                -- for projects that are relevant to code that is being edited. With this
+                -- setting enabled OmniSharp may load fewer projects and may thus display
+                -- incomplete reference lists for symbols.
+                LoadProjectsOnDemand = nil,
+              },
+              RoslynExtensionsOptions = {
+                -- Enables support for roslyn analyzers, code fixes and rulesets.
+                EnableAnalyzersSupport = true,
+                -- Enables support for showing unimported types and unimported extension
+                -- methods in completion lists. When committed, the appropriate using
+                -- directive will be added at the top of the current file. This option can
+                -- have a negative impact on initial completion responsiveness,
+                -- particularly for the first few completion sessions after opening a
+                -- solution.
+                EnableImportCompletion = true,
+                -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+                -- true
+                AnalyzeOpenDocumentsOnly = true,
+              },
+              Sdk = {
+                -- Specifies whether to include preview versions of the .NET SDK when
+                -- determining which version to use for project loading.
+                IncludePrereleases = true,
+              },
+            },
+        },
 
         -- Just add a "blank" server entry in order to call the default setup
         texlab = {
@@ -234,7 +278,6 @@ return {
     -- Configure the nvim diagnostics from the items defined in the opts.
     vim.diagnostic.config(opts.diagnostics);
 
-     
 
     -- Merge multiple capabilites tables:
     local total_capabilities = vim.tbl_deep_extend(

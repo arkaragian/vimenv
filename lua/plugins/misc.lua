@@ -1,7 +1,7 @@
 return {
     {
         "https://github.com/nvim-tree/nvim-tree.lua.git",
-        tag = "v1.7.1"
+        tag = "v1.14.0"
     },
 
     {
