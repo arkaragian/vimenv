@@ -206,7 +206,12 @@ return {
 
 
         omnisharp = {
-            cmd = { "OmniSharp.exe" },
+            -- cmd = { "OmniSharp.exe" },
+            cmd = {
+              "OmniSharp.exe",
+              "--languageserver",
+              "--hostPID", vim.fn.getpid(),
+            },
             --on_attach = on_attach_set_maps,
             settings = {
               FormattingOptions = {
