@@ -185,6 +185,24 @@ local function CSRecord()
     return s( context, fmt(snippet_string, nodes) )
 end
 
+local function CSDisableFormat()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "disfmt", --trigeted with the for keyword
+        name="disfmt", -- The name of the snippet
+        dscr="Disable Format"
+    }
+
+    -- Textnode does not support multiple. Instead it requires a table of strings
+    local content = {
+        "#pragma warning disable IDE0055",
+        "#pragma warning restore IDE0055"
+
+    }
+
+    return s( context, t(content) )
+end
+
 
 --- Defines an inheritdoc header in csharp
 local function CSSummary()
@@ -340,7 +358,11 @@ return {
     CSXMLRemark(),
     -- JSON Related
     CSSystemTextJsonProperty(),
-    CSEnumDefinition()
+    CSEnumDefinition(),
+    -- Behavior
+    CSDisableFormat()
+
+
 
 },{
     --autosnippets
