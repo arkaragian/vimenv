@@ -40,7 +40,7 @@ local function ForLoop()
 
     --We use a multiline string denoted by [[ and ]].
     local snippet_string = [[
-    for(int {counter}={start}; {counter2}<{limit}; {counter3}++){{
+    for(size_t {counter}={start}; {counter2}<{limit}; {counter3}++){{
         {text}
     }}
     ]]
