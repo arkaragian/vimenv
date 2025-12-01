@@ -1,7 +1,12 @@
 return {
     {
         "https://github.com/nvim-tree/nvim-tree.lua.git",
-        tag = "v1.14.0"
+        tag = "v1.14.0",
+        opts = {
+            view = {
+                side = "left", -- "left" | "right"
+            },
+        }
     },
 
     {
@@ -70,7 +75,7 @@ return {
                     dap = {
                         -- Extra arguments for nvim-dap configuration
                         -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
-                        args = {justMyCode = false },
+                        args = { justMyCode = false },
                         -- Enter the name of your dap adapter, the default value is netcoredbg
                         adapter_name = "netcoredbg"
                     },

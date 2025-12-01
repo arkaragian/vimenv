@@ -401,7 +401,7 @@ end
 local function MagicTableRow()
     -- Defines a for snippet using a the fmt function of the luasnip
     local context = {
-        trig = "aris", --trigeted with the for keyword
+        trig = "magicrow", --trigeted with the for keyword
         name = "magic row", -- The name of the snippet
         dscr = "latex table auto numbering" -- The
     }
@@ -419,6 +419,32 @@ local function MagicTableRow()
 
     local nodes = {
         i(0, "magicrow"),
+    }
+
+    return s(context, fmta(snippet_string, nodes))
+end
+
+local function MulilangText()
+    -- Defines a for snippet using a the fmt function of the luasnip
+    local context = {
+        trig = "mlang", --trigeted with the for keyword
+        name = "Multilingual Text", -- The name of the snippet
+        dscr = "Conditional Compilation Multilingual" -- The
+    }
+
+    --We use a multiline string denoted by [[ and ]].
+    --fmta requires at least one node. We work around that.
+    local snippet_string = [[
+    \ifdefined\eng
+        <>
+    \else
+        <>
+    \fi
+    ]]
+
+    local nodes = {
+        i(1, "eng"),
+        i(0, "lang"),
     }
 
     return s(context, fmta(snippet_string, nodes))
@@ -447,7 +473,8 @@ return {
     TEXTabular(),
     TIKZPicture(),
     TIKZNode(),
-    MagicTableRow()
+    MagicTableRow(),
+    MulilangText()
 }, {
     --Autosnippets
 }
