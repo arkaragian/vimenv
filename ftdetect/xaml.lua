@@ -3,5 +3,5 @@
 
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     pattern = {"*.xaml"},
-    command = "setfiletype xml",
+    command = "set filetype=xml",
 })
