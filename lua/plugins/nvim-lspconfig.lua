@@ -302,7 +302,7 @@ return {
     --     print("Server is " .. server)
     --     print("With Options: " .. vim.inspect(server_opts))
     -- end
-    
+
     local function setup_server(server)
       local server_opts = vim.tbl_deep_extend("force", {
         capabilities = vim.deepcopy(total_capabilities),
