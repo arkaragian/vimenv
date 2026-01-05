@@ -1,3 +1,7 @@
+# Spell Check Files
+/spell/*.spl
+/spell/*.sug
+
 #################
 ## Eclipse
 #################

@@ -75,7 +75,7 @@ end
 
 return {
     "neovim/nvim-lspconfig",
-    version = "v2.4.0",
+    version = "v2.5.0",
     -- dependencies = {
     --     {"seblyng/roslyn.nvim" },
     --     { "tris203/rzls.nvim", lazy = false } -- lazy-load on require("rzls.*")
