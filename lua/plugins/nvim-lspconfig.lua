@@ -259,14 +259,14 @@ return {
         },
 
         -- Just add a "blank" server entry in order to call the default setup
-        texlab = {
-        },
+        -- texlab = {
+        -- },
 
-        rust_analyzer = {
-        },
+        -- rust_analyzer = {
+        -- },
 
-        clangd = {
-        }
+        -- clangd = {
+        -- }
 
       },
       -- you can do any additional lsp server setup here

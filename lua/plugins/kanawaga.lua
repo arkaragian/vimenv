@@ -17,7 +17,8 @@
 return {
     {
         "rebelot/kanagawa.nvim",
-        commit = 'f491b0fe68fffbece7030181073dfe51f45cda81',
+        --commit = 'f491b0fe68fffbece7030181073dfe51f45cda81',
+        commit = 'aef7f5cec0a40dbe7f3304214850c472e2264b10',
         lazy = false,
         priority = 1000,
         opts = {

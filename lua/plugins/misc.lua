@@ -39,20 +39,19 @@ return {
     },
     {
         "lukas-reineke/indent-blankline.nvim",
-        tag = "v3.7.2"
+        tag = "v3.9.0"
     },
     {
         "folke/which-key.nvim",
-        tag = "v3.13.3"
+        tag = "v3.17.0"
     },
-    { "Eandrju/cellular-automaton.nvim" },
     {
         "tpope/vim-surround",
         tag = "v2.2"
     },
     {
         "rcarriga/nvim-notify",
-        tag = "v3.14.0",
+        tag = "v3.15.0",
         lazy = false,
         priority = 900
     },

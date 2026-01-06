@@ -1,7 +1,7 @@
 return {
     {
         "https://github.com/anuvyklack/hydra.nvim",
-        version = "v1.0.2",
+        version = "v1.0.3",
         config = function()
             local Hydra = require('hydra')
             Hydra({

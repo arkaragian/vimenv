@@ -1,8 +1,8 @@
-local solution_loaded = vim.g.SolutionPluginLoaded or false
-
-if solution_loaded == false then
-    return
-end
+-- local solution_loaded = vim.g.SolutionPluginLoaded or false
+--
+-- if solution_loaded == false then
+--     return
+-- end
 
 local solution = require("solution")
 

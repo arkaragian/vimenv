@@ -1,7 +1,7 @@
-return {
-}
 -- return {
---     {
---         dir = "D:/source/repos/Solution.nvim"
---     }
 -- }
+return {
+    {
+        dir = "D:/source/repos/Solution.nvim"
+    }
+}
