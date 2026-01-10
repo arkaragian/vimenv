@@ -5,6 +5,7 @@ return {
         lazy = true,
         opts = {
             view = {
+                width = 40,
                 side = "right",
             },
         },
