@@ -55,8 +55,6 @@ opt.autoread = true
 
 -- Set leader to spacebar
 vim.g.mapleader = ' '
-vim.keymap.set("n", "<leader>mir", "<cmd>CellularAutomaton make_it_rain<CR>" , {desc = "Make it rain"})
-vim.keymap.set("n", "<leader>gol", "<cmd>CellularAutomaton game_of_life<CR>" , {desc = "The Game of Live"})
 
 --Add two characters when typing the tab key
 opt.tabstop = 4         -- Number of spaces that a <Tab> in the file counts for.
@@ -218,7 +216,7 @@ end
 vim.api.nvim_create_user_command('InsertFilenameWithoutExtension', insert_filename_without_extension, {})
 
 -- Optionally, map the command to a key combination
-vim.api.nvim_set_keymap('n', '<leader>ife', ':InsertFilenameWithoutExtension<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ife', ':InsertFilenameWithoutExtension<CR>', { noremap = true, silent = true, desc = "Insert Filename Without Extension" })
 
 
 vim.filetype.add({

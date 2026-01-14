@@ -196,14 +196,14 @@ end
 -- 3) Register the group on 
 
 -- Setup any keybindings we want for formating our file.
-function SetupKeyBindings()
- --vim.keymap.set('n','<leader>fo',FormatFile, {desc = "Format File"})
-end
+-- function SetupKeyBindings()
+--  --vim.keymap.set('n','<leader>fo',FormatFile, {desc = "Format File"})
+-- end
 
 -- Register format autocommand group that helps us manage the group commands as
 -- a whole. The clear flag clears the group when we enter the buffer again. This
 -- helps us keep the same end state every time we execute this.
-local FormatAutoGroup = vim.api.nvim_create_augroup("FormatAutoGroup", { clear = true })
+-- local FormatAutoGroup = vim.api.nvim_create_augroup("FormatAutoGroup", { clear = true })
 
 -- Create autocommand in the BufEnter event that is matched against a pattern
 -- BufEnter event is nice for setting options for a file type accoding to
@@ -211,9 +211,9 @@ local FormatAutoGroup = vim.api.nvim_create_augroup("FormatAutoGroup", { clear =
 --
 -- This means that when we enter a buffer with the specified pattern register
 -- the commands that are defined in the SetupKeyBindings function.
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = {"*.h","*.c","*.cpp","*.cs"},
-  callback = SetupKeyBindings, 
-  group = FormatAutoGroup,
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   pattern = {"*.h","*.c","*.cpp","*.cs"},
+--   callback = SetupKeyBindings, 
+--   group = FormatAutoGroup,
+-- })
 

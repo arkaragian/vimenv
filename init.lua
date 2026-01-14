@@ -30,7 +30,7 @@ require("Globals")
 -- Source personal configurations
 require("Behavior") -- Generic keybindings
 -- require("Completion") -- Code completion Configuration
-require("Formatting") -- Custom code formatting methods
+-- require("Formatting") -- Custom code formatting methods
 
 
 
@@ -61,7 +61,7 @@ require("lazy").setup({
       --
       require('plugins.markdown-preview'),
       -- This may be problematic
-      -- require('plugins.nvim-cmp'),
+      require('plugins.nvim-cmp'),
       require('plugins.nvim-lspconfig'),
       --
       require('plugins.nvim-tree'),
@@ -114,4 +114,12 @@ end
 ------------------------------------------------------------------------------
 --        C O L O R S C H E M E  T E X  C O N F I G U R A T I O N           --
 ------------------------------------------------------------------------------
-vim.cmd.colorscheme("kanagawa")
+local function set_colorscheme(name)
+    local ok, err = pcall(vim.cmd.colorscheme, name)
+    print("Could not set the color scheme " .. err);
+    return ok
+end
+
+if not set_colorscheme("kanagawa") then
+    vim.cmd.colorscheme("default")
+end
