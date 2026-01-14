@@ -68,6 +68,7 @@ local on_attach_set_maps = function(client, bufnr)
       autocmd       {{ "BufWritePost", "CursorHold" }   , augroup_codelens  , vim.lsp.codelens.refresh , bufnr }
   end
 
+  -- client.server_capabilities.semanticTokensProvider = nil
 
   local s = string.format("LSP server %s attached",client.name)
   vim.notify(s,vim.log.levels.INFO,{title = "Language Server Protocol"})
@@ -347,8 +348,8 @@ return {
 
     vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
-            local bufnr = args.buf
             local client = vim.lsp.get_client_by_id(args.data.client_id)
+            local bufnr = args.buf
             on_attach_set_maps(client, bufnr)
         end
     })

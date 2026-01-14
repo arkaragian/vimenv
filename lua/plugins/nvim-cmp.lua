@@ -26,17 +26,6 @@ return {
             enable_autosnippets = true,
 
 
-            --load_ft_func =
-            -- Also load tex when a plaintex-file is opened,
-            -- javascript for html.
-            -- Other filetypes just load themselves.
-            --require("luasnip.extras.filetype_functions").extend_load_ft({
-                --    plaintex = {"tex"},
-                --}),
-
-                -- Crazy highlights!!
-                -- #vid3
-                -- ext_opts = nil,
                 ext_opts = {
                     [types.choiceNode] = {
                         active = {
