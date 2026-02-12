@@ -45,39 +45,39 @@ end
 require("lazy").setup({
   -- Import spec by file. Note. At this point solution depends on
   -- dap, notify and telescope.
-  spec = {
-
-      require('plugins.kanawaga'),
-      require('plugins.nvim-dap'),
-      require('plugins.nvim-notify'),
-      require('plugins.solution'),
-      require('plugins.telescope'),
-
-      require('plugins.blankline'),
-      require('plugins.bufferline'),
-      require('plugins.fugitive'),
-      require('plugins.hydra'),
-      require('plugins.lazydev'),
-      --
-      require('plugins.markdown-preview'),
-      -- This may be problematic
-      require('plugins.nvim-cmp'),
-      require('plugins.nvim-lspconfig'),
-      --
-      require('plugins.nvim-tree'),
-      --require('plugins.nvim-treesitter'),
-      require('plugins.oil'),
-      require('plugins.rainbow-csv'),
-      --
-      require('plugins.remote-plugins'),
-      require('plugins.tabular'),
-      require('plugins.vim-surround'),
-      require('plugins.which-key'),
-  },
-  -- or import your plugins by directory
   -- spec = {
-  --   { import = "plugins" },
+  --
+  --     require('plugins.kanawaga'),
+  --     require('plugins.nvim-dap'),
+  --     require('plugins.nvim-notify'),
+  --     require('plugins.solution'),
+  --     require('plugins.telescope'),
+  --
+  --     require('plugins.blankline'),
+  --     require('plugins.bufferline'),
+  --     require('plugins.fugitive'),
+  --     require('plugins.hydra'),
+  --     require('plugins.lazydev'),
+  --     --
+  --     require('plugins.markdown-preview'),
+  --     -- This may be problematic
+  --     require('plugins.nvim-cmp'),
+  --     require('plugins.nvim-lspconfig'),
+  --     --
+  --     require('plugins.nvim-tree'),
+  --     require('plugins.nvim-treesitter'),
+  --     require('plugins.oil'),
+  --     require('plugins.rainbow-csv'),
+  --     --
+  --     require('plugins.remote-plugins'),
+  --     require('plugins.tabular'),
+  --     require('plugins.vim-surround'),
+  --     require('plugins.which-key'),
   -- },
+  -- or import your plugins by directory
+  spec = {
+    { import = "plugins" },
+  },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   -- install = { colorscheme = { "habamax" } },
