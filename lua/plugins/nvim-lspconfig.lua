@@ -68,6 +68,10 @@ local on_attach_set_maps = function(client, bufnr)
       autocmd       {{ "BufWritePost", "CursorHold" }   , augroup_codelens  , vim.lsp.codelens.refresh , bufnr }
   end
 
+  if client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(true, nil)
+  end
+
   -- client.server_capabilities.semanticTokensProvider = nil
 
   local s = string.format("LSP server %s attached",client.name)
