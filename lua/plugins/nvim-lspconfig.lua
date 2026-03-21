@@ -69,7 +69,13 @@ local on_attach_set_maps = function(client, bufnr)
   end
 
   if client.server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint.enable(true, nil)
+      -- vim.lsp.inlay_hint.enable(true, nil)
+
+      if client.name == "roslyn_ls" then
+          vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+      else
+          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end
   end
 
   -- client.server_capabilities.semanticTokensProvider = nil
