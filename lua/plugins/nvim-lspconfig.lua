@@ -63,9 +63,10 @@ local on_attach_set_maps = function(client, bufnr)
   --If the LSP provides codelens capabilites enable them.
   --Note currently razor is not supported by codelens.
   if client.server_capabilities.codeLensProvider and vim.bo[bufnr].filetype ~= "razor" then
-      autocmd_clear { group = augroup_codelens , buffer = bufnr }
-      autocmd       { "BufEnter"                        , augroup_codelens  , vim.lsp.codelens.refresh , bufnr , once = true }
-      autocmd       {{ "BufWritePost", "CursorHold" }   , augroup_codelens  , vim.lsp.codelens.refresh , bufnr }
+      vim.lsp.codelens.enable(true, { bufnr = bufnr })
+      -- autocmd_clear { group = augroup_codelens , buffer = bufnr }
+      -- autocmd       { "BufEnter"                        , augroup_codelens  , vim.lsp.codelens.refresh , bufnr , once = true }
+      -- autocmd       {{ "BufWritePost", "CursorHold" }   , augroup_codelens  , vim.lsp.codelens.refresh , bufnr }
   end
 
   if client.server_capabilities.inlayHintProvider then
