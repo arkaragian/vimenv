@@ -180,7 +180,23 @@ return {
           },
         },
 
-        roslyn_ls = { },
+        roslyn_ls = {
+          cmd = {
+            "roslyn-language-server",
+            "--logLevel",
+            "Information",
+            "--extensionLogDirectory",
+            vim.fs.joinpath(vim.uv.os_tmpdir(), "roslyn_ls/logs"),
+            "--stdio",
+          },
+          capabilities = {
+            textDocument = {
+              diagnostic = {
+                dynamicRegistration = true,
+              },
+            },
+          },
+        },
 
         -- Just add a "blank" server entry in order to call the default setup
         texlab = {
@@ -214,6 +230,8 @@ return {
 
 
     -- Merge multiple capabilites tables:
+    local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+
     local total_capabilities = vim.tbl_deep_extend(
       "force",
       {}, -- An empy table
